@@ -18,6 +18,7 @@ Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@
 * Store System: Buy equipment and weapons to strengthen your character.
 * Secret Zones: Discover hidden places brimming with riches and rare items.
 * Reward System: Be rewarded according to your solving time and performance.
+* Save System : Save your current game and start and stop when you want.
 
 ## Requirements
 * Intel Core i3 2GB of RAM 
