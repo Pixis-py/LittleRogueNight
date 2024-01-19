@@ -1,8 +1,10 @@
 # LittleRogueNight Adventure in a Labyrinth
---- Created by Maelig Pesantez, Clément Lelandais, Enzo Desfaudais and Mathieu Zinzen ---
+
+--- Created by __Maelig Pesantez__, __Clément Lelandais__, __Enzo Desfaudais__ and __Mathieu Zinzen__ ---
 Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@gmail.com,Mathieuzinzenpro@gmail.com
 
 ## About The Game 
+
 * LittleRogueNight is a game created for school purpose, it is a roguelike based on LittleNightamres.
 * Each level features a new configuration of rooms and corridors, making each game unique. The aim is to collect treasures, avoid or fight monsters, foil traps and escape quickly.
 * In this game, you walk, run, jump and fight to escape from a dark place. Beware of monsters, they can be pretty unprevisible...
@@ -27,3 +29,7 @@ Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@
 //Add instructions to start and play the game (maybe a picture) 
 
 ## License
+
+## Steps of the projects 
+* we have 14 weeks to do this project
+* This is our Gantt : (https://docs.google.com/spreadsheets/d/1N0l1cyXdz2jDQ7uw1sJApE_-XL1_57rDjFjR6rCOs2c/edit#gid=1115838130)
