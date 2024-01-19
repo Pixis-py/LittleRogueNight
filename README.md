@@ -32,4 +32,4 @@ Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@
 
 ## Steps of the projects 
 * we have 14 weeks to do this project
-* This is our Gantt : (https://docs.google.com/spreadsheets/d/1N0l1cyXdz2jDQ7uw1sJApE_-XL1_57rDjFjR6rCOs2c/edit#gid=1115838130)
+* This is our Gantt : https://docs.google.com/spreadsheets/d/1N0l1cyXdz2jDQ7uw1sJApE_-XL1_57rDjFjR6rCOs2c/edit#gid=1115838130
