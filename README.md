@@ -4,10 +4,10 @@ Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@
 
 ## About The Game
 LittleRogueNight is a game created for school purpose, it is a roguelike based on LittleNightamres.
-It
+Each level features a new configuration of rooms and corridors, making each game unique. The aim is to collect treasures, avoid or fight monsters, foil traps and escape quickly.
 In this game, you walk, run, jump and fight to escape from a dark place. Beware of monsters, they can be pretty unprevisible...
 
-// Roguelike is a game of adventure and exploration where the player navigates through an automatically generated labyrinth. Each level features a new configuration of rooms and corridors, making each game unique. The aim is to collect //treasures, avoid or fight monsters, foil traps and escape quickly.
+// Roguelike is a game of adventure and exploration where the player navigates through an automatically generated labyrinth. 
 
 ## Features
 
