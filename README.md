@@ -23,7 +23,7 @@ Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@
 * Intel Core i3 2GB of RAM 
 
 ## Installation
-//steps to install the game
+git clone https://github.com/Pixis-py/LittleRogueNight/tree/main
 
 ## How to play 
 //Add instructions to start and play the game (maybe a picture) 
