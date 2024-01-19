@@ -11,7 +11,7 @@ Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@
 
 ## Features
 
-* Automatically Generated Maze: Each level offers a new layout of rooms and corridors.
+* Procedurally Generated Maze: Each level offers a new layout of rooms and corridors.
 * Treasures and Riddles: Explore and recover hidden treasures while solving riddles.
 * Monsters and Traps: Battle a variety of monsters and avoid deadly traps.
 * Dynamic Bosses: Powerful bosses chase the hero through the labyrinth.
