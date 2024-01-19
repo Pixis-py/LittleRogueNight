@@ -11,11 +11,11 @@ In this game, you walk, run, jump and fight to escape from a dark place. Beware 
 
 # Features
 
-*Automatically Generated Maze: Each level offers a new layout of rooms and corridors.
-*Treasures and Riddles: Explore and recover hidden treasures while solving riddles.
-*Monsters and Traps: Battle a variety of monsters and avoid deadly traps.
-*Dynamic Bosses: Powerful bosses chase the hero through the labyrinth.
-*Store System: Buy equipment and weapons to strengthen your character.
-*Secret Zones: Discover hidden places brimming with riches and rare items.
-*Reward System: Be rewarded according to your solving time and performance.
+* Automatically Generated Maze: Each level offers a new layout of rooms and corridors.
+* Treasures and Riddles: Explore and recover hidden treasures while solving riddles.
+* Monsters and Traps: Battle a variety of monsters and avoid deadly traps.
+* Dynamic Bosses: Powerful bosses chase the hero through the labyrinth.
+* Store System: Buy equipment and weapons to strengthen your character.
+* Secret Zones: Discover hidden places brimming with riches and rare items.
+* Reward System: Be rewarded according to your solving time and performance.
 
