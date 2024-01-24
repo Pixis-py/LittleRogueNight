@@ -21,7 +21,8 @@ Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@
 * Save System : Save your current game and start and stop when you want.
 
 ## Requirements
-* Intel Core i3 2GB of RAM 
+* Intel Core i3 2GB of RAM
+* Linux distribution
 
 ## Installation
 git clone https://github.com/Pixis-py/LittleRogueNight/tree/main
