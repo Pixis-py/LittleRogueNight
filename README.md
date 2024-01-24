@@ -1,4 +1,4 @@
-# LittleRogueNight Adventure in a Labyrinth
+# LittleRogueNight : Adventure in a Labyrinth
 
 ## Creators
 - **Maelig Pesantez** or `pixis-py` mail: maelig.pesco@gmail.com
