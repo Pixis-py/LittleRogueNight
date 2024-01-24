@@ -1,7 +1,10 @@
 # LittleRogueNight Adventure in a Labyrinth
 
---- Created by __Maelig Pesantez__, __Clément Lelandais__, __Enzo Desfaudais__ and __Mathieu Zinzen__ --- </br>
-Each can be found at maelig.pesco@gmail.com, clelandais510@gmail.com, enzo.dsfa@gmail.com,Mathieuzinzenpro@gmail.com
+## Creators
+- **Maelig Pesantez** or `pixis-py` mail: maelig.pesco@gmail.com
+- **Clément Lelandais** or `clay-l1` mail: clelandais510@gmail.com
+- **Enzo Desfaudais** or `B0rno` mail: enzo.dsfa@gmail.com
+- **Mathieu Zinzen** or `Matz-ai` mail: Mathieuzinzenpro@gmail.com
 
 ## About The Game 
 
