@@ -28,7 +28,7 @@
 * Linux distribution
 
 ## Installation
-git clone https://github.com/Pixis-py/LittleRogueNight/tree/main
+git clone https://github.com/Pixis-py/LittleRogueNight.git
 
 ## How to play 
 //Add instructions to start and play the game (maybe a picture) 
