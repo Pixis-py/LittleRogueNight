@@ -1,5 +1,5 @@
-# LittleRogueNight : Adventure in a Labyrinth
-
+# LittleRogueNight : Adventure in a Labyrinth 
+**from 19/01/2024 to 25/04/2024**
 ## Creators
 - **Maelig Pesantez** or `pixis-py` mail: maelig.pesco@gmail.com
 - **Clément Lelandais** or `clay-l1` mail: clelandais510@gmail.com
@@ -8,7 +8,7 @@
 
 ## About The Game 
 
-* LittleRogueNight is a game created for school purpose, it is a roguelike based on LittleNightmares.
+* LittleRogueNight is a game created for school purpose in **L2 Le Mans**, it is a roguelike based on LittleNightmares.
 * Each level features a new configuration of rooms and corridors, making each game unique. The aim is to collect treasures, avoid or fight monsters, foil traps and escape quickly.
 * In this game, you walk, run, jump and fight to escape from a dark place. Beware of monsters, they can be pretty unprevisible...
 
