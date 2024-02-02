@@ -1,7 +1,8 @@
 # LittleRogueNight : Adventure in a Labyrinth 
 **from 19/01/2024 to 25/04/2024**
 ## Creators
-- **Maelig Pesantez** or `pixis-py` mail: maelig.pesco@gmail.com
+  **Students in L2 Informatique Le Mans**
+- **Maelig Pesantez** or `pixis-py` mail: maelig.pesco@gmail.com 
 - **Clément Lelandais** or `clay-l1` mail: clelandais510@gmail.com
 - **Enzo Desfaudais** or `B0rno` mail: enzo.dsfa@gmail.com
 - **Mathieu Zinzen** or `Matz-ai` mail: Mathieuzinzenpro@gmail.com
