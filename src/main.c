@@ -2,13 +2,20 @@
 #include <stdio.h>
 #include "../lib/anim.h"
 #include "../lib/image.h"
+#include "../lib/labyrinthe.h"
 
 int menu(int argc, char** argv);
 
 int main(){
+    int choice;
     printf("Program launch...\n");
-    menu(0, NULL);
-    anim(0, NULL); // Appel de la fonction anim
+    //choice = menu(0, NULL); // Lancement du menu
+    int lab[N][M];
+    creer_lab(lab);
+    printf("\n\nle lab est crée\n\n");
+    if(chercher_chemin(lab, N - 1, M - 1, 0, 0))
+    printf("\n\non rentre dans le lab\n\n");
+        anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
     printf("Program exit...\n");
     return 0; // Retourne 0 pour indiquer que le programme s'est terminé normalement
 }
@@ -44,8 +51,8 @@ int menu(int argc, char** argv){
             SDL_Renderer *pRenderer = SDL_CreateRenderer(pWindow,-1,SDL_RENDERER_ACCELERATED); // Création d'un SDL_Renderer utilisant l'accélération matérielle
             if ( pRenderer ){
 
-                SDL_Texture* pTextureMenuWallpaper =loadTexture("../sprites/menu/menuWallpaper.png",pRenderer);
-                SDL_Texture* pTexturePlayButton =loadTexture("../sprites/menu/play.png",pRenderer);
+                SDL_Texture* pTextureMenuWallpaper =loadTexture("../Sprites/Menu/menuWallpaper.png",pRenderer);
+                SDL_Texture* pTexturePlayButton =loadTexture("../Sprites/Menu/play.png",pRenderer);
 
                 if ( pTextureMenuWallpaper != NULL){
 
@@ -94,7 +101,7 @@ int menu(int argc, char** argv){
             {
                 fprintf(stdout,"Échec de création du renderer (%s)\n",SDL_GetError());
             }
-            SDL_Delay(1000); /* Attendre trois secondes, que l'utilisateur voie la fenêtre */
+            SDL_Delay(10000); /* Attendre trois secondes, que l'utilisateur voie la fenêtre */
             SDL_DestroyWindow(pWindow);
         }
      else
