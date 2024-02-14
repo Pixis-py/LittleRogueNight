@@ -9,12 +9,10 @@ int menu(int argc, char** argv);
 int main(){
     int choice;
     printf("Program launch...\n");
-    //choice = menu(0, NULL); // Lancement du menu
+    choice = menu(0, NULL); // Lancement du menu
     int lab[N][M];
     creer_lab(lab);
-    printf("\n\nle lab est crée\n\n");
     if(chercher_chemin(lab, N - 1, M - 1, 0, 0))
-    printf("\n\non rentre dans le lab\n\n");
         anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
     printf("Program exit...\n");
     return 0; // Retourne 0 pour indiquer que le programme s'est terminé normalement
