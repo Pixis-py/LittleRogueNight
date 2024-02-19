@@ -2,19 +2,22 @@
 
 #include "../lib/anim.h"
 #include "../lib/image.h"
+#include "../lib/labyrinthe.h"
 
-int anim(int argc, char** argv){
+int anim(int argc, char** argv, int lab[N][M]){
 
 /* ----------------------------------------------------- Initialisations ----------------------------------------------------- */
 
 	int i = 0, j = 0, k = 0; // Initialisation des compteurs pour les boucles d'animation
     int x = 0, y = 0, w = 0 , h = 0; // Initialisation des coordonnées communes à chaque animation
     int lastKeyPressed; // Variable de la dernière touche préssée
-    int lkpshift; // Vaut 1 si la dernière combinaison comprennait shift (donc un drift)
-    int lkpdash; // Vaut 1 si la dernière combinaison comprennait espace (donc dash)
+    int lkpshift; // Vaut 1 si la dernière combinaison comprenait shift (donc un drift)
+    int lkpdash; // Vaut 1 si la dernière combinaison comprenait espace (donc un dash)
     int lastDirection = 1; // Vaut 1 ou 2 selon la dernière direction
 
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
+
+    printf("COUCOU \n\n");
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
         
@@ -28,7 +31,7 @@ int anim(int argc, char** argv){
         
         // Création de la fenêtre
         SDL_Window * pWindow = NULL;
-        pWindow = SDL_CreateWindow("LittleRogueNight", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+        pWindow = SDL_CreateWindow("LittleRogueNight", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, M * 32 + 2 * 32, N * 32 + 2 * 32, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
         
         if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
 
@@ -41,33 +44,26 @@ int anim(int argc, char** argv){
 
         if( pWindow )
         {
+/* ----------------------------------------------------- Chargement et positionnement des Spritess ----------------------------------------------------- */
 
-/* ----------------------------------------------------- Chargement et positionnement des sprites ----------------------------------------------------- */
 
-            SDL_Renderer *pRenderer = SDL_CreateRenderer(pWindow,-1,SDL_RENDERER_ACCELERATED); // Création d'un SDL_Renderer utilisant l'accélération matérielle
+            SDL_Renderer * pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
+
             if ( pRenderer ){
+                //Sprites
+                SDL_Texture* pTextureRun = pTextureRun = loadTexture("../Sprites/Six/six_run.png",pRenderer);
+                SDL_Texture* pTextureDrift pTextureDrift = loadTexture("../Sprites/Six/six_drift.png",pRenderer);
+                SDL_Texture* pTextureDash = pTextureDash = loadTexture("../Sprites/Six/six_dash.png",pRenderer);
+                //Labyrinthe
+                SDL_Texture *pBrickTexture = loadTexture("../Sprites/Tiles/brick.png", pRenderer);
+                SDL_Texture *pSkyTexture = loadTexture("../Sprites/Tiles/night_sky.png", pRenderer);
+	            SDL_Texture *pGrassTexture = loadTexture("../Sprites/Tiles/grass.png", pRenderer);	
+	            SDL_Texture *pDirtTexture = loadTexture("../Sprites/Tiles/dirt.png", pRenderer);
 
-                SDL_Texture* pTextureRun = NULL;
-                SDL_Texture* pTextureDrift = NULL;
-                SDL_Texture* pTextureDash = NULL;
-                SDL_Texture* Grown = NULL;
-                SDL_Texture* sky = NULL;
-
-                Grown = loadTexture("../sprites/tiles/brick.png",pRenderer);
-                sky = loadTexture("../sprites/tiles/night_sky.png",pRenderer);
-                pTextureRun = loadTexture("../sprites/six/six_run.png",pRenderer);
-                pTextureDrift = loadTexture("../sprites/six/six_drift.png",pRenderer);
-                pTextureDash = loadTexture("../sprites/six/six_dash.png",pRenderer);
-
+                //fonction d'affichage des animations des Sprites
                 if ( pTextureRun != NULL && pTextureDrift != NULL && pTextureDash != NULL){
-
-
                         SDL_Rect position = {608, 328, 128, 128};
-                        SDL_Rect sol = {0,670, 1280, 150};
-                        SDL_Rect vide = {0, 0, 1280, 670};
-
-                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
-
+                        /*création et initialisation d'un tableau selectionnant tout les Sprites de l'animation de marche*/
                         SDL_Rect run[11] = { 0,0, 32,32};
                         for (i=0;i<11;i++){
                             run[i].x=x;
@@ -78,7 +74,7 @@ int anim(int argc, char** argv){
                         }
                         x=0;
 
-                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de drift*/
+                        /*création et initialisation d'un tableau selectionnant tout les Sprites de l'animation de drift*/
 
                         SDL_Rect drift[24] = { 0,0, 32,32};
                         for (j=0;j<24;j++){
@@ -91,7 +87,7 @@ int anim(int argc, char** argv){
                         x=0;
                         j=-1;
 
-                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de dash*/
+                        /*création et initialisation d'un tableau selectionnant tout les Sprites de l'animation de dash*/
 
                         SDL_Rect dash[20] = { 0,0, 32,32};
                         for (k=0;k<20;k++){
@@ -115,14 +111,43 @@ int anim(int argc, char** argv){
                         //declaration keyPressed pour gérer si une touche est maintenu ou relacher
                         int quit = 0, KeyIsPressed=0;
                         
-                        //boucle du jeux
+                        //boucle du jeu
 
 /* ----------------------------------------------------- Détection des frappes ----------------------------------------------------- */
 
                         while (!quit) {
+                            //Affichage du labyrinthe
                             SDL_RenderClear(pRenderer);
-                            SDL_RenderCopy(pRenderer,Grown,NULL,&sol);
-                            SDL_RenderCopy(pRenderer,sky,NULL,&vide);
+                            if (pBrickTexture !=  NULL && pSkyTexture !=  NULL && pGrassTexture != NULL && pDirtTexture != NULL /*&& chercher_chemin(lab, N - 1, M - 1, 0, 0)*/) {
+		                        for(int i = 0; i <= M; i++){
+			                        SDL_Rect rect = {i * 32, 0, 32, 32};
+			                        SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect);
+		                        }
+                                for (int i = 0; i < N; i++) {
+			                        SDL_Rect rect =  {0, i * 32 + 32, 32, 32};
+			                        SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect);
+                                    for (int j = 0; j < M; j++) {
+                                        SDL_Rect rect = {j * 32 + 32, i * 32 + 32, 32, 32};
+                                        switch (lab[i][j]){
+                                            case NUIT:
+                                                SDL_RenderCopy(pRenderer, pSkyTexture, NULL, &rect);
+                                                break;
+                                            case TERREVERTE:
+                                                SDL_RenderCopy(pRenderer, pGrassTexture, NULL, &rect);
+                                                break;  
+					                        case TERRE:
+						                        SDL_RenderCopy(pRenderer, pDirtTexture, NULL, &rect);
+                                                break;
+                                        }
+                                    }
+			                        SDL_Rect rect1 = {M * 32 + 32, i * 32, 32, 32};
+			                        SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect1);
+                                }
+		                        for (int p = 0; p <= M; p++){
+			                        SDL_Rect rect = {p * 32 + 32, N * 32, 32, 32};
+			                        SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect);
+		                        }
+                            }
                             // récuperation du clique sur le bouton de fermeture et met fin a la boucle
                             while (SDL_PollEvent(&event) != 0) {
                                 if (event.type == SDL_QUIT) {
