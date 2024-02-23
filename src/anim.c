@@ -50,20 +50,20 @@ int anim(int argc, char** argv, int lab[N][M]){
             SDL_Renderer * pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
 
             if ( pRenderer ){
-                //Sprites
-                SDL_Texture* pTextureRun = loadTexture("../Sprites/Six/six_run.png",pRenderer);
-                SDL_Texture* pTextureDrift = loadTexture("../Sprites/Six/six_drift.png",pRenderer);
-                SDL_Texture* pTextureDash = pTextureDash = loadTexture("../Sprites/Six/six_dash.png",pRenderer);
+                //sprites
+                SDL_Texture* pTextureRun = loadTexture("../sprites/six/six_run.png",pRenderer);
+                SDL_Texture* pTextureDrift = loadTexture("../sprites/six/six_drift.png",pRenderer);
+                SDL_Texture* pTextureDash = pTextureDash = loadTexture("../sprites/six/six_dash.png",pRenderer);
                 //Labyrinthe
-                SDL_Texture *pBrickTexture = loadTexture("../Sprites/Tiles/brick.png", pRenderer);
-                SDL_Texture *pSkyTexture = loadTexture("../Sprites/Tiles/night_sky.png", pRenderer);
-	            SDL_Texture *pGrassTexture = loadTexture("../Sprites/Tiles/grass.png", pRenderer);	
-	            SDL_Texture *pDirtTexture = loadTexture("../Sprites/Tiles/dirt.png", pRenderer);
+                SDL_Texture *pBrickTexture = loadTexture("../sprites/tiles/brick.png", pRenderer);
+                SDL_Texture *pSkyTexture = loadTexture("../sprites/tiles/night_sky.png", pRenderer);
+	            SDL_Texture *pGrassTexture = loadTexture("../sprites/tiles/grass.png", pRenderer);	
+	            SDL_Texture *pDirtTexture = loadTexture("../sprites/tiles/dirt.png", pRenderer);
 
-                //fonction d'affichage des animations des Sprites
+                //fonction d'affichage des animations des sprites
                 if ( pTextureRun != NULL && pTextureDrift != NULL && pTextureDash != NULL){
                         SDL_Rect position = {608, 328, 128, 128};
-                        /*création et initialisation d'un tableau selectionnant tout les Sprites de l'animation de marche*/
+                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
                         SDL_Rect run[11] = { 0,0, 32,32};
                         for (i=0;i<11;i++){
                             run[i].x=x;
@@ -74,7 +74,7 @@ int anim(int argc, char** argv, int lab[N][M]){
                         }
                         x=0;
 
-                        /*création et initialisation d'un tableau selectionnant tout les Sprites de l'animation de drift*/
+                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de drift*/
 
                         SDL_Rect drift[24] = { 0,0, 32,32};
                         for (j=0;j<24;j++){
@@ -87,7 +87,7 @@ int anim(int argc, char** argv, int lab[N][M]){
                         x=0;
                         j=-1;
 
-                        /*création et initialisation d'un tableau selectionnant tout les Sprites de l'animation de dash*/
+                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de dash*/
 
                         SDL_Rect dash[20] = { 0,0, 32,32};
                         for (k=0;k<20;k++){
