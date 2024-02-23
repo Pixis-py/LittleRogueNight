@@ -83,12 +83,12 @@ int menu(int argc, char** argv){
                             if (aff_bout(pRenderer,&optionsButton,event,pTextureOptionsPressButton,pTextureOptionsButton))
                             {
                                 opt_result=1;
-                                quit=1
+                                quit=1;
                             }
                             if (aff_bout(pRenderer,&quitButton,event,pTextureQuitPressButton,pTextureQuitButton))
                             {
                                 quit_result=1;
-                                quit=1
+                                quit=1;
                             }                            
                             SDL_RenderPresent(pRenderer);
 
@@ -121,9 +121,9 @@ int menu(int argc, char** argv){
     IMG_Quit();
 
     if(play_result==1)
-        return 1
+        return 1;
     else if(opt_result==1)
-        return 2
+        return 2;
     else if (quit_result == 1)
         return 0;
     
