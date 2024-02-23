@@ -11,7 +11,7 @@ LIB=lib
 SRC=src
 
 PROG=$(BIN)/LittleRogueNight
-OBJ=$(BIN)/main.o $(BIN)/anim.o $(BIN)/labyrinthe.o $(BIN)/image.o $(BIN)/pile.o $(BIN)/file.o $(BIN)/menu.o
+OBJ=$(BIN)/main.o $(BIN)/anim.o $(BIN)/labyrinthe.o $(BIN)/image.o $(BIN)/pile.o $(BIN)/file.o $(BIN)/menu.o $(BIN)/bouton.o
 
 all: LittleRogueNight
 
