@@ -15,7 +15,7 @@ int main(){
             int lab[N][M];
             creer_lab(lab);
             if(chercher_chemin(lab, N - 1, M - 1, 0, 0))
-                anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
+                choice = anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
         }
     }
     printf("Program exit...\n");
