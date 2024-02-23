@@ -51,8 +51,8 @@ int anim(int argc, char** argv, int lab[N][M]){
 
             if ( pRenderer ){
                 //Sprites
-                SDL_Texture* pTextureRun = pTextureRun = loadTexture("../Sprites/Six/six_run.png",pRenderer);
-                SDL_Texture* pTextureDrift pTextureDrift = loadTexture("../Sprites/Six/six_drift.png",pRenderer);
+                SDL_Texture* pTextureRun = loadTexture("../Sprites/Six/six_run.png",pRenderer);
+                SDL_Texture* pTextureDrift = loadTexture("../Sprites/Six/six_drift.png",pRenderer);
                 SDL_Texture* pTextureDash = pTextureDash = loadTexture("../Sprites/Six/six_dash.png",pRenderer);
                 //Labyrinthe
                 SDL_Texture *pBrickTexture = loadTexture("../Sprites/Tiles/brick.png", pRenderer);
