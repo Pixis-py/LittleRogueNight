@@ -6,7 +6,9 @@
 int menu(int argc, char** argv){
 
 /* ----------------------------------------------------- Initialisation ----------------------------------------------------- */
-
+    int play_result = 0;
+    int opt_result = 0;
+    int quit_result = 0;
 
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
 
@@ -14,7 +16,7 @@ int menu(int argc, char** argv){
         fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
         return -1;
     }
-
+    
     else{
         /* Création de la fenêtre */
         SDL_Window* pWindow = NULL;
@@ -48,16 +50,14 @@ int menu(int argc, char** argv){
                         SDL_Delay(1000);
                         SDL_Rect menuWallpaper= {0,0, 1280, 720};
                         SDL_Rect playButton= {510, 310, 260, 100};
-                        SDL_Rect optionsButton= {310, 150, 260, 100};
+                        SDL_Rect optionsButton= {870, 310, 260, 100};
                         SDL_Rect quitButton= {150, 310, 260, 100};
 
                         SDL_Delay(1000);
 
                         //declaration de quit la variable booleene qui met fin a la boucle
                         int quit = 0;
-                        int play_result = 0;
-                        int opt_result = 0;
-                        int quit_result = 0;
+
                         
                         //boucle du jeux
 
