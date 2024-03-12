@@ -28,7 +28,7 @@
 * Linux distribution
 
 ## Installation
-*Please use
+* Please use
 ```
 git clone https://github.com/Pixis-py/LittleRogueNight.git
 ```
