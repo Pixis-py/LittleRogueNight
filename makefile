@@ -23,6 +23,14 @@ LittleRogueNight: $(OBJECT)
 ${OBJ}/%.o: $(SRC)/%.c ${LIB}/*.h
 	${CC} -c $< -o $@
 
+test: test_character
+
+test_character: $(OBJ)/test_character.o
+	${CC} -o $(BIN)/test_character $(OBJ)/test_character.o
+
+$(OBJ)/test_character.o: $(TEST)/test_character.c 
+	${CC} -c $(TEST)/test_character.c -o $(OBJ)/test_character.o ${INCLUDES}
+
 clean: 
 	rm -f ${OBJ}/*.o
 
