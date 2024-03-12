@@ -8,21 +8,24 @@ INCLUDES=-I${SDLINC_DIR}
 
 BIN=bin
 LIB=lib
+OBJ=obj
 SRC=src
+TEST=test
 
 PROG=$(BIN)/LittleRogueNight
-OBJ=$(BIN)/main.o $(BIN)/anim.o $(BIN)/labyrinthe.o $(BIN)/image.o $(BIN)/pile.o $(BIN)/file.o $(BIN)/menu.o $(BIN)/bouton.o
+OBJECT=$(OBJ)/main.o $(OBJ)/anim.o $(OBJ)/labyrinthe.o $(OBJ)/image.o $(OBJ)/pile.o $(OBJ)/file.o $(OBJ)/menu.o $(OBJ)/bouton.o
 
 all: LittleRogueNight
 
-LittleRogueNight: $(OBJ)
-	${CC} -o ${PROG} $(OBJ) ${LIBS} ${INCLUDES}
+LittleRogueNight: $(OBJECT)
+	${CC} -o ${PROG} $(OBJECT) ${LIBS} ${INCLUDES}
 
-${BIN}/%.o: $(SRC)/%.c ${LIB}/*.h
+${OBJ}/%.o: $(SRC)/%.c ${LIB}/*.h
 	${CC} -c $< -o $@
 
 clean: 
-	rm -f ${BIN}/*.o
+	rm -f ${OBJ}/*.o
 
 mrproper: clean
-	rm -f ${PROG}
+	rm -f ${BIN}/*
+
