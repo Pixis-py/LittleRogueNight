@@ -30,7 +30,7 @@
 ## Installation
 * Please use
 ```
-git clone https://github.com/Pixis-py/LittleRogueNight.git
+git clone git@github.com:Pixis-py/LittleRogueNight.git
 ```
 
 ## Makefile Usage
