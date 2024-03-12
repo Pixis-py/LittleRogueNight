@@ -33,11 +33,11 @@ git clone https://github.com/Pixis-py/LittleRogueNight.git
 ## Makefile Usage
 * make test files : 
 ```
-yourname@yourcomputer:~/LittleRogueNight make test
+make test
 ```
 * make game file : 
 ```
-yourname@yourcomputer:~/LittleRogueNight make all
+make all
 ```
 
 ## How to play 
