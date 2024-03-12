@@ -28,7 +28,10 @@
 * Linux distribution
 
 ## Installation
+*Please use
+```
 git clone https://github.com/Pixis-py/LittleRogueNight.git
+```
 
 ## Makefile Usage
 * make test files : 
