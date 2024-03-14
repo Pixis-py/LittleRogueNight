@@ -17,8 +17,6 @@ int anim(int argc, char** argv, int lab[N][M]){
 
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
 
-    printf("COUCOU \n\n");
-
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0 ){
         
         // Boucle si erreur lors de la création de la fenêtre (retournant le code -1)
