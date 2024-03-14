@@ -14,8 +14,12 @@ int main(){
         if(choice == 1){
             int lab[N][M];
             creer_lab(lab);
-            if(chercher_chemin(lab, N - 1, M - 1, 0, 0))
+            if(chercher_chemin(lab, N - 1, M - 1, 0, 0)){ 
+                character_t * six; // Déclaration du personnage
+                create(&six); // Création du personnage
                 choice = anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
+                destruct(six); // Destruction du personnage
+            }
         }
     }
     printf("Program exit...\n");
