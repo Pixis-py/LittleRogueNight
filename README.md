@@ -25,7 +25,7 @@
 
 ## Requirements
 * Intel Core i3 2GB of RAM
-* Linux distribution
+* Linux distribution & MacOS supported
 
 ## Installation
 * Please use
