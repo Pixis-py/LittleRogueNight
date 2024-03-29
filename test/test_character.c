@@ -9,56 +9,70 @@
  * 
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-
+#include <CUnit/Basic.h>
 #include "../src/character.c"
 
-/// @brief Function main is the only function here, it's used to check every function of character.c, from creation to destruction
-int main(){
-
-   printf("**************** Character structures test initialisation ****************\n\n");
-
-   printf("**************** Creation test ****************\n\n");
-
+/// @brief Function that tests cration on character's structure
+void test_creation() {
    character_t * c;
    create(&c);
+   CU_ASSERT_PTR_NOT_NULL(c);
+   destruct(&c);
+}
 
-   if(c != NULL){
-      printf("--- OK\n\n");
-   }else{
-      printf("--- KO\n\n");
-   }
-
-   printf("**************** Pv loss test ****************\n\n");
-
+/// @brief Function that tests pv loss on character's structure
+void test_pv_loss() {
+   character_t * c;
+   create(&c);
    pv_loss(&c, 10);
-      
-   if((c->pv) == 90){
-      printf("--- OK\n\n");
-   }else{
-      printf("--- KO\n\n");
-   }
+   CU_ASSERT_EQUAL(c->pv, 90);
+   destruct(&c);
+}
 
-   printf("**************** Pv gain test ****************\n\n");
+/// @brief Function that tests attack on character's structure
+void test_attack() {
+   character_t * c;
+   character_t * e;
+   create(&c);
+   create(&e);
+   attack(c, e);
+   CU_ASSERT_EQUAL(c->pv, 90);
+   destruct(&c);
+   destruct(&e);
+}
 
-   pv_gain(&c, 10);
-      
-   if((c->pv) == 100){
-      printf("--- OK\n\n");
-   }else{
-      printf("--- KO\n\n");
-   }
+/// @brief Function that tests pv gain on character's structure
+void test_pv_gain() {
+   character_t * c;
+   create(&c);
+   pv_gain(&c, 20);
+   CU_ASSERT_EQUAL(c->pv, 120);
+   destruct(&c);
+}
 
-   printf("**************** Desctruction test ****************\n\n");
+/// @brief Function that tests destruction on character's structure
+void test_destruction() {
+   character_t * c;
+   create(&c);
+   destruct(&c);
+   CU_ASSERT_PTR_NULL(c);
+}
 
-   destruct(c);
-   if(c == NULL){
-      printf("--- KO\n\n");
-   }else{
-      printf("--- OK\n\n");
-   }
+
+/// @brief 
+/// @return 
+int main() {
+   CU_initialize_registry();
+
+   CU_pSuite suite = CU_add_suite("Character Tests", NULL, NULL);
+   CU_add_test(suite, "Test Creation", test_creation);
+   CU_add_test(suite, "Test Pv Loss", test_pv_loss);
+   CU_add_test(suite, "Test Attack", test_attack);
+   CU_add_test(suite, "Test Pv Gain", test_pv_gain);
+   CU_add_test(suite, "Test Destruction", test_destruction);
+
+   CU_basic_run_tests();
+   CU_cleanup_registry();
 
    return 0;
-
 }
