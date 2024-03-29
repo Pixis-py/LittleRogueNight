@@ -13,7 +13,7 @@ SRC=src
 TEST=test
 
 PROG=$(BIN)/LittleRogueNight
-OBJECT=$(OBJ)/main.o $(OBJ)/anim.o $(OBJ)/labyrinthe.o $(OBJ)/image.o $(OBJ)/pile.o $(OBJ)/file.o $(OBJ)/menu.o $(OBJ)/bouton.o
+OBJECT=$(OBJ)/main.o $(OBJ)/anim.o $(OBJ)/labyrinthe.o $(OBJ)/image.o $(OBJ)/pile.o $(OBJ)/file.o $(OBJ)/menu.o $(OBJ)/bouton.o $(OBJ)/character.o 
 
 all: LittleRogueNight
 
@@ -25,11 +25,14 @@ ${OBJ}/%.o: $(SRC)/%.c ${LIB}/*.h
 
 test: test_character
 
-test_character: $(OBJ)/test_character.o
-	${CC} -o $(BIN)/test_character $(OBJ)/test_character.o -lcunit
+test_character: $(OBJ)/test_character.o $(OBJ)/character.o
+	${CC} -o $(BIN)/test_character $(OBJ)/test_character.o $(OBJ)/character.o -lcunit 
 
 $(OBJ)/test_character.o: $(TEST)/test_character.c 
-	${CC} -c $(TEST)/test_character.c -o $(OBJ)/test_character.o ${INCLUDES}
+	${CC} -c $(TEST)/test_character.c -o $(OBJ)/test_character.o
+
+${OBJ}/%.o: $(SRC)/%.c ${LIB}/*.h
+	${CC} -c $< -o $@
 
 clean: 
 	rm -f ${OBJ}/*.o
