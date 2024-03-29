@@ -10,7 +10,7 @@
  */
 
 #include <CUnit/Basic.h>
-#include "../src/character.c"
+#include "../lib/character.h"
 
 /// @brief Function that tests cration on character's structure
 void test_creation() {
