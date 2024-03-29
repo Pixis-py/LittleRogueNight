@@ -3,12 +3,31 @@
 #include "../lib/bouton.h"
 #include "../lib/image.h"
 
-int menu(int argc, char** argv){
+/**
+ * @file menu.c
+ * @author Enzo Desfaudais
+ * @brief menu.c is used to show the first menu and choose the character for the game
+ * @version 1.0
+ * @date 2024-03-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
+/// @brief menu is used to show the first menu and choose the character for the game
+/// @param argc 
+/// @param argv 
+/// @param choix_perso 
+/// @return the choice of the player to play the game or quit the game.
+int menu(int argc, char** argv,int *choix_perso){
 
 /* ----------------------------------------------------- Initialisation ----------------------------------------------------- */
     int play_result = 0;
     int opt_result = 0;
     int quit_result = 0;
+    //declaration de quit la variable booleene qui met fin a la boucle
+    int quit = 0;
+    int quit_opt = 0;
 
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
 
@@ -41,22 +60,25 @@ int menu(int argc, char** argv){
                 SDL_Texture* pTextureOptionsPressButton =loadTexture("../sprites/menu/options_hoover.png",pRenderer);
                 SDL_Texture* pTextureQuitButton =loadTexture("../sprites/menu/quit.png",pRenderer);
                 SDL_Texture* pTextureQuitPressButton =loadTexture("../sprites/menu/quit_hoover.png",pRenderer);
+                SDL_Texture* pTexturePersoSix = loadTexture("../sprites/portraits/six_portrait.png",pRenderer);
+                SDL_Texture* pTexturePersoMono = loadTexture("../sprites/portraits/mono_portrait.png",pRenderer);
 
 
 
 
                 if ( pTextureMenuWallpaper != NULL){
 
-                        SDL_Delay(1000);
+                        SDL_Delay(500);
                         SDL_Rect menuWallpaper= {0,0, 1280, 720};
                         SDL_Rect playButton= {510, 310, 260, 100};
                         SDL_Rect optionsButton= {870, 310, 260, 100};
                         SDL_Rect quitButton= {150, 310, 260, 100};
+                        SDL_Rect Choix_six={150, 100, 200, 500};
+                        SDL_Rect Choix_mono={975,100,200,500};
+                        SDL_Rect Opt_Quit = {510, 310, 260, 100};
 
-                        SDL_Delay(1000);
+                        SDL_Delay(500);
 
-                        //declaration de quit la variable booleene qui met fin a la boucle
-                        int quit = 0;
 
                         
                         //boucle du jeux
@@ -82,8 +104,31 @@ int menu(int argc, char** argv){
                             }
                             if (aff_bout(pRenderer,&optionsButton,event,pTextureOptionsPressButton,pTextureOptionsButton))
                             {
-                                opt_result=1;
-                                quit=1;
+                                while(!quit_opt){
+                                    while (SDL_PollEvent(&event) != 0) {
+                                        if (event.type == SDL_QUIT) {
+                                            quit = 1;
+                                        }
+                                    }
+                                    SDL_RenderClear(pRenderer);
+                                    SDL_RenderCopy(pRenderer,pTextureMenuWallpaper, NULL, &menuWallpaper);
+                                    if(aff_bout(pRenderer,&Choix_six,event,pTexturePersoSix,pTexturePersoSix)){
+                                        *choix_perso = 1;
+                                        SDL_Delay(250);
+                                        quit_opt = 1;
+                                    }
+                                    if(aff_bout(pRenderer,&Choix_mono,event,pTexturePersoMono,pTexturePersoMono)){
+                                        *choix_perso = 2;
+                                        SDL_Delay(250);
+                                        quit_opt = 1;
+                                    }
+                                    if(aff_bout(pRenderer,&Opt_Quit,event,pTextureQuitPressButton,pTextureQuitButton)){
+                                        quit_opt = 1;
+                                    }
+                                    SDL_RenderPresent(pRenderer);
+                                }
+                                SDL_Delay(200);
+                                quit_opt = 0;
                             }
                             if (aff_bout(pRenderer,&quitButton,event,pTextureQuitPressButton,pTextureQuitButton))
                             {
@@ -122,8 +167,6 @@ int menu(int argc, char** argv){
 
     if(play_result==1)
         return 1;
-    else if(opt_result==1)
-        return 2;
     else if (quit_result == 1)
         return 0;
     
