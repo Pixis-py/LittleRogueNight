@@ -23,7 +23,7 @@ typedef struct character_s{
 
 /// @brief Prototype of function create which is used to create a character by giving a pointer enough memory to point a structure
 /// @param c 
-void create(character_t ** c);
+void create(character_t ** c, int const nb_pv);
 
 /// @brief Prototype of function destruct which is used to destruct a character by freeing it's pointer and make it point on NULL
 /// @param c 
