@@ -62,6 +62,9 @@ int menu(int argc, char** argv,int *choix_perso){
                 SDL_Texture* pTextureQuitPressButton =loadTexture("../sprites/menu/quit_hoover.png",pRenderer);
                 SDL_Texture* pTexturePersoSix = loadTexture("../sprites/portraits/six_portrait.png",pRenderer);
                 SDL_Texture* pTexturePersoMono = loadTexture("../sprites/portraits/mono_portrait.png",pRenderer);
+                SDL_Texture* pTexturePersoSixHoover = loadTexture("../sprites/portraits/six_portrait_hover.png",pRenderer);
+                SDL_Texture* pTexturePersoMonoHoover = loadTexture("../sprites/portraits/mono_portrait_hover.png",pRenderer);
+
 
 
 
@@ -112,12 +115,12 @@ int menu(int argc, char** argv,int *choix_perso){
                                     }
                                     SDL_RenderClear(pRenderer);
                                     SDL_RenderCopy(pRenderer,pTextureMenuWallpaper, NULL, &menuWallpaper);
-                                    if(aff_bout(pRenderer,&Choix_six,event,pTexturePersoSix,pTexturePersoSix)){
+                                    if(aff_bout(pRenderer,&Choix_six,event,pTexturePersoSixHoover,pTexturePersoSix)){
                                         *choix_perso = 1;
                                         SDL_Delay(250);
                                         quit_opt = 1;
                                     }
-                                    if(aff_bout(pRenderer,&Choix_mono,event,pTexturePersoMono,pTexturePersoMono)){
+                                    if(aff_bout(pRenderer,&Choix_mono,event,pTexturePersoMonoHoover,pTexturePersoMono)){
                                         *choix_perso = 2;
                                         SDL_Delay(250);
                                         quit_opt = 1;
