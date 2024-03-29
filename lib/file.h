@@ -9,14 +9,20 @@
  * 
  */
 
+
 /// @brief Function initfile initialize a queue
+/// @param  void
 void initfile(void);
 
 /// @brief Function enfiler is used to add an element to the queue
+/// @param v 
 void enfiler(int v);
 
-/// @brief Function defiler is used to un-queue an element
+/// @brief Function enfiler is used to add an element to the queue
+/// @param v 
 void defiler(int* v);
 
-/// @brief Function filevide is used to check wether the queue is empty or not
+/// @brief Function filevide is used to verify if a queue is empty
+/// @param  void
+/// @return true or false, wether the queue is empty or not
 int filevide(void);
