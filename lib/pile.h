@@ -1,5 +1,5 @@
 /**
- * @file pile.c
+ * @file pile.h
  * @author Clément Lelandais
  * @brief Pile.c (in french, pile=stack) includes every function needed to use stacks in an other program 
  * @version 0.1
