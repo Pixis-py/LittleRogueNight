@@ -11,11 +11,12 @@
 
 #include <CUnit/Basic.h>
 #include "../lib/character.h"
+#define NB_PV 100
 
 /// @brief Function that tests cration on character's structure
 void test_creation() {
    character_t * c;
-   create(&c);
+   create(&c,NB_PV);
    CU_ASSERT_PTR_NOT_NULL(c);
    destruct(&c);
 }
@@ -23,7 +24,7 @@ void test_creation() {
 /// @brief Function that tests pv loss on character's structure
 void test_pv_loss() {
    character_t * c;
-   create(&c);
+   create(&c,NB_PV);
    pv_loss(&c, 10);
    CU_ASSERT_EQUAL(c->pv, 90);
    destruct(&c);
@@ -33,8 +34,8 @@ void test_pv_loss() {
 void test_attack() {
    character_t * c;
    character_t * e;
-   create(&c);
-   create(&e);
+   create(&c,NB_PV);
+   create(&e,NB_PV);
    attack(c, e);
    CU_ASSERT_EQUAL(c->pv, 90);
    destruct(&c);
@@ -44,7 +45,7 @@ void test_attack() {
 /// @brief Function that tests pv gain on character's structure
 void test_pv_gain() {
    character_t * c;
-   create(&c);
+   create(&c,NB_PV);
    pv_gain(&c, 20);
    CU_ASSERT_EQUAL(c->pv, 120);
    destruct(&c);
@@ -53,7 +54,7 @@ void test_pv_gain() {
 /// @brief Function that tests destruction on character's structure
 void test_destruction() {
    character_t * c;
-   create(&c);
+   create(&c,NB_PV);
    destruct(&c);
    CU_ASSERT_PTR_NULL(c);
 }
