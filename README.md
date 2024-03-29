@@ -1,4 +1,4 @@
-# LittleRogueNight : Adventure in a Labyrinth 
+# LittleRogueNight : Adventure in a Labyrinth
 **from 19/01/2024 to 25/04/2024**
 ## Creators
   **Students in L2 Informatique Le Mans**
