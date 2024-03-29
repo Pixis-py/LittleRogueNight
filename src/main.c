@@ -5,6 +5,7 @@
 #include "../lib/anim.h"
 #include "../lib/image.h"
 #include "../lib/labyrinthe.h"
+#include "../lib/character.h"
 
 int main(){
     int choice = 0;
@@ -18,7 +19,7 @@ int main(){
                 character_t * six; // Déclaration du personnage
                 create(&six); // Création du personnage
                 choice = anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
-                destruct(six); // Destruction du personnage
+                destruct(&six); // Destruction du personnage
             }
         }
     }
