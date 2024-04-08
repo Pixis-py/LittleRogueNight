@@ -8,16 +8,25 @@
 
 #define VRAI 1
 #define FAUX 0
-// Dimensions du labyrinthe: N lignes et M colonnes
-#define N 30
-#define M 35
 // Constantes representant le contenu des cases
 #define NUIT 0
 #define MUR 1
 #define TERRE 2
 #define TERREVERTE 3
+#define DUR TERRE || TERREVERTE
+//labyrinthe
+#define FORMATPIXEL 32
+#define ZOOM 3
+#define FORMATPIXELZOOM FORMATPIXEL * ZOOM
+#define LARGEUR 7
+#define LONGUEUR 10
+#define N LARGEUR * 5
+#define M LONGUEUR * 5
+
 
 SDL_Renderer * afficher_lab(int lab[N][M], SDL_Window * pWindow);
+
+void affichage_laby_niveau_un(int lab[N][M], int posi, int posj, SDL_Renderer * pRenderer);
 
 void init_lab(int lab[N][M]);
 
