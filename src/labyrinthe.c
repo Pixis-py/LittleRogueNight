@@ -4,6 +4,62 @@
 #include "../lib/file.h"
 #include "../lib/pile.h"
 
+void affichage_laby_niveau_un(int lab[N][M], int posi, int posj, SDL_Renderer * pRenderer){
+	SDL_Texture *pSkyTexture = loadTexture("../sprites/tiles/night_sky.png", pRenderer);
+	SDL_Texture *pGrassTexture = loadTexture("../sprites/tiles/grass.png", pRenderer);	
+	SDL_Texture *pDirtTexture = loadTexture("../sprites/tiles/dirt.png", pRenderer);
+	if (pSkyTexture !=  NULL && pGrassTexture != NULL && pDirtTexture != NULL) {
+		posi /= FORMATPIXELZOOM;
+		posj /= FORMATPIXELZOOM;
+		if(valides(posi, posj)){
+			printf("%d %d\n", posi, posj);
+			if(posi <= LARGEUR){
+				for(int i = 0; i <= LONGUEUR; i++){
+					SDL_Rect rect = {i * FORMATPIXELZOOM, 0, FORMATPIXELZOOM, FORMATPIXELZOOM};
+					SDL_RenderCopy(pRenderer, pGrassTexture, NULL, &rect);
+				}
+			}
+			for(int i = 0; i < LARGEUR; i++){
+				if(posj <= LONGUEUR){
+					SDL_Rect rect =  {0, i * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM};
+					SDL_RenderCopy(pRenderer, pDirtTexture, NULL, &rect);
+				}
+				for(int j = 0; j < LONGUEUR; j++){
+					SDL_Rect rect = {j * FORMATPIXELZOOM + FORMATPIXELZOOM, i * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM};
+					switch (lab[i][j]){
+						case NUIT:
+							SDL_RenderCopy(pRenderer, pSkyTexture, NULL, &rect);
+							break;
+						case TERREVERTE:
+							SDL_RenderCopy(pRenderer, pGrassTexture, NULL, &rect);
+							break;  
+						case TERRE:
+							SDL_RenderCopy(pRenderer, pDirtTexture, NULL, &rect);
+							break;
+					}
+				}
+				if(posj >= M - LONGUEUR){
+					SDL_Rect rect = {M * FORMATPIXELZOOM, i * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM};
+					SDL_RenderCopy(pRenderer, pDirtTexture, NULL, &rect);
+				}
+			}
+			if(posi >= N - LARGEUR){
+				for(int i = 0; i <= M; i++){
+					SDL_Rect rect = {i * FORMATPIXELZOOM + FORMATPIXELZOOM, N * FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM};
+					SDL_RenderCopy(pRenderer, pGrassTexture, NULL, &rect);
+				}
+			}
+			for(int i = 0; i < N; i++){
+				for(int j = 0; j < M; j++){
+					if(lab[i][j] == TERREVERTE && (lab[i - 1][j] == TERREVERTE || lab[i - 1][j] == TERRE || i == 0))
+						lab[i][j] = TERRE;
+				}
+			}
+		}
+	}
+}
+
+
 void init_lab(int lab[N][M]){
 	//1ère étape pour la création du labyrinthe parfat : tout initialiser en bloc de terre (avec du vert au dessus)
 	int i, j;
@@ -102,12 +158,6 @@ void creer_lab(int lab[N][M]){
 			}
 		}
 	}
-   }
-   for(int i = 0; i < N; i++){
-		for(int j = 0; j < M; j++){
-			if(lab[i][j] == TERREVERTE && (lab[i - 1][j] == TERREVERTE || lab[i - 1][j] == TERRE))
-				lab[i][j] = TERRE;
-		}
    }
 }
 
