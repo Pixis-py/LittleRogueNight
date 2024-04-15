@@ -93,21 +93,24 @@ int anim(int argc, char** argv, int lab[N][M]){
                         }
                         x=0;
                         k=-1;
-                        //spawn des janitor dans le labyrinthe (créer une fonction qui détecte si un autre jani est présent (0 si ok et autre pour la distance avec un autre jani))
-                        int imonstre = 0, xspawnjani, yspawnjani, nbjani = 0;
+                        /*spawn des janitor dans le labyrinthe (créer une fonction qui détecte si 
+                        la position de spawn est bonne et si un autre jani est présent (0 si ok et autre pour la distance avec un autre jani))*/
+                        int xspawnjani, yspawnjani, nbjani = 0;
                         do{
                             do{
                                 yspawnjani = rand() % N, xspawnjani = rand() % M;
-                            }while(lab[yspawnjani][xspawnjani] != NUIT && janiDistance(yspawnjani, xspawnjani));
+                            }while(janiDistance(yspawnjani, xspawnjani, lab));
+                            nbjani++;
+                            SDL_Rect jani[20] = { 0,0, FORMATPIXEL,FORMATPIXEL};
+                            for (k=0;k<20;k++){
+                                jani[k].x=x;
+                                jani[k].y=0;
+                                jani[k].w=FORMATPIXEL;
+                                jani[k].h=FORMATPIXEL;
+                                x+=FORMATPIXEL;
+                            }
                         }while(nbjani != 30);
-                        SDL_Rect jani[20] = { 0,0, FORMATPIXEL,FORMATPIXEL};
-                        for (k=0;k<20;k++){
-                            jani[k].x=x;
-                            jani[k].y=0;
-                            jani[k].w=FORMATPIXEL;
-                            jani[k].h=FORMATPIXEL;
-                            x+=FORMATPIXEL;
-                        }
+
                         
                         SDL_RenderCopy(pRenderer,pTextureRun,run+0,&position); //copie du personnage dans sa position de base
                         SDL_RenderPresent(pRenderer); // Affichage
