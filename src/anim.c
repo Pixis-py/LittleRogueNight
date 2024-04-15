@@ -108,11 +108,36 @@ int anim(int argc, char** argv, int lab[N][M]){
 
 /* ----------------------------------------------------- Détection des frappes ----------------------------------------------------- */
 
+                        int coefX = 0, coefY = 0;
+
                         while (!quit){
-                            printf("Total :\nx = %d\t\ty = %d\nPrécis :\nx = %d\t\ty = %d\n\n", 
-                            position.x, position.y, 
-                            position.x % FORMATPIXEL, position.y % FORMATPIXEL);
-                            affichage_laby_niveau_un(lab, position.y, position.x, pRenderer);
+                            /*printf("Total :\nx = %d\t\ty = %d\nPrécis droit :\nx = %d y = %d\nPrécis gauche :\nx = %d y = %d\ncollisions :\nx = %d y = %d\n", 
+                            position.x, position.y,
+                            (position.x * coefX + 15) / FORMATPIXELZOOM / 9, (position.y * coefY) / FORMATPIXELZOOM / 9,    //droit
+                            (position.x * coefX + 70) / FORMATPIXELZOOM / 9, (position.y * coefY) / FORMATPIXELZOOM / 9,
+                            position.x % FORMATPIXELZOOM, position.y % FORMATPIXELZOOM);   //gauche*/
+                            //printf("debut X : %d\tfin X : %d\tdebut Y : %d\tfin Y : %d\n", xdebut, xfin, ydebut, yfin);
+                            //printf("coefX : %d\tcoefY : %d\n", coefX, coefY);
+                            printf("\nDROITE\nposX : %d\tposY : %d\n", (((position.x + 15)) / FORMATPIXELZOOM / (ZOOM * ZOOM)) + coefX,
+                            (((position.y + 48)) / FORMATPIXELZOOM / (ZOOM * ZOOM)) + coefY);
+                            if(position.x >= 970 && coefX < M){
+                                coefX += 10;
+                                position.x = 16;
+                            }
+                            if(position.x <= 10 && coefX < M && coefX > 0){
+                                coefX -= 10;
+                                position.x = 960;
+                            }
+                            if(position.y >= 670 && coefY < N){
+                                coefY += 7;
+                                position.y = 6;
+                            }
+                            if(position.y <= 5 && coefY < N && coefY > 0){
+                                coefY -= 7;
+                                position.y = 660;
+                            }
+                            SDL_RenderClear(pRenderer);
+                            affichage_laby_niveau_un(lab, pRenderer, coefX, coefY);
                             // récuperation du clic sur le bouton de fermeture et met fin a la boucle
                             while (SDL_PollEvent(&event) != 0){
                                 if (event.type == SDL_QUIT){
@@ -164,17 +189,17 @@ int anim(int argc, char** argv, int lab[N][M]){
                                     /*------------------------------ Dash -------------------------------*/
 
                                     /*if (event.key.keysym.sym == SDLK_SPACE && lastKeyPressed == 2){
-                                        if (KeyIsPressed == 1 || KeyIsPressed == 2) {
-                                            KeyIsPressed = 5;
+                                        if (KeyIsPressed == 1) {
+                                            KeyIsPressed = 8;
                                             lkpdash = 1;
-                                            lastDirection = 1;
-                                        }  
+                                            lastDirection = 2;
+                                        }
                                     }
                                     else if (event.key.keysym.sym == SDLK_SPACE && lastKeyPressed == 1){
-                                        if (KeyIsPressed == 1 || KeyIsPressed == 2) {
+                                        if (KeyIsPressed == 2) {
                                             KeyIsPressed = 6;
                                             lkpdash= 2;
-                                            lastDirection = 2;
+                                            lastDirection = 1;
                                         }  
                                     }*/
                                     if (event.key.keysym.sym == SDLK_SPACE && lastDirection == 1){
@@ -217,28 +242,48 @@ int anim(int argc, char** argv, int lab[N][M]){
                             /*------------------------------ Run -------------------------------*/
 
                             // Affichage run à droite (/ 9 = zoom²)
-                            int gravite = (lab[(position.y / FORMATPIXELZOOM / 9)][(position.x / FORMATPIXELZOOM / 9) - 1] == DUR
-                                        && lab[(position.y / FORMATPIXELZOOM / 9)][(position.x / FORMATPIXELZOOM / 9)] == (NUIT || DUR)
-                                        && (position.x + FORMATPIXEL / 2 % FORMATPIXEL) >= 20)
+                            int gravite = 0 /*, glitch = 0*/;
+                            if(lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][((position.x + 15) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT && lastDirection == 1
+                            || lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT && lastDirection == 2)
+                                gravite = 1;
 
-                                        || lab[(position.y / FORMATPIXELZOOM / 9)][(position.x / FORMATPIXELZOOM / 9) - 1] == NUIT
+                            /*if(position.y % FORMATPIXELZOOM <= 96
+                            && (lab[((position.y) / FORMATPIXELZOOM / 9)][((position.x + 15) / FORMATPIXELZOOM / 9) - 1] == DUR
+                            && lastDirection == 1)
+                            || (lab[((position.y) / FORMATPIXELZOOM / 9)][((position.x + 70) / FORMATPIXELZOOM / 9) - 1] == DUR && lastDirection == 1))
+                                glitch = 1;
+                            else
+                                glitch = 0;*/
 
-                                        || (lab[(position.y / FORMATPIXELZOOM / 9)][(position.x / FORMATPIXELZOOM / 9) - 1] == DUR
-                                        && lab[(position.y / FORMATPIXELZOOM / 9)][(position.x / FORMATPIXELZOOM / 9) - 2] == (NUIT || DUR)
-                                        && (position.x % FORMATPIXEL) >= 6);
-                            if(gravite)
-                                position.y += 2 * ZOOM;
+
+
+
+                            if(gravite){
+                                position.y += 1 * ZOOM;
+                                SDL_Delay(8);
+                            }
+
+                            /*if(glitch)
+                                position.y -= position.y % FORMATPIXELZOOM;*/
 
                             if(KeyIsPressed == 1){
-                                //if(caseijplusun != TERREVERTE || caseijplusun != TERRE)
+                                if(lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][(position.x / FORMATPIXELZOOM / 9) + coefX] != DUR
+                                && position.x % FORMATPIXELZOOM <= 72
+                                && (position.y + 30) % FORMATPIXEL <= 30){
                                     position.x += 2 * ZOOM;
+                                    SDL_Delay(8);
+                                }
                                 SDL_RenderCopy(pRenderer,pTextureRun,run+((++i)%11),&position);
                             }
 
                             // Affichage run à gauche
                             if(KeyIsPressed==2){
-                                //if(caseijplusun != TERREVERTE || caseijplusun != TERRE)
+                                if(lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][(position.x / FORMATPIXELZOOM / 9) - 1 + coefX] != DUR
+                                && position.x % FORMATPIXELZOOM >= 32
+                                && (position.y + 30) % FORMATPIXEL <= 30){
                                     position.x-=2 * ZOOM;
+                                    SDL_Delay(8);
+                                }
                                 SDL_RenderCopyEx(pRenderer,pTextureRun,run+((++i)%11),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
                             }
 
@@ -259,8 +304,8 @@ int anim(int argc, char** argv, int lab[N][M]){
 
                             // Affichage drift gauche
                             else if(KeyIsPressed==3){
-                                //if(caseijplusun != TERREVERTE || caseijplusun != TERRE)
-                                    position.x-=2 * ZOOM;
+                                    position.x -= 1 * ZOOM;
+                                    SDL_Delay(8);
                                 if(j == 23){
                                     SDL_RenderCopyEx(pRenderer,pTextureDrift,drift+((23)),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
                                 }else{
@@ -270,8 +315,8 @@ int anim(int argc, char** argv, int lab[N][M]){
 
                             // Affichage drift gauche
                             else if(KeyIsPressed==4){
-                                //if(caseijplusun != TERREVERTE || caseijplusun != TERRE)
-                                    position.x+=2 * ZOOM;
+                                    position.x += 1 * ZOOM;
+                                    SDL_Delay(8);
                                 if(j == 23){
                                     SDL_RenderCopy(pRenderer,pTextureDrift,drift+((23)),&position);
                                 }else{
@@ -282,77 +327,35 @@ int anim(int argc, char** argv, int lab[N][M]){
                             /*------------------------------ Dash -------------------------------*/
 
                             // Affichage dash gauche
-                            /*else if(KeyIsPressed==5){
-                               
-                                if(k<=4){
-                                    position.x-=6;
-                                    SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
-                                }
-                                else if(k<=6){
-                                    position.x-=15;
-                                    position.y-=20;
-                                    SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
-                                }
-                                else if(k<=9){
-                                    position.x-=15;
-                                    SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
-                                }
-                                else if(k<=11){
-                                    position.x-=15;
-                                    position.y+=20;
-                                    SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
-                                }else if(k > 15){
-                                    position.x-=6;
-                                    SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
-                                }
-                                
-                                if(k == 20){
-                                    KeyIsPressed = 0;
-                                    k = 0;
-                                }
-                            }*/
+                            /*else if(KeyIsPressed==8){
+                                position.x += 2 * ZOOM;
+                                position.y -= 2 * ZOOM;
+                                SDL_Delay(8);
+                                SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)),&position);
+                            }
 
                             // Affichage dash droite
-                            /*else if(KeyIsPressed==6){
-                                //SDL_RenderClear(pRenderer);
-                                if(k<=4){
-                                    position.x+=6;
-                                    SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)),&position);
-                                }
-                                else if(k<=6){
-                                    position.x+=20;
-                                    position.y-=30;
-                                    //SDL_Delay(10);
-                                    SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)),&position);
-                                }else if(k<=11){
-                                    position.x+=20;
-                                    position.y+=30;
-                                    //SDL_Delay(10);
-                                    SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)),&position);
-                                }else if(k > 15){
-                                    position.x+=6;
-                                    SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)),&position);
-                                }
-                    
-                                if(k == 20){
-                                    KeyIsPressed = 0;
-                                    k = 0;
-                                }
+                            else if(KeyIsPressed==6 && KesIsPressed == 1){
+                                position.x += 2 * ZOOM;
+                                position.y -= 2 * ZOOM;
+                                SDL_Delay(8);
                             }*/
 
                             // Affichage dash statique à droite
                             else if(KeyIsPressed==7){
-                                //if(caseiplusunj != TERREVERTE || caseiplusunj != TERRE)
-                                    position.y-=10 * ZOOM;
-                                //SDL_Delay(10);
+                                if(lab[((position.y + 12) / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 15) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
+                                    position.y -= 3 * ZOOM;
+                                    SDL_Delay(8);
+                                }
                                 SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)%20),&position);
                             }
 
                             // Affichage dash statique à gauche
                             else if(KeyIsPressed==8){
-                                //if(caseiplusunj != TERREVERTE || caseiplusunj != TERRE)
-                                    position.y-=10 * ZOOM;
-                                //SDL_Delay(10);
+                                if(lab[((position.y + 12) / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
+                                    position.y -= 3 * ZOOM;
+                                    SDL_Delay(8);
+                                }
                                 SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)%20),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
                             }
                         
@@ -372,7 +375,7 @@ int anim(int argc, char** argv, int lab[N][M]){
                             }
                         
 
-                            SDL_Delay(30); // Délai générique à toutes les animations
+                             // Délai générique à toutes les animations
                             SDL_RenderPresent(pRenderer); // Affichage du Renderer
                         }
 
