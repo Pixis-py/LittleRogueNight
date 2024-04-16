@@ -10,7 +10,7 @@ void affichage_laby_niveau_un(int lab[N][M], SDL_Renderer * pRenderer, int coefX
     SDL_Texture* pDirtTexture = loadTexture("../sprites/tiles/dirt.png", pRenderer);
     
     if (pSkyTexture != NULL && pGrassTexture != NULL && pDirtTexture != NULL){
-        for (int i = 0; i <= M; i++) {
+        for (int i = 0; i <= M + 1; i++) {
             SDL_Rect rect = { ((i - coefX) ) * FORMATPIXELZOOM, (-coefY ) * FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
             SDL_RenderCopy(pRenderer, pGrassTexture, NULL, &rect);
         }
@@ -35,10 +35,44 @@ void affichage_laby_niveau_un(int lab[N][M], SDL_Renderer * pRenderer, int coefX
             SDL_Rect rect1 = { ((M - coefX)) * FORMATPIXELZOOM + FORMATPIXELZOOM, ((i - coefY)) * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
             SDL_RenderCopy(pRenderer, pDirtTexture, NULL, &rect1);
         }
+        for(int i = 0; i < N; i++){
+			for(int j = 0; j < M; j++){
+				if(lab[i][j] == TERREVERTE && (lab[i - 1][j] == TERREVERTE || lab[i - 1][j] == TERRE || i == 0))
+					lab[i][j] = TERRE;
+			}
+		}
+    }
+}
+
+void affichage_laby_niveau_deux(int lab[N][M], SDL_Renderer * pRenderer, int coefX, int coefY){
+	SDL_Texture* pSkyTexture = loadTexture("../sprites/tiles/night_sky.png", pRenderer);
+    SDL_Texture* pWoodTexture = loadTexture("../sprites/tiles/wood_planks.png", pRenderer);	
+    
+    if (pSkyTexture != NULL && pWoodTexture != NULL){
+        for (int i = 0; i <= M + 1; i++) {
+            SDL_Rect rect = { ((i - coefX) ) * FORMATPIXELZOOM, (-coefY ) * FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+            SDL_RenderCopy(pRenderer, pWoodTexture, NULL, &rect);
+        }
         
-        for (int i = 0; i <= M; i++) {
-            SDL_Rect rect = { ((i - coefX) ) * FORMATPIXELZOOM + FORMATPIXELZOOM, ((N - coefY) ) * FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
-            SDL_RenderCopy(pRenderer, pGrassTexture, NULL, &rect);
+        for (int i = 0; i < N; i++) {
+            SDL_Rect rect = { (-coefX ) * FORMATPIXELZOOM, ((i - coefY) ) * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+            SDL_RenderCopy(pRenderer, pWoodTexture, NULL, &rect);
+            for (int j = 0; j < M; j++) {
+                SDL_Rect rect = { ((j - coefX) ) * FORMATPIXELZOOM + FORMATPIXELZOOM, ((i - coefY) ) * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+                switch (lab[i][j]) {
+                    case NUIT:
+                        SDL_RenderCopy(pRenderer, pSkyTexture, NULL, &rect);
+                        break;
+                    case TERREVERTE:
+                        SDL_RenderCopy(pRenderer, pWoodTexture, NULL, &rect);
+                        break;
+                    case TERRE:
+                        SDL_RenderCopy(pRenderer, pWoodTexture, NULL, &rect);
+                        break;
+                }
+            }
+            SDL_Rect rect1 = { ((M - coefX)) * FORMATPIXELZOOM + FORMATPIXELZOOM, ((i - coefY)) * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+            SDL_RenderCopy(pRenderer, pWoodTexture, NULL, &rect1);
         }
         for(int i = 0; i < N; i++){
 			for(int j = 0; j < M; j++){
@@ -46,13 +80,51 @@ void affichage_laby_niveau_un(int lab[N][M], SDL_Renderer * pRenderer, int coefX
 					lab[i][j] = TERRE;
 			}
 		}
-    }	
-	SDL_DestroyTexture(pGrassTexture);
-	SDL_DestroyTexture(pDirtTexture);
-	SDL_DestroyTexture(pSkyTexture);
-
+		SDL_DestroyTexture(pSkyTexture);
+		SDL_DestroyTexture(pWoodTexture);
+    }
 }
 
+void affichage_laby_niveau_trois(int lab[N][M], SDL_Renderer * pRenderer, int coefX, int coefY){
+	SDL_Texture* pSkyTexture = loadTexture("../sprites/tiles/night_sky.png", pRenderer);
+    SDL_Texture* pBrickTexture = loadTexture("../sprites/tiles/brick.png", pRenderer);	
+    
+    if (pSkyTexture != NULL && pBrickTexture != NULL){
+        for (int i = 0; i <= M + 1; i++) {
+            SDL_Rect rect = { ((i - coefX) ) * FORMATPIXELZOOM, (-coefY ) * FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+            SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect);
+        }
+        
+        for (int i = 0; i < N; i++) {
+            SDL_Rect rect = { (-coefX ) * FORMATPIXELZOOM, ((i - coefY) ) * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+            SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect);
+            for (int j = 0; j < M; j++) {
+                SDL_Rect rect = { ((j - coefX) ) * FORMATPIXELZOOM + FORMATPIXELZOOM, ((i - coefY) ) * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+                switch (lab[i][j]) {
+                    case NUIT:
+                        SDL_RenderCopy(pRenderer, pSkyTexture, NULL, &rect);
+                        break;
+                    case TERREVERTE:
+                        SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect);
+                        break;
+                    case TERRE:
+                        SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect);
+                        break;
+                }
+            }
+            SDL_Rect rect1 = { ((M - coefX)) * FORMATPIXELZOOM + FORMATPIXELZOOM, ((i - coefY)) * FORMATPIXELZOOM + FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXELZOOM };
+            SDL_RenderCopy(pRenderer, pBrickTexture, NULL, &rect1);
+        }
+        for(int i = 0; i < N; i++){
+			for(int j = 0; j < M; j++){
+				if(lab[i][j] == TERREVERTE && (lab[i - 1][j] == TERREVERTE || lab[i - 1][j] == TERRE || i == 0))
+					lab[i][j] = TERRE;
+			}
+		}
+		SDL_DestroyTexture(pSkyTexture);
+		SDL_DestroyTexture(pBrickTexture);
+    }
+}
 
 void init_lab(int lab[N][M]){
 	//1ère étape pour la création du labyrinthe parfat : tout initialiser en bloc de terre (avec du vert au dessus)
