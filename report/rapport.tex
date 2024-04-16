@@ -6,8 +6,56 @@
 \usepackage{graphicx}
 \usepackage[french]{babel}
 \usepackage{hyperref}
+\usepackage{glossaries}
 
- 
+\makeglossaries
+
+
+\newglossaryentry{roli}{ 
+name=rogue-like, 
+description={Genre de jeu vidéo qui s'inspire du jeu original "Rogue", caractérisé par des environnements générés de façon procédurale, une difficulté élevée et la mort permanente du personnage du joueur.}
+}
+
+\newglossaryentry{dianre}{ 
+name=die and retry, 
+description={Le die and retry est un mécanisme de jeu vidéo, un élément de gameplay, qui contraint à jouer puis à perdre pour connaître les mouvements, les actions ou les choix à effectuer pour pouvoir gagner, terminer une partie ou un niveau.} 
+}
+
+\newglossaryentry{perde}{ 
+name=permadeath, 
+description={De l'anglais permanent death, il signifie que mourrir fait recommencer le joueur depuis le début} 
+}
+
+\newglossaryentry{labpar}{ 
+name=labyrinthe parfait, 
+description={Un labyrinthe parfait est un type de labyrinthe créé de manière aléatoire qui garantit qu'il n'y a qu'un seul chemin reliant l'entrée à la fin du labyrinthe.} 
+}
+
+\newglossaryentry{lagepr}{ 
+name=labyrinthe généré procéduralement, 
+description={Un labyrinthe parfait généré procéduralement est un type de labyrinthe 
+créé de manière aléatoire qui garantit qu'il n'y a qu'un seul chemin reliant l'entrée à la fin du labyrinthe}
+}
+
+\newglossaryentry{dash}{ 
+name=dash, 
+description={Un dash représente dans LittleRogueNight un saut continu.}
+}
+
+\newglossaryentry{drift}{ 
+name=drift, 
+description={Un drift représente dans LittleRogueNight une glissage continue, servant également d'attaque}
+}
+
+\newglossaryentry{item}{ 
+name=item, 
+description={Un item, dans le domaine du jeu vidéo, est un objet qui peut être collecté par un joueur ou par un \gls{npc}.}
+}
+\newglossaryentry{npc}{ 
+name=personnage non joueur, 
+description={Souvent raccourci en NPC, accronyme de la traduction anglaise, les personnage non joueurs sont des entités bienveillantes ou malveillantes qui peuvent interragir avec le joueur ou le jeu de manière autonome, sans que le joueur ne soit à l'origine de leurs actions.}
+}
+
 \begin{document}
 
 \begin{figure}
@@ -26,34 +74,28 @@
 \newpage
 
 \section{Introduction 1-2 pages Maelig}
-Ce rapport offre une analyse détaillée du projet LittleRogueNight, un \textbf{rogue-like}\footnote{Rogue-like: genre de jeu vidéo qui s'inspire du jeu original 
+Ce rapport offre une analyse détaillée du projet LittleRogueNight, un \textbf{\gls{roli}}\footnote{Rogue-like: genre de jeu vidéo qui s'inspire du jeu original 
 "Rogue", caractérisé par des environnements générés de façon procédurale, une difficulté élevée et la mort permanente du personnage du joueur.}, 
 jeu vidéo s'inspirant du célèbre jeu Little Nightmares. 
-Ce projet est réalisé dans le cadre du module projet, en seconde année de licence informatique au mans.
+Ce projet est réalisé dans le cadre du module projet, en seconde année de licence informatique au Mans.
 Réalisé par Clément Lelandais, Enzo Desfaudais et Maelig Pesantez, le jeu est codé du 19/01/2024 au 25/04/2024, soit un peu plus de trois mois.
 LittleRogueNight est codé en majorité en langage C, car étudié depuis la première année de licence. Certains langages autre que le langage C sont toutefois présents.
 C'est la cas du shell linux, du markdown, du LaTeX et d'autres langages présent en minorité, donc nous verrons plus tard l'utilité.
 LittleRogueNight propose une aventure où le joueur incarne un personnage emblématique naviguant à travers des labyrinthes générés aléatoirement, 
 peuplés de pièges mortels, de monstres et de boss redoutables. 
-Ce jeu offre une expérience unique à chaque partie, offrant ainsi une rejouabilité infinie.\\
+Ce jeu offre une expérience unique à chaque partie car le labyrinthe change à chaque partie, de même que l'emplacement des monstres, offrant ainsi une rejouabilité infinie.\\
 
-LittleRogueNight s'inspire des rogue-like traditionnel, il est donc basé sur les fondamentaux d'un rogue-like classique: labyrinthe parfait
-\footnote{Un labyrinthe parfait généré procéduralement est un type de labyrinthe créé de manière aléatoire qui garantit qu'il n'y a qu'un 
-seul chemin reliant l'entrée à la fin du labyrinthe.} généré procéduralement\footnote{Un labyrinthe parfait généré procéduralement est un type de labyrinthe 
-créé de manière aléatoire qui garantit qu'il n'y a qu'un seul chemin reliant l'entrée à la fin du labyrinthe}, \textit{die and retry}\footnote{Le die and retry est un mécanisme de jeu vidéo, un élément de gameplay, 
-qui contraint à jouer puis à perdre pour connaître les mouvements, les actions ou les choix à effectuer pour pouvoir gagner, terminer une partie ou 
-un niveau.} et \textit{perma-death}\footnote{De l'anglais permanent death, il signifie que mourrir fait recommencer le joueur depuis le début}. 
+LittleRogueNight s'inspire des rogue-like traditionnels, il est donc basé sur les fondamentaux d'un rogue-like classique: \gls{labpar} combiné à un
+\gls{lagepr}, ainsi que les concepts de \textit{\gls{dianre}} et de \textit{\gls{perde}}. 
 Ainsi, le jeu se compose des trois niveaux où chaque labyrinthe est différent à chaque nouvelle partie, 
 et où la difficulté augmente au fur et à mesure, et si le personnage meurt à n'importe quel niveau, il recommence au niveau 1.\\
 
-Les mécanismes de déplacement offrent une variété d'actions essentielles telles que: les \textit{dash}\footnote{Un dash représente dans LittleRogueNight un saut continu.} et 
-les \textit{drifts}\footnote{Un drift représente dans LittleRogueNight une glissage continue, servant également d'attaque.} qui
-ajoutent une dimension tactique aux affrontements. Les graphismes, réalisés en pixel art, apportent une touche rétro à l'esthétique du jeu, 
-et renforçent son ambiance immersive.\\
+Les mécanismes de déplacement offrent une variété d'actions essentielles telles que: les \textit{\gls{dash}}(sauts continus) et 
+les \textit{\gls{drift}}(glissage continues) qui ajoutent une dimension tactique aux affrontements. Les graphismes, réalisés en pixel art, apportent une touche rétro à 
+l'esthétique du jeu, et renforçent son ambiance immersive.\\
 
 Les combats sont au cœur de l'expérience de jeu, avec un système de barre de vie symbolisée par quatre coeurs qui représentent chacuns vingt-cinq pourcent 
-de la vie du joueur. pour les entités antagonistes. Les attaques, 
-qu'elles soient directes ou facilitées par des \textit{items}\footnote{Un item, dans le domaine du jeu vidéo, est un objet qui peut être 
+de la vie du joueur. Les attaques, qu'elles soient directes ou facilitées par des \textit{\gls{items}}\footnote{Un item, dans le domaine du jeu vidéo, est un objet qui peut être 
 collecté par un joueur ou par un personnage non-joueur.} 
 spéciaux, proposent des confrontations. Chaque \textit{boss}\footnote{Un boss, dans le domaine du jeu vidéo, est un monstre plus compliqué à battre, 
 et se trouvant souvent à la fin d'un niveau.} et chaque monstre 
@@ -137,5 +179,6 @@ Le projet LittleRogueNight, malgré quelques lacunes, se distingue comme une ré
 
 \section{Annexe}
    \subsection{Bibliographie}
+   \printglossary
 
 \end{document}
