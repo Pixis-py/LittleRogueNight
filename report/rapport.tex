@@ -56,7 +56,7 @@ de la vie du joueur. pour les entités antagonistes. Les attaques,
 qu'elles soient directes ou facilitées par des \textit{items}\footnote{Un item, dans le domaine du jeu vidéo, est un objet qui peut être 
 collecté par un joueur ou par un personnage non-joueur.} 
 spéciaux, proposent des confrontations. Chaque \textit{boss}\footnote{Un boss, dans le domaine du jeu vidéo, est un monstre plus compliqué à battre, 
-et se trouvant souvent à la fin d'un niveau} et chaque monstre 
+et se trouvant souvent à la fin d'un niveau.} et chaque monstre 
 possèdent leur propre barre de vie distincte.\\
 
 Enfin, les graphismes et les mécanismes de jeu s'harmonisent pour créer une expérience, faisant de LittleRogueNight un projet 
@@ -65,14 +65,43 @@ combinant éléments classiques du genre rogue-like avec des inspirations qui en
 
 \section{Organisation}   
    \subsection{Outils utilisés 1 pages - clement}
-   \subsection{Méthodologies et rôles 1 pages - tous}
+   Pour organiser notre travail et pouvoir avancer sur ce que les membres du projet ont réalisé, un Github a été mis en place. Ainsi, dès qu'un fichier est
+   suffisamment avancé et qu'il est fonctionnel, il est alors \textit{push}\footnote{Dépose le répertoire local sur le répertoire distant}.
+   Ce Github reprend la même organisation des répertoires que les notres sur nos sessions de travail : plusieurs dossiers comprenant les différents types 
+   de fichiers comme les librairies, les fichiers sources, les exécutables, ou objets, les \textit{sprites}
+   \footnote{Héros/Personnage du jeu contrôlé par l'utilisateur.}etc. Cela facilite la compréhension.
 
+   Un Trello a également été utilisé pour représenter le cahier des charges avec des 
+   fonctionnalités qui nous intéressent comme des checklists pour voir l'avancée de chacun des membres selon les dates.
+   \subsection{Rôles 1 pages - tous}
+   Concernant ces tâches, Maëlig a réalisé les \textit{spritesheets}\footnote{"Feuille de sprites" en français, il s'agit de toutes les images nécessaires
+   à l'animation des entités du jeu.} grâce à un logiciel en ligne, il les a ensuite animé sur le code cette fois. Puis, il s'est occupé de la gestion du 
+   des combats entre le héros Six et les concierges présents dans le labyrinthe.
+
+   Ensuite, Enzo s'est proposé d'afficher le menu principal avec les boutons et la gestion de la souris. Il a également aidé à l'apparition aléatoire des 
+   concierges dans le labyrinthe. 
+   
+   Enfin, Clément s'est chargé de l'affichage du labyrinthe, des déplacements et collisions des entités, de la partie combat pour aider Maëlig et Enzo
+   et de l'affichage des fenêtres d'explications au début du jeu.
 \section{Conception 1 pages - tous}
    \subsection{Analyse et cahier des charges}
+   Les règles du jeu sont les suivantes : Six, le joueur incarné, doit chercher la fin du labyrinthe en bas à droite tout en évitant ou combattant les 
+   nombreux ennemis. Pour cela, il peut utiliser les drifts pour le premier niveau mais également le briquet au niveau 2. Il possède plusieurs vies à 
+   utiliser à bon escient qu'il peut régénérer grâce à des morceaux de viande et des potions présentes un peu partout dans le labyrinthe. L'autre
+   différence avec le niveau 2 est le nombre de points de vie des concierges qui augmente légèrement mais également le style du labyrinthe qui sera en bois.
+
    \subsection{Définition des algorithmes 2 pages - tous}
 
 \section{Développement}
    \subsection{Fonctionnemeent des algorithmes 2 pages - clement}
+   Pour la création du labyrinthe parfait, Clément a utilisé la génération aléatoire, avec des piles et des files, rencontrée au semestre 3 en Algorithmie et Programmation 2.
+   Bien sûr, les fonctions ont été légèrement modifiées pour s'adapter à nos fins : la gestion des différentes tuiles grâce à des constantes, les 
+   paramètres de la fonction d'affichage change pour permettre d'afficher le labyrinthe directement sur le \textit{rendu}\footnote{
+   Permet d'afficher les tuiles dans la fenêtre ou encore de plaquer les tuiles.}. La fonction permet également de rendre le labyrinthe plus esthétique
+   en mettant un bloc de terre avec de l'herbe au dessus des autres blocs de terre. IMAGE + SCHEMAS. Concernant les déplacements, un décalage de quelques
+   pixels posaient problème concernant les collisions et la gravité, il a alors fallu compenser ce décalage qui est différent selon si Six regarde vers
+   la droite ou la gauche. Pour les sauts, il faut juste s'assurer que la case sur laquelle se trouve Six soit de type NUIT : dès qu'il saute, il s'agit
+   de la case du dessus.EXPLIQUER AFFICHAGE SPRITES
    \subsection{Structures et mécanismes 1 pages - maelig}
    \subsection{Structures :}
 
