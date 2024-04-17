@@ -11,66 +11,55 @@
 
 #include <CUnit/Basic.h>
 #include "../lib/character.h"
-#define NB_PV 100
 
-/// @brief Function that tests cration on character's structure
-void test_creation() {
-   character_t * c;
-   create(&c,NB_PV);
-   CU_ASSERT_PTR_NOT_NULL(c);
-   destruct(&c);
+void test_create() {
+    character_t * character;
+    create(&character, 100);
+    CU_ASSERT_PTR_NOT_NULL(character);
+    CU_ASSERT_EQUAL(character->pv, 100);
+    CU_ASSERT_EQUAL(character->damage, 25);
+    CU_ASSERT_EQUAL(character->x, 0);
+    CU_ASSERT_EQUAL(character->y, 0);
+    destruct(character);
 }
 
-/// @brief Function that tests pv loss on character's structure
 void test_pv_loss() {
-   character_t * c;
-   create(&c,NB_PV);
-   pv_loss(&c, 10);
-   CU_ASSERT_EQUAL(c->pv, 90);
-   destruct(&c);
+    character_t * character;
+    create(&character, 100);
+    pv_loss(&character, 50);
+    CU_ASSERT_EQUAL(character->pv, 50);
+    destruct(character);
+}
+
+void test_pv_gain() {
+    character_t * character;
+    create(&character, 100);
+    pv_gain(&character, 50);
+    CU_ASSERT_EQUAL(character->pv, 150);
+    destruct(character);
 }
 
 /// @brief Function that tests attack on character's structure
 void test_attack() {
    character_t * c;
    character_t * e;
-   create(&c,NB_PV);
-   create(&e,NB_PV);
-   attack(c, e);
-   CU_ASSERT_EQUAL(c->pv, 90);
-   destruct(&c);
-   destruct(&e);
-}
-
-/// @brief Function that tests pv gain on character's structure
-void test_pv_gain() {
-   character_t * c;
-   create(&c,NB_PV);
-   pv_gain(&c, 20);
-   CU_ASSERT_EQUAL(c->pv, 120);
-   destruct(&c);
-}
-
-/// @brief Function that tests destruction on character's structure
-void test_destruction() {
-   character_t * c;
-   create(&c,NB_PV);
-   destruct(&c);
-   CU_ASSERT_PTR_NULL(c);
+   create(&c,100);
+   create(&e,100);
+   attack(&c, &e);
+   CU_ASSERT_EQUAL((c)->pv, 75);
+   destruct(c);
+   destruct(e);
 }
 
 
-/// @brief 
-/// @return 
 int main() {
    CU_initialize_registry();
 
    CU_pSuite suite = CU_add_suite("Character Tests", NULL, NULL);
-   CU_add_test(suite, "Test Creation", test_creation);
+   CU_add_test(suite, "Test Creation", test_create);
    CU_add_test(suite, "Test Pv Loss", test_pv_loss);
    CU_add_test(suite, "Test Attack", test_attack);
    CU_add_test(suite, "Test Pv Gain", test_pv_gain);
-   CU_add_test(suite, "Test Destruction", test_destruction);
 
    CU_basic_run_tests();
    CU_cleanup_registry();
