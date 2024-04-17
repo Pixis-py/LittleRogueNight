@@ -42,6 +42,9 @@ void affichage_laby_niveau_un(int lab[N][M], SDL_Renderer * pRenderer, int coefX
 			}
 		}
     }
+	SDL_DestroyTexture(pSkyTexture);
+	SDL_DestroyTexture(pDirtTexture);
+    SDL_DestroyTexture(pGrassTexture);
 }
 
 void affichage_laby_niveau_deux(int lab[N][M], SDL_Renderer * pRenderer, int coefX, int coefY){
