@@ -39,7 +39,7 @@ int message_joueur(const char * text, int x, int y, SDL_Window * pWindow){
     TTF_CloseFont(font);
 }
 
-int anim(int argc, char** argv, int lab[N][M], int niveau){
+int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player){
 
 /* ----------------------------------------------------- Initialisations ----------------------------------------------------- */
 
