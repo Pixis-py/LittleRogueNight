@@ -16,10 +16,12 @@
 
 /// @brief Function create is used to create a character by giving a pointer enough memory to point a structure
 /// @param c 
-void create(character_t ** c) {
+void create(character_t ** c, int pv) {
    *c = malloc(sizeof(character_t));
-   (*c)->pv = 100; 
+   (*c)->pv = pv; 
    (*c)->damage = 25;
+   (*c)->x = 0;
+   (*c)->y = 0;
 }
 
 /// @brief Function destruct is used to destruct a character by freeing it's pointer and make it point on NULL
@@ -46,10 +48,4 @@ void pv_gain(character_t ** c, int a){
       (*c)->pv = 0;
    }
    printf("\n%d\n", (*c)->pv);
-}
-
-int janiDistance(int xjani, int yjani, int lab[N][M]){
-   if(nbjani > 1){
-      if(valides(xjani, yjani) && )
-   }
 }
