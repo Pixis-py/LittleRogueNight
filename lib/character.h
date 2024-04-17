@@ -38,4 +38,7 @@ void pv_loss(character_t ** c, int a);
 /// @param a 
 void pv_gain(character_t ** c, int a);
 
-int janiDistance(int xjani, int yjani, int lab[N][M]);
+/// @brief Prototype of function attack which is used to make the character c lose the amount of PV corresponding to e damage
+/// @param c 
+/// @param e
+void attack(character_t ** c, character_t ** e);
