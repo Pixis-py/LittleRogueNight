@@ -8,7 +8,7 @@
 
 ## About The Game 
 
-* LittleRogueNight is a game created for school purpose in **L2 Le Mans**, it is a roguelike based on LittleNightmares.
+* LittleRogueNight is a game created for school purpose in **L2 Informatique at Le Mans**, it is a roguelike based on LittleNightmares.
 * Each level features a new configuration of rooms and corridors, making each game unique. The aim is to collect treasures, avoid or fight monsters, foil traps and escape quickly.
 * In this game, you walk, run, jump and fight to escape from a dark place. Beware of monsters, they can be pretty unprevisible...
 
@@ -24,7 +24,6 @@
 * Save System : Save your current game and start and stop when you want.
 
 ## Requirements
-* Intel Core i3 2GB of RAM
 * Linux distribution & MacOS supported
 
 ## Installation
