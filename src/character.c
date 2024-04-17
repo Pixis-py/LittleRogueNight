@@ -39,7 +39,6 @@ void pv_loss(character_t ** c, int a){
    if((*c)->pv < 0){
       (*c)->pv = 0;
    }
-   printf("\n%d\n", (*c)->pv);
 }
 
 /// @brief Function pv_gain is used to make the character gain a certain amount of PV given by int a
@@ -50,7 +49,6 @@ void pv_gain(character_t ** c, int a){
    if((*c)->pv < 0){
       (*c)->pv = 0;
    }
-   printf("\n%d\n", (*c)->pv);
 }
 
 /// @brief Function pv_gain is used to make the character a lose the amount of PV corresponding to e damage
