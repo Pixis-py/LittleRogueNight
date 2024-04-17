@@ -12,6 +12,7 @@
 #include <CUnit/Basic.h>
 #include "../lib/character.h"
 
+/// @brief Function that tests creation of character_t structure
 void test_create() {
     character_t * character;
     create(&character, 100);
@@ -23,6 +24,7 @@ void test_create() {
     destruct(character);
 }
 
+/// @brief Function that tests pv loss on character's structure
 void test_pv_loss() {
     character_t * character;
     create(&character, 100);
@@ -31,6 +33,7 @@ void test_pv_loss() {
     destruct(character);
 }
 
+/// @brief Function that tests pv gain on character's structure
 void test_pv_gain() {
     character_t * character;
     create(&character, 100);
@@ -51,7 +54,7 @@ void test_attack() {
    destruct(e);
 }
 
-
+/// @brief Function that calls test functions
 int main() {
    CU_initialize_registry();
 
