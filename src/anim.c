@@ -2,7 +2,19 @@
 
 #include "../lib/anim.h"
 
-
+void creer_coord(character_t ** ent, int lab[N][M]){
+    int x, y;
+    srand(time(NULL));
+    printf("%d, %d", N, M);
+    x = rand() % M;
+    y = rand() % N;
+    while(lab[y][x] != NUIT){
+        x = rand() % M;
+        y = rand() % N;
+    }
+    (*ent)->x = x;
+    (*ent)->y = y;
+}
 
 int message_joueur(const char * text, int x, int y, SDL_Window * pWindow){
     SDL_Renderer * pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
@@ -31,7 +43,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau){
 
 /* ----------------------------------------------------- Initialisations ----------------------------------------------------- */
 
-	int i = 0, j = 0, k = 0, quit = 0; // Initialisation des compteurs pour les boucles d'animation
+	int i = 0, j = 0, k = 0, quit = 0, pv1 = 1, pv2 = 4, pv3 = 7, pv4 = 10, j1 = 0; // Initialisation des compteurs pour les boucles d'animation
     int x = 0, y = 0, w = 0 , h = 0; // Initialisation des coordonnées communes à chaque animation
     int lastKeyPressed = -1; // Variable de la dernière touche préssée
     int saut = 0, gauche = 0, droite = 0, glissade = 0;
@@ -39,6 +51,12 @@ int anim(int argc, char** argv, int lab[N][M], int niveau){
     int lkpdash; // Vaut 1 si la dernière combinaison comprenait espace (donc un dash)
     int lastDirection = 1; // Vaut 1 ou 2 selon la dernière direction
 
+/* ----------------------------------------------------- Spawn aléatoire des entités ----------------------------------------------------- */
+
+    character_t * jani1;
+    create(&jani1, 50);
+    creer_coord(&jani1, lab);
+	
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
 
 
@@ -76,7 +94,9 @@ int anim(int argc, char** argv, int lab[N][M], int niveau){
                 SDL_Texture* pTextureRun = loadTexture("../sprites/six/six_run.png", pRenderer);
                 SDL_Texture* pTextureDrift = loadTexture("../sprites/six/six_drift.png", pRenderer);
                 SDL_Texture* pTextureDash = loadTexture("../sprites/six/six_dash.png", pRenderer);
-                SDL_Texture * pTexturePv = loadTexture("../sprites/fov/pv.png", pRenderer);
+                SDL_Texture* pTexturePv = loadTexture("../sprites/fov/pv.png", pRenderer);
+                SDL_Texture* pTextureJanitor = loadTexture("../sprites/npc/janitor_walk.png", pRenderer);
+
 
                 /*const char * regles = "Bienvenue à toi ! Ton but est d'arriver à la fin du labyrinthe, en bas à droite, tout en combattant
                 les monstres grâce aux glissades/drifts!\n Tu disposes de plusieurs vies et si tu en perds tu peux régénérer avec des
@@ -91,6 +111,9 @@ int anim(int argc, char** argv, int lab[N][M], int niveau){
                 //fonction d'affichage des animations des sprites
                 if ( pTextureRun != NULL && pTextureDrift != NULL && pTextureDash != NULL && pTexturePv != NULL){
                         SDL_Rect position = {FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+			SDL_Rect pvpos = {0, 0, 256, 256};
+                        printf("Coordonées janitor : %d, %d\n\n", jani1->x, jani1->y);
+                        SDL_Rect jani1pos = {jani1->x * FORMATPIXELZOOM, jani1->x * FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
                         SDL_Rect run[11] = {0, 0, FORMATPIXEL, FORMATPIXEL};
                         for (i=0;i<11;i++){
@@ -130,7 +153,26 @@ int anim(int argc, char** argv, int lab[N][M], int niveau){
                         x=0;
                         k=-1;   
                         
+			/*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de barre de vie*/
+                        SDL_Rect hpbar[13] = {0, 0, 256, 256};
+                        for (i=0;i<13;i++){
+                            hpbar[i].x=x;
+                            hpbar[i].y=0;
+                            hpbar[i].w=256;
+                            hpbar[i].h=256;
+                            x+=256;
+                        }
+                        x=0;
 
+                        SDL_Rect janitor[10] = {0, 0, 256, 256};
+                        for (i=0;i<10;i++){
+                            janitor[i].x=x;
+                            janitor[i].y=0;
+                            janitor[i].w=FORMATPIXEL;
+                            janitor[i].h=FORMATPIXEL;
+                            x+=FORMATPIXEL;
+                        }
+                        x=0;
                         
                         SDL_RenderCopy(pRenderer,pTextureRun,run+0,&position); //copie du personnage dans sa position de base
                         SDL_RenderPresent(pRenderer); // Affichage
@@ -404,6 +446,56 @@ int anim(int argc, char** argv, int lab[N][M], int niveau){
                             }
                             x=0;
                             SDL_RenderCopy(pRenderer,pTexturePv,pv+0,&position_pv);*/
+
+			if((*player)->pv > 80){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+0,&pvpos); // anima stop coeur 4
+                            }
+                            else if((*player)->pv <= 80 && (*player)->pv >= 70){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+pv1,&pvpos); // anima continue coeur 4∕3
+                                if(pv1 == 1){
+                                    pv1 = 2;
+                                }else{
+                                    pv1 = 1;
+                                }
+                            }
+                            else if((*player)->pv < 70 && (*player)->pv > 55){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+3,&pvpos); // anima stop coeur 3
+                            }
+                            else if((*player)->pv <= 55 && (*player)->pv >= 45){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+pv2,&pvpos); // anima continue coeur 3/2
+                                if(pv2 == 4){
+                                    pv2 = 5;
+                                }else{
+                                    pv2 = 4;
+                                }
+                            }
+                            else if((*player)->pv < 45 && (*player)->pv > 30){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+6,&pvpos); // anima stop coeur 2
+                            }
+                            else if((*player)->pv <= 30 && (*player)->pv >= 20){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+pv3,&pvpos); // anima continue coeur 2/1
+                                if(pv3 == 7){
+                                    pv3 = 8;
+                                }else{
+                                    pv3 = 7;
+                                }
+                            }
+                            else if((*player)->pv < 20 && (*player)->pv > 5){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+9,&pvpos); // anima stop coeur 1
+                            }
+                            else if((*player)->pv <= 5 && (*player)->pv >= 0){
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+pv4,&pvpos); // anima continue coeur 1/0
+                                if(pv4 == 10){
+                                    pv4 = 11;
+                                }else{
+                                    pv4 = 10;
+                                }
+                            }
+                            else{
+                                SDL_RenderCopy(pRenderer,pTexturePv,hpbar+12,&pvpos); // anima stop coeur 0
+                            }
+                            SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&jani1pos); // anim janitor
+                            printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1->x, jani1->y);
                             // Délai générique à toutes les animations
                             SDL_RenderPresent(pRenderer); // Affichage du Renderer
                         }
