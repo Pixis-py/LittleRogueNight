@@ -4,4 +4,8 @@
 #include <SDL2/SDL_mixer.h>
 #include "../lib/labyrinthe.h"
 
-int anim(int argc, char** argv, int lab[N][M]);
+#define FONT_PATH "arial.ttf"
+
+int anim(int argc, char** argv, int lab[N][M], int niveau);
+
+int message_joueur(const char * text, int x, int y, SDL_Window * pWindow);
