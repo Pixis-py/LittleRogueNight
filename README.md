@@ -42,6 +42,13 @@ make test
 ```
 make all
 ```
+## Bash file Usage
+* Simply use the following command to compile test and game, and launch tests and game : 
+```
+chmod 777 compiler_executer.sh
+./compiler_executer.sh
+```
+
 
 ## How to play 
 //Add instructions to start and play the game (maybe a picture) 
