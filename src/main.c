@@ -31,6 +31,8 @@ int main(){
                                 creer_lab(lab);
                                 if(chercher_chemin(lab, N - 1, M - 1, 0, 0) == 1)
                                     choice = anim(0, NULL, lab, 3, &six);
+                                    if(choice == 1)
+                                        choice = 2;
                             }
                         }
                     }
