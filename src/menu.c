@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include  <unistd.h>
 #include <SDL2/SDL.h>
 #include "../lib/bouton.h"
 #include "../lib/image.h"
@@ -105,8 +106,14 @@ int menu(int argc, char** argv,int *choix_perso){
                                 play_result=1;
                                 quit = 1;
                             }
+                            if (aff_bout(pRenderer,&quitButton,event,pTextureQuitPressButton,pTextureQuitButton))
+                            {
+                                quit_result=1;
+                                quit=1;
+                            }
                             if (aff_bout(pRenderer,&optionsButton,event,pTextureOptionsPressButton,pTextureOptionsButton))
                             {
+                                sleep(1);
                                 while(!quit_opt){
                                     while (SDL_PollEvent(&event) != 0) {
                                         if (event.type == SDL_QUIT) {
@@ -122,7 +129,6 @@ int menu(int argc, char** argv,int *choix_perso){
                                     }
                                     if(aff_bout(pRenderer,&Choix_mono,event,pTexturePersoMonoHoover,pTexturePersoMono)){
                                         *choix_perso = 2;
-                                        SDL_Delay(250);
                                         quit_opt = 1;
                                     }
                                     if(aff_bout(pRenderer,&Opt_Quit,event,pTextureQuitPressButton,pTextureQuitButton)){
@@ -130,14 +136,9 @@ int menu(int argc, char** argv,int *choix_perso){
                                     }
                                     SDL_RenderPresent(pRenderer);
                                 }
-                                SDL_Delay(200);
                                 quit_opt = 0;
+                                sleep(1);
                             }
-                            if (aff_bout(pRenderer,&quitButton,event,pTextureQuitPressButton,pTextureQuitButton))
-                            {
-                                quit_result=1;
-                                quit=1;
-                            }                            
                             SDL_RenderPresent(pRenderer);
 
                         }    
