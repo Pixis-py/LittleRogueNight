@@ -12,18 +12,17 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <labyrinthe.h>
+#include "labyrinthe.h"
 
-typedef struct character_s character_t;
 
 /// @brief Structure charcter_t is used to stock the character's infomrations
 typedef struct character_s{
-   int pv, damage;
+   int pv, damage, x, y;
 }character_t;
 
 /// @brief Prototype of function create which is used to create a character by giving a pointer enough memory to point a structure
 /// @param c 
-void create(character_t ** c);
+void create(character_t ** c, int pv);
 
 /// @brief Prototype of function destruct which is used to destruct a character by freeing it's pointer and make it point on NULL
 /// @param c 
