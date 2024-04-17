@@ -1,12 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include "../lib/bouton.h"
 #include "../lib/menu.h"
 #include "../lib/anim.h"
 #include "../lib/image.h"
-#include "../lib/labyrinthe.h"
-#include "../lib/character.h"
 
 #define NB_PV_JOUEUR 100
 
@@ -24,13 +21,13 @@ int main(){
                 if(*choix_perso == 0){/*Cas ou l'utilisateur choisi de jouer avec six*/
                     character_t * six; // Déclaration du personnage
                     create(&six,NB_PV_JOUEUR); // Création du personnage
-                    choice = anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
+                    choice = anim(0, NULL, lab, &six); // Boucle de jeu (labyrinthe et animation)
                     destruct(&six); // Destruction du personnage
                 }
                 if(*choix_perso == 1){ /*Cas ou l'utilisateur choisi de jouer avec mono*/
                     character_t * mono; // Déclaration du personnage
                     create(&mono,NB_PV_JOUEUR); // Création du personnage
-                    choice = anim(0, NULL, lab); // Boucle de jeu (labyrinthe et animation)
+                    choice = anim(0, NULL, lab, &mono); // Boucle de jeu (labyrinthe et animation)
                     destruct(&mono); // Destruction du personnage
                 }
             }
