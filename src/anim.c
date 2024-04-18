@@ -70,11 +70,11 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 /* ----------------------------------------------------- Spawn aléatoire des entités ----------------------------------------------------- */
 
     character_t * jani1;
-    create(&jani1, 50, 10);
+    create(&jani1, 50, 0.5);
     creer_coord(&jani1, lab);
 
     character_t * pot1;
-    create(&pot1, 50, -10);
+    create(&pot1, 5000, 0);
     creer_coord(&pot1, lab);
     
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
@@ -545,7 +545,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             if(abs((position.x / FORMATPIXELZOOM / 9) - (jani1pos.x / FORMATPIXELZOOM / 9)) < 2 && abs((position.y / FORMATPIXELZOOM / 9) - (jani1pos.y / FORMATPIXELZOOM / 9)) < 2){
                                 clock_gettime(CLOCK_REALTIME, &timestampnew);
-                                if(timestampnew.tv_sec- timestamp.tv_sec > 1000){
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 10){
                                     attack(player, &jani1);
                                     clock_gettime(CLOCK_REALTIME, &timestamp);
                                 }
@@ -553,8 +553,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             if(abs((position.x / FORMATPIXELZOOM / 9) - (pot1pos.x / FORMATPIXELZOOM / 9)) < 2 && abs((position.y / FORMATPIXELZOOM / 9) - (pot1pos.y / FORMATPIXELZOOM / 9)) < 2){
                                 clock_gettime(CLOCK_REALTIME, &timestampnew);
-                                if(timestampnew.tv_sec - timestamp.tv_sec > 1000){
-                                    attack(player, &jani1);
+                                if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                                    pv_gain(player, 20);
                                     clock_gettime(CLOCK_REALTIME, &timestamp);
                                 }
                             }
