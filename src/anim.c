@@ -64,17 +64,17 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
     int lkpshift; // Vaut 1 si la dernière combinaison comprenait shift (donc un drift)
     int lkpdash; // Vaut 1 si la dernière combinaison comprenait espace (donc un dash)
     int lastDirection = 1; // Vaut 1 ou 2 selon la dernière direction
-    int timestamp, timestampnew;
+    struct timespec timestamp, timestampnew;
     clock_gettime(CLOCK_REALTIME, &timestamp);
 
 /* ----------------------------------------------------- Spawn aléatoire des entités ----------------------------------------------------- */
 
     character_t * jani1;
-    create(&jani1, 50);
+    create(&jani1, 50, 10);
     creer_coord(&jani1, lab);
 
     character_t * pot1;
-    create(&pot1, 50);
+    create(&pot1, 50, -10);
     creer_coord(&pot1, lab);
     
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
@@ -545,7 +545,15 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             if(abs((position.x / FORMATPIXELZOOM / 9) - (jani1pos.x / FORMATPIXELZOOM / 9)) < 2 && abs((position.y / FORMATPIXELZOOM / 9) - (jani1pos.y / FORMATPIXELZOOM / 9)) < 2){
                                 clock_gettime(CLOCK_REALTIME, &timestampnew);
-                                if(timestampnew - timestamp > 1){
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 1000){
+                                    attack(player, &jani1);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (pot1pos.x / FORMATPIXELZOOM / 9)) < 2 && abs((position.y / FORMATPIXELZOOM / 9) - (pot1pos.y / FORMATPIXELZOOM / 9)) < 2){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec - timestamp.tv_sec > 1000){
                                     attack(player, &jani1);
                                     clock_gettime(CLOCK_REALTIME, &timestamp);
                                 }
