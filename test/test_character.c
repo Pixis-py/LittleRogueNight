@@ -15,7 +15,7 @@
 /// @brief Function that tests creation of character_t structure
 void test_create() {
     character_t * character;
-    create(&character, 100);
+    create(&character, 100, 25);
     CU_ASSERT_PTR_NOT_NULL(character);
     CU_ASSERT_EQUAL(character->pv, 100);
     CU_ASSERT_EQUAL(character->damage, 25);
@@ -27,7 +27,7 @@ void test_create() {
 /// @brief Function that tests pv loss on character's structure
 void test_pv_loss() {
     character_t * character;
-    create(&character, 100);
+    create(&character, 100, 25);
     pv_loss(&character, 50);
     CU_ASSERT_EQUAL(character->pv, 50);
     destruct(character);
@@ -36,7 +36,7 @@ void test_pv_loss() {
 /// @brief Function that tests pv gain on character's structure
 void test_pv_gain() {
     character_t * character;
-    create(&character, 100);
+    create(&character, 100, 25);
     pv_gain(&character, 50);
     CU_ASSERT_EQUAL(character->pv, 150);
     destruct(character);
@@ -46,8 +46,8 @@ void test_pv_gain() {
 void test_attack() {
    character_t * c;
    character_t * e;
-   create(&c,100);
-   create(&e,100);
+   create(&c,100, 25);
+   create(&e,100, 25);
    attack(&c, &e);
    CU_ASSERT_EQUAL((c)->pv, 75);
    destruct(c);
