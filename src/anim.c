@@ -8,7 +8,7 @@ void creer_coord(character_t ** ent, int lab[N][M]){
     printf("%d, %d", N, M);
     x = rand() % M;
     y = rand() % N;
-    while(!est_NUIT(y, x, lab)){
+    while(!est_NUIT(y, x, lab) && est_NUIT(y, x-1, lab)){
         x = rand() % M;
         y = rand() % N;
     }
@@ -43,7 +43,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
 /* ----------------------------------------------------- Initialisations ----------------------------------------------------- */
 
-	int i = 0, j = 0, k = 0, quit = 0, pv1 = 1, pv2 = 4, pv3 = 7, pv4 = 10, j1 = 0; // Initialisation des compteurs pour les boucles d'animation
+	int i = 0, j = 0, k = 0, quit = 0, pv1 = 1, pv2 = 4, pv3 = 7, pv4 = 10, j1 = 0, l1 = 0; // Initialisation des compteurs pour les boucles d'animation
     int x = 0, y = 0, w = 0 , h = 0; // Initialisation des coordonnées communes à chaque animation
     int lastKeyPressed = -1; // Variable de la dernière touche préssée
     int saut = 0, gauche = 0, droite = 0, glissade = 0;
@@ -96,6 +96,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                 SDL_Texture* pTextureDash = loadTexture("../sprites/six/six_dash.png", pRenderer);
                 SDL_Texture* pTexturePv = loadTexture("../sprites/fov/pv.png", pRenderer);
                 SDL_Texture* pTextureJanitor = loadTexture("../sprites/npc/janitor_walk.png", pRenderer);
+                SDL_Texture* pTextureLighter = loadTexture("../sprites/items/lighter.png", pRenderer);
 
 
                 /*const char * regles = "Bienvenue à toi ! Ton but est d'arriver à la fin du labyrinthe, en bas à droite, tout en combattant
@@ -113,6 +114,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         SDL_Rect position = {FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
 			            SDL_Rect pvpos = {0, 0, 256, 256};
                         SDL_Rect jani1pos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect lighterpos = {0, 0, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
                         SDL_Rect run[11] = {0, 0, FORMATPIXEL, FORMATPIXEL};
                         for (i=0;i<11;i++){
@@ -152,7 +154,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         x=0;
                         k=-1;   
                         
-			/*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de barre de vie*/
+			            /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de barre de vie*/
+
                         SDL_Rect hpbar[13] = {0, 0, 256, 256};
                         for (i=0;i<13;i++){
                             hpbar[i].x=x;
@@ -163,12 +166,24 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         }
                         x=0;
 
+                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation d'un janitor(monstre)'*/
                         SDL_Rect janitor[10] = {0, 0, 256, 256};
-                        for (i=0;i<10;i++){
-                            janitor[i].x=x;
-                            janitor[i].y=0;
-                            janitor[i].w=FORMATPIXEL;
-                            janitor[i].h=FORMATPIXEL;
+                        for (j1=0;j1<10;j1++){
+                            janitor[j1].x=x;
+                            janitor[j1].y=0;
+                            janitor[j1].w=FORMATPIXEL;
+                            janitor[j1].h=FORMATPIXEL;
+                            x+=FORMATPIXEL;
+                        }
+                        x=0;
+
+                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation d'un janitor(monstre)'*/
+                        SDL_Rect lighter[15] = {0, 0, FORMATPIXEL, FORMATPIXEL};
+                        for (l1=0;l1<15;l1++){
+                            lighter[l1].x=x;
+                            lighter[l1].y=0;
+                            lighter[l1].w=FORMATPIXEL;
+                            lighter[l1].h=FORMATPIXEL;
                             x+=FORMATPIXEL;
                         }
                         x=0;
@@ -191,13 +206,17 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         int coefX = 0, coefY = 0;
 
                         while (!quit){
-                            jani1pos.x = ((jani1->x * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
-                            jani1pos.y = ((jani1->y * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
-                            printf("pos monstre : %d %d\n", jani1pos.x, jani1pos.y);
+                            jani1pos.x = ((jani1->x * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM) + 1;
+                            jani1pos.y = (((jani1->y-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM) + 2;
+                            lighterpos.x = (((M) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            lighterpos.y = (((N-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            printf("Coordonées briquet : %d %d\n", lighterpos.x, lighterpos.y);
+                            printf("Coordonées janitor : %d %d\n", jani1pos.x, jani1pos.y);
                             /*printf("Total :\nx = %d\t\ty = %d\nPrécis droit :\nx = %d y = %d\nPrécis gauche :\nx = %d y = %d\ncollisions :\nx = %d y = %d\n", 
                             position.x, position.y,
                             position.x % FORMATPIXELZOOM, position.y % FORMATPIXELZOOM);   //gauche*/
                             //printf("coefX : %d\tcoefY : %d\n", coefX, coefY);
+                            printf("xglobal : %d\tyglobal : %d\n", position.x + 8, position.y);
                             printf("x = %d\ty = %d\n", ((position.x + 8) / FORMATPIXELZOOM / 9) + coefX, (position.y / FORMATPIXELZOOM / 9) + coefY);
                             //printf("x = %d et y = %d\n\n", position.x % FORMATPIXELZOOM, position.y % FORMATPIXELZOOM);
                             if(position.x >= 970 && coefX < M){
@@ -217,10 +236,11 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                                 position.y = 660;
                             }
                             SDL_RenderClear(pRenderer);
+
                             //fin du niveau ?
                             if(((position.y / FORMATPIXELZOOM / 9) + coefY - 1 == N - 2 && ((position.x + 8) / FORMATPIXELZOOM / 9) - 1 + coefX == M - 1)
                         && lastDirection == 1
-                            || ((position.y / FORMATPIXELZOOM / 9) + coefY - 1 == N - 2 && ((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX == M - 1)
+                            || ((position.y / FORMATPIXELZOOM / 9) + coefY - 1 == N - 2 && ((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX == M - 1 )
                         && lastDirection == 2){
                                 position.x = FORMATPIXELZOOM, position.y = FORMATPIXELZOOM, coefX = 0, coefY = 0;
                                 SDL_Delay(2000);
@@ -381,7 +401,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             // Affichage dash droite
                             else if(saut && droite && !gauche && !glissade){
-                                //printf("\nSAUT DROITE\n");
+                                printf("\nSAUT DROITE\n");
                                 if(lab[(position.y / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 8) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT)
                                 {
                                     position.x += 2 * ZOOM;
@@ -393,7 +413,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             // Affichage dash gauche
                            else if(saut && !droite && gauche && !glissade){
-                                //printf("\nSAUT GAUCHE\n");
+                                printf("\nSAUT GAUCHE\n");
                                 if(lab[(position.y / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
                                     position.x -= 2 * ZOOM;
                                     position.y -= 3 * ZOOM;
@@ -404,7 +424,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             // Affichage dash statique à droite
                             else if(saut && !droite && !gauche && !glissade && lastKeyPressed == -1){
-                                //printf("\nSAUT STAT DROITE\n");
+                                printf("\nSAUT STAT DROITE\n");
                                 if(lab[((position.y) / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 8) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
                                     position.y -= 4 * ZOOM;
                                     SDL_Delay(8);
@@ -414,7 +434,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             // Affichage dash statique à gauche
                             else if(saut && !gauche && !droite && !glissade && lastKeyPressed == -2){
-                                //printf("\nSAUT STAT GAUCHE\n");
+                                printf("\nSAUT STAT GAUCHE\n");
                                 if(lab[((position.y) / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
                                     position.y -= 4 *  ZOOM;
                                     SDL_Delay(8);
@@ -485,8 +505,11 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             }
 
                             SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&jani1pos); // anim janitor
-                            printf("Coordonnées après jani1pos : %d, %d\n\n", jani1->x, jani1->y);
-                            
+                            printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1->x, jani1->y);
+                            if(niveau == 1){
+                                printf("je suis la");
+                                SDL_RenderCopy(pRenderer,pTextureLighter,lighter+((l1++)%15), &lighterpos); // anim lighter
+                            }
                             // Délai générique à toutes les animations
                             SDL_RenderPresent(pRenderer); // Affichage du Renderer
                         }
