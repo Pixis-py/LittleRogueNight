@@ -1,12 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../lib/anim.h"
+
 
 void creer_coord(character_t ** ent, int lab[N][M]){
     int x, y;
     int i, j;
     int possible=0;
-    srand(time(NULL));
     x = rand() % N;
     
     while(!possible){
@@ -25,8 +26,8 @@ void creer_coord(character_t ** ent, int lab[N][M]){
         }
     }
 
-    (*ent)->x = y;
-    (*ent)->y = x;
+    (*ent)->x = y+1;
+    (*ent)->y = x+1;
 }
 
 int message_joueur(const char * text, int x, int y, SDL_Window * pWindow){
@@ -56,7 +57,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
 /* ----------------------------------------------------- Initialisations ----------------------------------------------------- */
 
-	int i = 0, j = 0, k = 0, quit = 0, pv1 = 1, pv2 = 4, pv3 = 7, pv4 = 10, j1 = 0, l1 = 0; // Initialisation des compteurs pour les boucles d'animation
+	int i = 0, j = 0, k = 0, quit = 0, pv1 = 1, pv2 = 4, pv3 = 7, pv4 = 10, j1 = 0, l1 = 0, p1 = 0; // Initialisation des compteurs pour les boucles d'animation
     int x = 0, y = 0, w = 0 , h = 0; // Initialisation des coordonnées communes à chaque animation
     int lastKeyPressed = -1; // Variable de la dernière touche préssée
     int saut = 0, gauche = 0, droite = 0, glissade = 0;
@@ -69,6 +70,10 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
     character_t * jani1;
     create(&jani1, 50);
     creer_coord(&jani1, lab);
+
+    character_t * pot1;
+    create(&pot1, 50);
+    creer_coord(&pot1, lab);
     
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
 
@@ -110,6 +115,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                 SDL_Texture* pTexturePv = loadTexture("../sprites/fov/pv.png", pRenderer);
                 SDL_Texture* pTextureJanitor = loadTexture("../sprites/npc/janitor_walk.png", pRenderer);
                 SDL_Texture* pTextureLighter = loadTexture("../sprites/items/lighter.png", pRenderer);
+                SDL_Texture* pTexturePotion = loadTexture("../sprites/items/potion.png", pRenderer);
 
 
                 /*const char * regles = "Bienvenue à toi ! Ton but est d'arriver à la fin du labyrinthe, en bas à droite, tout en combattant
@@ -127,6 +133,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         SDL_Rect position = {FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
 			            SDL_Rect pvpos = {0, 0, 256, 256};
                         SDL_Rect jani1pos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect pot1pos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         SDL_Rect lighterpos = {0, 0, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
                         SDL_Rect run[11] = {0, 0, FORMATPIXEL, FORMATPIXEL};
@@ -200,6 +207,17 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             x+=FORMATPIXEL;
                         }
                         x=0;
+
+                        /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation d'un janitor(monstre)'*/
+                        SDL_Rect potion[16] = {0, 0, FORMATPIXEL/2, FORMATPIXEL/2};
+                        for (p1=0;p1<16;p1++){
+                            potion[p1].x=x;
+                            potion[p1].y=0;
+                            potion[p1].w=FORMATPIXEL;
+                            potion[p1].h=FORMATPIXEL;
+                            x+=FORMATPIXEL;
+                        }
+                        x=0;
                         
                         SDL_RenderCopy(pRenderer,pTextureRun,run+0,&position); //copie du personnage dans sa position de base
                         SDL_RenderPresent(pRenderer); // Affichage
@@ -219,9 +237,12 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         int coefX = 0, coefY = 0;
 
                         while (!quit){
-                            jani1pos.x = (((jani1->x+1) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
-                            jani1pos.y = (((jani1->y+1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            jani1pos.x = (((jani1->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            jani1pos.y = (((jani1->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
                             printf("%d, %d", jani1->x,jani1->y);
+                            pot1pos.x = (((pot1->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            pot1pos.y = (((pot1->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            printf("%d, %d", pot1->x,pot1->y);
                             lighterpos.x = (((M) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             lighterpos.y = (((N-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
                             printf("Coordonées briquet : %d %d\n", lighterpos.x, lighterpos.y);
@@ -519,6 +540,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             }
 
                             SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&jani1pos); // anim janitor
+                            SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&pot1pos); // anim potion
                             printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1->x, jani1->y);
                             if(niveau == 1){
                                 printf("je suis la");
