@@ -64,6 +64,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
     int lkpshift; // Vaut 1 si la dernière combinaison comprenait shift (donc un drift)
     int lkpdash; // Vaut 1 si la dernière combinaison comprenait espace (donc un dash)
     int lastDirection = 1; // Vaut 1 ou 2 selon la dernière direction
+    int timestamp, timestampnew;
+    clock_gettime(CLOCK_REALTIME, &timestamp);
 
 /* ----------------------------------------------------- Spawn aléatoire des entités ----------------------------------------------------- */
 
@@ -540,6 +542,15 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             }
 
                             SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&jani1pos); // anim janitor
+
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (jani1pos.x / FORMATPIXELZOOM / 9)) < 2 && abs((position.y / FORMATPIXELZOOM / 9) - (jani1pos.y / FORMATPIXELZOOM / 9)) < 2){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew - timestamp > 1){
+                                    attack(player, &jani1);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+
                             SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&pot1pos); // anim potion
                             printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1->x, jani1->y);
                             if(niveau == 1){
