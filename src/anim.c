@@ -4,16 +4,29 @@
 
 void creer_coord(character_t ** ent, int lab[N][M]){
     int x, y;
+    int i, j;
+    int possible=0;
     srand(time(NULL));
-    printf("%d, %d", N, M);
-    x = rand() % M;
-    y = rand() % N;
-    while(!est_NUIT(y, x, lab) && est_NUIT(y, x-1, lab)){
-        x = rand() % M;
-        y = rand() % N;
+    x = rand() % N;
+    
+    while(!possible){
+        x = rand() % N;
+        for(i=0;i<M;i++){
+            if(lab[x][i]==0 && lab[x+1][i]!=0){
+                possible=1;
+            }
+        }
     }
-    (*ent)->x = x;
-    (*ent)->y = y;
+    possible=0;
+    while(!possible){
+        y = rand() % M;
+        if(lab[x][y]==0 && lab[x+1][y]!=0){
+            possible=1;
+        }
+    }
+
+    (*ent)->x = x+1;
+    (*ent)->y = y+1;
 }
 
 int message_joueur(const char * text, int x, int y, SDL_Window * pWindow){
@@ -56,7 +69,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
     character_t * jani1;
     create(&jani1, 50);
     creer_coord(&jani1, lab);
-	
+    
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
 
 
@@ -206,8 +219,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         int coefX = 0, coefY = 0;
 
                         while (!quit){
-                            jani1pos.x = ((jani1->x * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM) + 1;
-                            jani1pos.y = (((jani1->y-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM) + 2;
+                            jani1pos.x = (((jani1->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            jani1pos.y = (((jani1->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
                             lighterpos.x = (((M) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             lighterpos.y = (((N-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
                             printf("Coordonées briquet : %d %d\n", lighterpos.x, lighterpos.y);
