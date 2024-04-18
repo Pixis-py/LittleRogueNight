@@ -12,7 +12,7 @@ void creer_coord(character_t ** ent, int lab[N][M]){
     while(!possible){
         x = rand() % N;
         for(i=0;i<M;i++){
-            if(lab[x][i]==0 && lab[x+1][i]!=0){
+            if(lab[x][i]==0 && lab[x+1][i]==3){
                 possible=1;
             }
         }
@@ -20,13 +20,13 @@ void creer_coord(character_t ** ent, int lab[N][M]){
     possible=0;
     while(!possible){
         y = rand() % M;
-        if(lab[x][y]==0 && lab[x+1][y]!=0){
+        if(lab[x][y]==0 && lab[x+1][y]==3){
             possible=1;
         }
     }
 
-    (*ent)->x = x+1;
-    (*ent)->y = y+1;
+    (*ent)->x = y;
+    (*ent)->y = x;
 }
 
 int message_joueur(const char * text, int x, int y, SDL_Window * pWindow){
@@ -219,8 +219,9 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         int coefX = 0, coefY = 0;
 
                         while (!quit){
-                            jani1pos.x = (((jani1->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
-                            jani1pos.y = (((jani1->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            jani1pos.x = (((jani1->x+1) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            jani1pos.y = (((jani1->y+1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            printf("%d, %d", jani1->x,jani1->y);
                             lighterpos.x = (((M) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             lighterpos.y = (((N-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
                             printf("Coordonées briquet : %d %d\n", lighterpos.x, lighterpos.y);
