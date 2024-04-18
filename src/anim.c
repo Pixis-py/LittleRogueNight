@@ -8,7 +8,7 @@ void creer_coord(character_t ** ent, int lab[N][M]){
     printf("%d, %d", N, M);
     x = rand() % M;
     y = rand() % N;
-    while(lab[y][x] != NUIT){
+    while(!est_NUIT(y, x, lab)){
         x = rand() % M;
         y = rand() % N;
     }
@@ -111,9 +111,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                 //fonction d'affichage des animations des sprites
                 if ( pTextureRun != NULL && pTextureDrift != NULL && pTextureDash != NULL && pTexturePv != NULL){
                         SDL_Rect position = {FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
-			SDL_Rect pvpos = {0, 0, 256, 256};
-                        printf("Coordonées janitor : %d, %d\n\n", jani1->x, jani1->y);
-                        SDL_Rect jani1pos = {jani1->x * FORMATPIXELZOOM, jani1->x * FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+			            SDL_Rect pvpos = {0, 0, 256, 256};
+                        SDL_Rect jani1pos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
                         SDL_Rect run[11] = {0, 0, FORMATPIXEL, FORMATPIXEL};
                         for (i=0;i<11;i++){
@@ -192,14 +191,15 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         int coefX = 0, coefY = 0;
 
                         while (!quit){
+                            jani1pos.x = ((jani1->x * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM) + 1;
+                            jani1pos.y = ((jani1->y * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM) + 1;
                             /*printf("Total :\nx = %d\t\ty = %d\nPrécis droit :\nx = %d y = %d\nPrécis gauche :\nx = %d y = %d\ncollisions :\nx = %d y = %d\n", 
                             position.x, position.y,
                             position.x % FORMATPIXELZOOM, position.y % FORMATPIXELZOOM);   //gauche*/
                             //printf("coefX : %d\tcoefY : %d\n", coefX, coefY);
+                            printf("xglobal : %d\tyglobal : %d\n", position.x + 8, position.y);
                             printf("x = %d\ty = %d\n", ((position.x + 8) / FORMATPIXELZOOM / 9) + coefX, (position.y / FORMATPIXELZOOM / 9) + coefY);
                             //printf("x = %d et y = %d\n\n", position.x % FORMATPIXELZOOM, position.y % FORMATPIXELZOOM);
-                            printf("x = %d\ty = %d\n\n", position.x, position.y);
-                            printf("lkp : %d\n\n", lastKeyPressed);
                             if(position.x >= 970 && coefX < M){
                                 coefX += 10;
                                 position.x = 16;
@@ -299,32 +299,33 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
 
                             if(position.x < FORMATPIXELZOOM - 32 && coefX == 0){
-                                position.x = FORMATPIXELZOOM + 8;
-                                SDL_Delay(75);
+                                position.x = FORMATPIXELZOOM - 8;
+                                SDL_Delay(50);
                             }
 
-                            if(position.x > (M * FORMATPIXELZOOM) && coefX == 50){
+                            if(position.x > (M * FORMATPIXELZOOM) - 22 && coefX == 50){
                                 position.x = (M * FORMATPIXELZOOM) - 32;
-                                SDL_Delay(75);
+                                SDL_Delay(50);
                             }
 
                             if(position.y < FORMATPIXELZOOM && coefY == 0){
                                 position.y = FORMATPIXELZOOM;
-                                SDL_Delay(25);
+                                SDL_Delay(15);
                             }
 
                             if(gravite){
-                                position.y += 1 * ZOOM;
-                                SDL_Delay(8);
+                                position.y += 2 * ZOOM;
+                                SDL_Delay(10);
                             }
+                            
+
 
                             //run droite
                             if(droite && !gauche && !glissade && !saut){
-                                
                                 if(lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][(position.x / FORMATPIXELZOOM / 9) + coefX] != DUR
                                 && (position.x + 8) % FORMATPIXELZOOM <= 72){
-                                    position.x += 2 * ZOOM;
-                                    SDL_Delay(8);
+                                    position.x += 1 * ZOOM;
+                                    SDL_Delay(4);
                                 }
                                 SDL_RenderCopy(pRenderer,pTextureRun,run+((++i)%11),&position);
                             }
@@ -333,8 +334,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             else if(gauche && !droite && !saut && !glissade){
                                 if(lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][((position.x) / FORMATPIXELZOOM / 9) - 1 + coefX] != DUR
                                 && position.x % FORMATPIXELZOOM >= 24){
-                                    position.x-=2 * ZOOM;
-                                    SDL_Delay(8);
+                                    position.x-=1 * ZOOM;
+                                    SDL_Delay(4);
                                 }
                                 SDL_RenderCopyEx(pRenderer,pTextureRun,run+((++i)%11),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
                             }
@@ -381,7 +382,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             // Affichage dash droite
                             else if(saut && droite && !gauche && !glissade){
                                 printf("\nSAUT DROITE\n");
-                                if(lab[(position.y / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x - 25) / FORMATPIXELZOOM / 9) + coefX] == NUIT)
+                                if(lab[(position.y / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 8) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT)
                                 {
                                     position.x += 2 * ZOOM;
                                     position.y -= 3 * ZOOM;
@@ -393,19 +394,19 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             // Affichage dash gauche
                            else if(saut && !droite && gauche && !glissade){
                                 printf("\nSAUT GAUCHE\n");
-                                if(lab[(position.y / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 5) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
+                                if(lab[(position.y / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
                                     position.x -= 2 * ZOOM;
                                     position.y -= 3 * ZOOM;
                                     SDL_Delay(8);
                                 }
-                                SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)%20),&position);
+                                SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)%20),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
                             }
 
                             // Affichage dash statique à droite
                             else if(saut && !droite && !gauche && !glissade && lastKeyPressed == -1){
                                 printf("\nSAUT STAT DROITE\n");
                                 if(lab[((position.y) / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 8) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
-                                    position.y -= 3 * ZOOM;
+                                    position.y -= 4 * ZOOM;
                                     SDL_Delay(8);
                                 }
                                 SDL_RenderCopy(pRenderer,pTextureDash,dash+((++k)%20),&position);
@@ -415,7 +416,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             else if(saut && !gauche && !droite && !glissade && lastKeyPressed == -2){
                                 printf("\nSAUT STAT GAUCHE\n");
                                 if(lab[((position.y) / FORMATPIXELZOOM / 9) - 1 + coefY][((position.x + 70) / FORMATPIXELZOOM / 9) - 1 + coefX] == NUIT){
-                                    position.y -= 3 * ZOOM;
+                                    position.y -= 4 *  ZOOM;
                                     SDL_Delay(8);
                                 }
                                 SDL_RenderCopyEx(pRenderer,pTextureDash,dash+((++k)%20),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
@@ -434,20 +435,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                                 }
                                 
                             }
-                            /*SDL_Rect position_pv = {0, 0, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
-                            /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche
-                            SDL_Rect pv[12] = {0, 0, FORMATPIXEL, FORMATPIXEL};
-                            for (i=0;i<12;i++){ 
-                                pv[i].x=x;
-                                pv[i].y=48;
-                                pv[i].w=FORMATPIXEL;
-                                pv[i].h=FORMATPIXEL;
-                                x+=FORMATPIXEL;
-                            }
-                            x=0;
-                            SDL_RenderCopy(pRenderer,pTexturePv,pv+0,&position_pv);*/
 
-			if((*player)->pv > 80){
+			                if((*player)->pv > 80){
                                 SDL_RenderCopy(pRenderer,pTexturePv,hpbar+0,&pvpos); // anima stop coeur 4
                             }
                             else if((*player)->pv <= 80 && (*player)->pv >= 70){
@@ -494,6 +483,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             else{
                                 SDL_RenderCopy(pRenderer,pTexturePv,hpbar+12,&pvpos); // anima stop coeur 0
                             }
+
                             SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&jani1pos); // anim janitor
                             printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1->x, jani1->y);
                             // Délai générique à toutes les animations
@@ -535,6 +525,5 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
     SDL_Quit();
     IMG_Quit();
-
     return quit;
 }
