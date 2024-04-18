@@ -24,7 +24,7 @@
 * Save System : Save your current game and start and stop when you want.
 
 ## Requirements
-* Linux distribution & MacOS supported
+* Linux
 
 ## Installation
 * Please use
