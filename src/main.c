@@ -37,6 +37,7 @@ int main(){
                         }
                     }
                     destruct(six); // Destruction du personnage
+                    choice = menu(0, NULL,choix_perso);
                 }
             }
             if(*choix_perso == 1){ /*Cas ou l'utilisateur choisi de jouer avec mono*/
@@ -51,6 +52,7 @@ int main(){
                         choice = anim(0, NULL, lab, 3, &mono);
                 }
                 destruct(mono); // Destruction du personnage
+                choice = menu(0, NULL,choix_perso);
             }
         }
     }
