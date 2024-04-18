@@ -16,10 +16,10 @@
 
 /// @brief Function create is used to create a character by giving a pointer enough memory to point a structure
 /// @param c 
-void create(character_t ** c, int pv) {
+void create(character_t ** c, int pv, int damage) {
    *c = malloc(sizeof(character_t));
    (*c)->pv = pv; 
-   (*c)->damage = 25;
+   (*c)->damage = damage;
    (*c)->x = 0;
    (*c)->y = 0;
 }
@@ -35,7 +35,7 @@ void destruct(character_t * c){
 /// @param c 
 /// @param a 
 void pv_loss(character_t ** c, int a){
-   (*c)->pv -= a;
+   (*c)->pv = -a;
    if((*c)->pv < 0){
       (*c)->pv = 0;
    }
