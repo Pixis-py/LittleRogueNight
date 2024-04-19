@@ -7,54 +7,63 @@
 \usepackage[french]{babel}
 \usepackage{hyperref}
 \usepackage{glossaries}
-
 \makeglossaries
 
-
-\newglossaryentry{roli}{ 
-name=rogue-like, 
-description={Genre de jeu vidéo qui s'inspire du jeu original "Rogue", caractérisé par des environnements générés de façon procédurale, une difficulté élevée et la mort permanente du personnage du joueur.}
+\newglossaryentry{roli}{
+    name=rogue-like,
+    description={Genre de jeu vidéo qui s'inspire du jeu original "Rogue", caractérisé par des environnements générés de façon procédurale, une difficulté élevée et la mort permanente du personnage du joueur.}
 }
 
-\newglossaryentry{dianre}{ 
-name=die and retry, 
-description={Le die and retry est un mécanisme de jeu vidéo, un élément de gameplay, qui contraint à jouer puis à perdre pour connaître les mouvements, les actions ou les choix à effectuer pour pouvoir gagner, terminer une partie ou un niveau.} 
+\newglossaryentry{labpar}{
+    name=labyrinthe parfait,
+    description={Type de labyrinthe généré de manière algorithmique, dans lequel il existe un unique chemin reliant chaque point à un autre.}
 }
 
-\newglossaryentry{perde}{ 
-name=permadeath, 
-description={De l'anglais permanent death, il signifie que mourrir fait recommencer le joueur depuis le début.} 
+\newglossaryentry{lagepr}{
+    name=augmentation progressive de la difficulté,
+    description={Principe de conception de jeu dans lequel la complexité et le niveau de défi augmentent graduellement au fur et à mesure que le joueur progresse.}
 }
 
-\newglossaryentry{labpar}{ 
-name=labyrinthe parfait, 
-description={Un labyrinthe parfait est un type de labyrinthe créé de manière aléatoire qui garantit qu'il n'y a qu'un seul chemin reliant l'entrée à la fin du labyrinthe.} 
+\newglossaryentry{dianre}{
+    name=différents niveaux avec renouvellement,
+    description={Structure de jeu où les niveaux se succèdent, mais où le contenu ou les défis sont renouvelés pour maintenir l'intérêt du joueur.}
 }
 
-\newglossaryentry{lagepr}{ 
-name=labyrinthe généré procéduralement, 
-description={Un labyrinthe parfait généré procéduralement est un type de labyrinthe 
-créé de manière aléatoire qui garantit qu'il n'y a qu'un seul chemin reliant l'entrée à la fin du labyrinthe.}
+\newglossaryentry{perde}{
+    name=perte permanente,
+    description={Concept de jeu où les conséquences des actions du joueur sont irréversibles, ce qui signifie que les erreurs commises ne peuvent pas être annulées ou corrigées.}
 }
 
-\newglossaryentry{dash}{ 
-name=dash, 
-description={Un dash représente dans LittleRogueNight un saut continu.}
+\newglossaryentry{dash}{
+    name=dash,
+    description={Action permettant au personnage de se déplacer rapidement sur de courtes distances dans le jeu, souvent utilisée pour esquiver les attaques ou franchir des obstacles.}
 }
 
-\newglossaryentry{drift}{ 
-name=drift, 
-description={Un drift représente dans LittleRogueNight une glissage continue, servant également d'attaque.}
+\newglossaryentry{rendu}{
+    name=rendu,
+    description={Processus dans lequel les éléments graphiques sont affichés à l'écran, permettant aux joueurs de visualiser le jeu et d'interagir avec lui.}
 }
 
-\newglossaryentry{item}{ 
-name=item, 
-description={Un item, dans le domaine du jeu vidéo, est un objet qui peut être collecté par un joueur ou par un personnage non-joueur.}
+\newglossaryentry{items}{
+    name=items,
+    description={Objets que le joueur peut collecter ou utiliser dans le jeu pour obtenir des avantages ou progresser dans l'aventure.}
 }
-\newglossaryentry{npc}{ 
-name=personnage non joueur, 
-description={Souvent raccourci en NPC, accronyme de la traduction anglaise, les personnage non joueurs sont des entités bienveillantes ou malveillantes qui peuvent interragir avec le joueur ou le jeu de manière autonome, sans que le joueur ne soit à l'origine de leurs actions.}
+
+\newglossaryentry{boss}{
+    name=boss,
+    description={Ennemi plus puissant et complexe que les autres, souvent rencontré à la fin d'un niveau ou d'une étape importante du jeu.}
 }
+
+\newglossaryentry{spritesheets}{
+    name=spritesheets,
+    description={Feuilles d'images regroupant plusieurs sprites utilisés pour animer les entités du jeu.}
+}
+
+\newglossaryentry{drift}{
+    name=drift,
+    description={Action permettant au personnage de glisser sur de courtes distances dans le jeu, souvent utilisée pour se déplacer rapidement ou éviter les obstacles.}
+}
+
 
 \begin{document}
 
@@ -74,16 +83,14 @@ description={Souvent raccourci en NPC, accronyme de la traduction anglaise, les 
 \newpage
 
 \section{Introduction 1-2 pages Maelig}
-Ce rapport offre une analyse détaillée du projet LittleRogueNight, un \textbf{\gls{roli}}\footnote{Rogue-like: genre de jeu vidéo qui s'inspire du jeu original 
-"Rogue", caractérisé par des environnements générés de façon procédurale, une difficulté élevée et la mort permanente du personnage du joueur.}, 
-jeu vidéo s'inspirant du célèbre jeu Little Nightmares. 
+Ce rapport offre une analyse détaillée du projet LittleRogueNight, un \textbf{\gls{roli}}, jeu vidéo s'inspirant du célèbre jeu Little Nightmares. 
 Ce projet est réalisé dans le cadre du module projet, en seconde année de licence informatique au Mans.
 Réalisé par Clément Lelandais, Enzo Desfaudais et Maelig Pesantez, le jeu est codé du 19/01/2024 au 25/04/2024, soit un peu plus de trois mois.
-LittleRogueNight est codé en majorité en langage C, car étudié depuis la première année de licence. Certains langages autre que le langage C sont toutefois présents.
+LittleRogueNight est codé en majorité en langage C, car étudié depuis la première année de licence. Certains langages autres que le langage C sont toutefois présents.
 C'est la cas du shell linux, du markdown, du LaTeX et d'autres langages présent en minorité, donc nous verrons plus tard l'utilité.
 LittleRogueNight propose une aventure où le joueur incarne un personnage emblématique naviguant à travers des labyrinthes générés aléatoirement, 
-peuplés de pièges mortels, de monstres et de boss redoutables. 
-Ce jeu offre une expérience unique à chaque partie car le labyrinthe change à chaque partie, de même que l'emplacement des monstres, offrant ainsi une rejouabilité infinie.\\
+peuplé de monstres. 
+Ce jeu offre une expérience unique à chaque partie car le labyrinthe change à chaque partie, de même que l'emplacement des monstres et autres entités, offrant ainsi une rejouabilité infinie.\\
 
 LittleRogueNight s'inspire des rogue-like traditionnels, il est donc basé sur les fondamentaux d'un rogue-like classique: \gls{labpar} combiné à un
 \gls{lagepr}, ainsi que les concepts de \textit{\gls{dianre}} et de \textit{\gls{perde}}. 
@@ -94,84 +101,85 @@ Les mécanismes de déplacement offrent une variété d'actions essentielles tel
 les \textit{\gls{drift}}(glissage continues) qui ajoutent une dimension tactique aux affrontements. Les graphismes, réalisés en pixel art, apportent une touche rétro à 
 l'esthétique du jeu, et renforçent son ambiance immersive.\\
 
-Les combats sont au cœur de l'expérience de jeu, avec un système de barre de vie symbolisée par quatre coeurs qui représentent chacuns vingt-cinq pourcent 
-de la vie du joueur. Les attaques, qu'elles soient directes ou facilitées par des \textit{\gls{items}}\footnote{Un item, dans le domaine du jeu vidéo, est un objet qui peut être 
-collecté par un joueur ou par un personnage non-joueur.} 
-spéciaux, proposent des confrontations. Chaque \textit{boss}\footnote{Un boss, dans le domaine du jeu vidéo, est un monstre plus compliqué à battre, 
-et se trouvant souvent à la fin d'un niveau.} et chaque monstre 
+Les combats sont au cœur de l'expérience de jeu, avec un système de barre de vie symbolisée par quatre coeurs qui représentent chacun vingt-cinq pourcent 
+de la vie du joueur. Les attaques, qu'elles soient directes ou facilitées par des \textit{\gls{items}} 
+spéciaux, proposent des confrontations. Chaque \textit{boss} et chaque monstre 
 possèdent leur propre barre de vie distincte.\\
 
 Enfin, les graphismes et les mécanismes de jeu s'harmonisent pour créer une expérience, faisant de LittleRogueNight un projet 
-combinant éléments classiques du genre rogue-like avec des inspirations qui enrichissent l'expérience de chaque \textit{gameplay}
-\footnote{Le gameplay regroupe les caractéristiques d'un jeu vidéo que sont l'intrigue et la façon dont on y joue, par opposition aux effets visuels et sonores. }.\\
+combinant éléments classiques du genre rogue-like avec des inspirations qui enrichissent l'expérience de chaque \textit{gameplay}.
+
 
 \section{Organisation}   
 \subsection{Outils utilisés 1 pages - clement}
-Pour organiser notre travail et permettre une collaboration efficace entre les membres du projet, nous avons mis en place un système intégré utilisant GitHub, un Trello et un Drive Google. Cette approche nous a permis de suivre l'évolution du projet, de partager les ressources nécessaires et de coordonner nos efforts de manière transparente.
+Pour organiser notre travail et permettre une collaboration efficace entre les membres du projet, nous avons mis en place un système intégré utilisant \gls{github}, un \gls{trello} et un Drive Google. Cette approche nous a permis de suivre l'évolution du projet, de partager les ressources nécessaires et de coordonner nos efforts de manière transparente.
 
-Un GitHub a été créé pour héberger notre code source et faciliter la gestion des versions. Dès qu'un fichier atteint un niveau de maturité suffisant et qu'il est fonctionnel, il est alors \textit{push} sur le dépôt distant. Cette pratique de gestion de versions nous a permis de maintenir un historique complet des modifications apportées au code, ainsi qu'une structure de répertoires cohérente. En effet, notre organisation des fichiers sur GitHub reflète celle de nos sessions de travail, avec plusieurs dossiers contenant différents types de fichiers tels que les librairies, les fichiers sources, les exécutables, les objets, les \textit{sprites}, etc. Cette cohérence dans la structure facilite la compréhension et la navigation au sein du projet pour l'ensemble de l'équipe.
+Un \gls{github} a été créé pour héberger notre code source et faciliter la gestion des versions. Dès qu'un fichier atteint un niveau de maturité suffisant et qu'il est fonctionnel, il est alors \textit{push} sur le dépôt distant. Cette pratique de gestion de versions nous a permis de maintenir un historique complet des modifications apportées au code, ainsi qu'une structure de répertoires cohérente. En effet, notre organisation des fichiers sur \gls{github} reflète celle de nos sessions de travail, avec plusieurs dossiers contenant différents types de fichiers tels que les librairies, les fichiers sources, les exécutables, les objets, les \textit{\gls{sprites}}, etc. Cette cohérence dans la structure facilite la compréhension et la navigation au sein du projet pour l'ensemble de l'équipe.
 
-Parallèlement, un Trello a été utilisé pour représenter le cahier des charges et suivre l'avancement des fonctionnalités. Des checklists ont été créées pour chaque tâche, permettant à chaque membre de l'équipe de suivre sa progression et de s'assurer que les objectifs sont atteints en temps voulu.
+Parallèlement, un \gls{trello} a été utilisé pour représenter le cahier des charges et suivre l'avancement des fonctionnalités. Des checklists ont été créées pour chaque tâche, permettant à chaque membre de l'équipe de suivre sa progression et de s'assurer que les objectifs sont atteints en temps voulu.
 
 En outre, au début du projet, nous avons également utilisé un Drive Google pour partager des documents et des ressources nécessaires à la planification et au démarrage du projet. Ce Drive a notamment été utile pour stocker des documents de référence, des captures d'écran et d'autres fichiers partagés entre les membres de l'équipe, offrant ainsi un espace de stockage centralisé et accessible à tous.
 
 L'utilisation combinée de ces outils a grandement contribué à la gestion efficace du projet, en facilitant la collaboration, le suivi de l'avancement et la gestion des ressources, tout en favorisant une communication transparente et une coordination harmonieuse entre les membres de l'équipe.
 
+
 \subsection{Rôles 1 pages - tous}
-Concernant ces tâches, Maëlig est en charge de la création des \textit{spritesheets}, qui représentent toutes les images nécessaires à l'animation des entités du jeu. Pour ce faire, il utilise un logiciel en ligne puis intègre ces animations dans le code. Outre cette responsabilité, Maëlig prend en charge la gestion des combats entre le héros Six et les concierges (monstres provenant du jeu originel) présents dans le labyrinthe. Il est également responsable du "spawn" (apparition) des entités au sein du labyrinthe, garantissant ainsi une expérience de jeu fluide et dynamique.
+Concernant ces tâches, Maëlig est en charge de la création des \textit{\gls{spritesheets}}, qui représentent toutes les images nécessaires à l'animation des entités du jeu. Pour ce faire, il utilise un logiciel en ligne puis intègre ces animations dans le code. Outre cette responsabilité, Maëlig prend en charge la gestion des combats entre le héros Six et les concierges (monstres provenant du jeu originel) présents dans le labyrinthe. Il est également responsable du "spawn" (apparition) des entités au sein du labyrinthe, garantissant ainsi une expérience de jeu fluide et dynamique.
 
 Ensuite, Enzo se concentre sur l'affichage du menu principal ainsi que des menus annexes, en mettant en place les boutons et en assurant la gestion de la souris pour l'interaction utilisateur. Il contribue également à l'apparition aléatoire des entités dans le labyrinthe, ajoutant ainsi une dimension aléatoire au jeu qui enrichit l'expérience du joueur.
 
 Enfin, Clément prend en charge la création et l'affichage du labyrinthe, une tâche cruciale pour l'immersion du joueur dans l'environnement du jeu. Il développe également les mécanismes de déplacement et de collisions des entités, assurant ainsi le réalisme et la cohérence du monde virtuel. Clément apporte également son expertise au codage de la partie combat, collaborant avec Maëlig et Enzo pour garantir son bon fonctionnement. En outre, il est responsable de l'affichage des fenêtres d'explications au début du jeu, fournissant ainsi au joueur les informations nécessaires pour commencer son aventure de manière informée et engagée.
 
+
    \clearpage
 \section{Conception 1 pages - tous}
 \subsection{Analyse et cahier des charges}
-Les règles du jeu s'articulent autour du personnage principal, Six, qui doit naviguer à travers un labyrinthe complexe en quête de la sortie, située en bas à droite de la structure. Au cours de cette progression, Six est confronté à une multitude d'ennemis qu'il doit soit éviter soit affronter.
+Les règles du jeu s'articulent autour du personnage principal, Six, qui doit naviguer à travers un \gls{labyrinthe} complexe en quête de la sortie, située en bas à droite de la structure. Au cours de cette progression, Six est confronté à une multitude d'\gls{ennemis} qu'il doit soit éviter soit affronter.
 
-Pour se défendre, Six dispose de diverses armes et mécanismes de défense. Au premier niveau, il a recours aux drifts, des objets disponibles dans le labyrinthe, pour assurer sa sécurité. Aux niveaux 2 et 3, il obtient également un briquet, une arme plus efficace pour dissuader ses adversaires.
+Pour se défendre, Six dispose de diverses \glspl{arme} et mécanismes de défense. Au premier niveau, il a recours aux \gls{drifts}, des objets disponibles dans le labyrinthe, pour assurer sa sécurité. Aux niveaux 2 et 3, il obtient également un \gls{briquet}, une arme plus efficace pour dissuader ses adversaires.
 
-La survie de Six dépend de sa capacité à gérer ses ressources, notamment ses vies limitées et sa santé. Il peut régénérer cette dernière en collectant des morceaux de viande et des potions dispersés dans le labyrinthe. Cette gestion prudente des ressources est cruciale pour affronter les dangers croissants qui ponctuent sa progression.
+La survie de Six dépend de sa capacité à gérer ses \glspl{ressource}, notamment ses vies limitées et sa santé. Il peut régénérer cette dernière en collectant des morceaux de viande et des potions dispersés dans le labyrinthe. Cette gestion prudente des ressources est cruciale pour affronter les dangers croissants qui ponctuent sa progression.
 
-La difficulté s'intensifie au fil des niveaux, notamment avec l'apparition des concierges, les gardiens redoutables des niveaux 2 et 3. Leur résistance et leur puissance augmentent progressivement, accentuant le défi pour Six. Parallèlement, l'architecture du labyrinthe évolue, passant d'une structure en bois à des murs de briques plus robustes aux niveaux supérieurs. Cette transition visuelle reflète la complexité croissante du défi et contribue à l'immersion du joueur dans l'univers du jeu.
+La difficulté s'intensifie au fil des niveaux, notamment avec l'apparition des \glspl{concierge}, les gardiens redoutables des niveaux 2 et 3. Leur résistance et leur puissance augmentent progressivement, accentuant le défi pour Six. Parallèlement, l'architecture du labyrinthe évolue, passant d'une structure en bois à des murs de briques plus robustes aux niveaux supérieurs. Cette transition visuelle reflète la complexité croissante du défi et contribue à l'immersion du joueur dans l'univers du jeu.
+
 
 
    \subsection{Définition des algorithmes 2 pages - tous}
 
 \section{Développement}
    \subsection{Fonctionnemeent des algorithmes 2 pages - clement}
-   Pour la création du labyrinthe parfait, Clément a utilisé la génération aléatoire, avec des piles et des files, rencontrée au semestre 3 en Algorithmie et Programmation 2.
-   Bien sûr, les fonctions ont été légèrement modifiées pour s'adapter à nos fins : la gestion des différentes tuiles grâce à des constantes, les 
-   paramètres de la fonction d'affichage change pour permettre d'afficher le labyrinthe directement sur le \textit{rendu}\footnote{
-   Permet d'afficher les tuiles dans la fenêtre ou encore de plaquer les tuiles.}. La fonction permet également de rendre le labyrinthe plus esthétique
-   en mettant un bloc de terre avec de l'herbe au dessus des autres blocs de terre. IMAGE + SCHEMAS. Concernant les déplacements, un décalage de quelques
-   pixels posaient problème concernant les collisions et la gravité, il a alors fallu compenser ce décalage qui est différent selon si Six regarde vers
-   la droite ou la gauche. Pour les sauts, il faut juste s'assurer que la case sur laquelle se trouve Six soit de type NUIT : dès qu'il saute, il s'agit
-   de la case du dessus.EXPLIQUER AFFICHAGE SPRITES
+   Pour la création du \gls{labyrinthe} parfait, Clément a utilisé la génération aléatoire, avec des \glspl{pile} et des \glspl{file}, rencontrée au semestre 3 en Algorithmie et Programmation 2.
+   Bien sûr, les fonctions ont été légèrement modifiées pour s'adapter à nos fins : la gestion des différentes tuiles grâce à des \glspl{constante}, les 
+   paramètres de la fonction d'affichage changent pour permettre d'afficher le labyrinthe directement sur le \textit{rendu}. La fonction permet également de rendre le labyrinthe plus esthétique
+   en plaçant un bloc de terre avec de l'herbe au-dessus des autres blocs de terre. Pour les déplacements, un décalage de quelques pixels posait problème concernant les collisions et la gravité, il a alors fallu compenser ce décalage qui est différent selon si Six regarde vers
+   la droite ou la gauche. Pour les sauts, il faut juste s'assurer que la case sur laquelle se trouve Six soit de type NUIT : dès qu'il saute, il s'agit de la case du dessus.
+EXPLIQUER AFFICHAGE SPRITES
    \subsection{Structures 1 pages - maelig}
 
-En langage C, diverses structures sont utilisées dans les fichiers du jeu, notamment les files et les piles. Ces structures jouent un rôle important en matière de stockage des données, offrant des solutions efficaces pour gérer la manipulation des informations. Les piles et les files, couramment employées en programmation, présentent des caractéristiques distinctes avec des avantages et des inconvénients spécifiques. Tant les piles que les files possèdent une tête (représentant le premier élément de la liste) ainsi qu'une queue (le dernier élément de la liste).
+En langage C, diverses \glspl{structure} sont utilisées dans les fichiers du jeu, notamment les files et les piles. Ces structures jouent un rôle important en matière de stockage des données, offrant des solutions efficaces pour gérer la manipulation des informations. Les piles et les files, couramment employées en programmation, présentent des caractéristiques distinctes avec des avantages et des inconvénients spécifiques. Tant les piles que les files possèdent une tête (représentant le premier élément de la liste) ainsi qu'une queue (le dernier élément de la liste).
 
 Les piles sont des structures dans lesquelles on peut uniquement ajouter des éléments par la tête et retirer des éléments également par la tête (opérations d'empilement et de dépilement). En revanche, les files permettent l'ajout d'éléments par la tête et leur retrait par la queue (opérations d'enfilement et de défilement).
 
 L'utilisation de piles et de files en langage C facilite la gestion efficace des données, notamment pour la manipulation des matrices. Dans le contexte du jeu, cela simplifie la création et la manipulation du labyrinthe, permettant un fonctionnement fluide et optimisé des mécanismes de jeu.
 
-La structure \textit{character} prend en charge les différentes entités présentes dans le jeu telles que le personnage contrôlé par le joueur, les monstres, ainsi que les objets comme le briquet obtenu à la fin du premier niveau. Cette structure offre une abstraction pratique pour représenter les éléments interactifs du jeu, facilitant ainsi la gestion des interactions entre eux et avec l'environnement du jeu.
+La structure \textit{\gls{character}} prend en charge les différentes entités présentes dans le jeu telles que le personnage contrôlé par le joueur, les monstres, ainsi que les objets comme le briquet obtenu à la fin du premier niveau. Cette structure offre une abstraction pratique pour représenter les éléments interactifs du jeu, facilitant ainsi la gestion des interactions entre eux et avec l'environnement du jeu.
+
 
 \subsection{Outils utilisés 2 pages maelig et enzo}
 Dans le cadre du développement de notre projet, nous avons utilisé une gamme d'outils spécifiquement sélectionnés pour faciliter le processus de création et garantir la qualité du produit final.
 
 \textbf{Environnement de développement intégré (IDE) : Visual Studio Code} :
-L'environnement de développement intégré (IDE) joue un rôle crucial dans notre processus de développement. Nous avons choisi Visual Studio Code pour sa polyvalence et sa facilité d'utilisation. L'interface intuitive de Visual Studio Code nous a permis d'écrire, de modifier et de déboguer notre code de manière efficace. De plus, l'intégration d'extensions a considérablement amélioré notre flux de travail. Parmi ces extensions, l'outil Doxygen revêt une importance particulière.
+L'environnement de développement intégré (IDE) joue un rôle crucial dans notre processus de développement. Nous avons choisi Visual Studio Code pour sa polyvalence et sa facilité d'utilisation. L'interface intuitive de Visual Studio Code nous a permis d'écrire, de modifier et de déboguer notre code de manière efficace. De plus, l'intégration d'extensions a considérablement amélioré notre flux de travail. Parmi ces extensions, l'outil \textit{\gls{doxygen}} revêt une importance particulière.
 
 \textbf{Extension Doxygen pour la documentation} :
 L'extension Doxygen pour Visual Studio Code a été un atout majeur dans la production de la documentation de notre projet. Cette extension simplifie le processus de documentation en permettant la génération de commentaires Doxygen quasi automatiquement. Grâce à des balises prédéfinies telles que "/// @brief" ou "/// @param", nous avons pu documenter efficacement notre code, facilitant ainsi sa compréhension et sa maintenance ultérieure.
 
 \textbf{Tests unitaires avec CUnit} :
-Pour garantir la fiabilité et la robustesse de notre code, nous avons intégré des tests unitaires à notre processus de développement. Pour cela, nous avons utilisé la bibliothèque CUnit, largement reconnue dans l'écosystème du langage C pour sa capacité à effectuer des tests unitaires efficaces. Ces tests ont été conçus pour évaluer le bon fonctionnement de nos fichiers .c contenant des structures cruciales, assurant ainsi la qualité du code avant son intégration.
+Pour garantir la fiabilité et la robustesse de notre code, nous avons intégré des tests unitaires à notre processus de développement. Pour cela, nous avons utilisé la bibliothèque \textit{\gls{cunit}}, largement reconnue dans l'écosystème du langage C pour sa capacité à effectuer des tests unitaires efficaces. Ces tests ont été conçus pour évaluer le bon fonctionnement de nos fichiers .c contenant des structures cruciales, assurant ainsi la qualité du code avant son intégration.
 
 \textbf{Production de sprites avec Piskel} :
 Bien que cela ne soit pas directement lié au développement du jeu en lui-même, il est important de mentionner l'outil Piskel que nous avons utilisé pour produire les sprites de LittleRogueNight. Piskel est un outil de pixel art en ligne gratuit qui nous a permis de créer des sprites uniques et personnalisés pour notre jeu, contribuant ainsi à son esthétique et à son identité visuelle.
+
 
 \subsection{Fichiers 1 pages enzo}
 
@@ -185,26 +193,28 @@ Le répertoire \textit{lib} héberge les fichiers d'en-tête contenant les décl
 
 Le dossier \textit{obj} contient les fichiers objets générés lors de la compilation du code source. Ces fichiers objets sont essentiels pour créer l'exécutable final du jeu, en regroupant toutes les parties du code source en un seul programme exécutable.
 
-Le répertoire \textit{sprites} est subdivisé en plusieurs sections, chacune contenant les différents sprites nécessaires à l'affichage du jeu. Les sprites, qui représentent des images en deux dimensions pouvant être déplacées indépendamment du décor de l'affichage, sont essentiels pour créer une expérience visuelle immersive et attrayante pour les joueurs.
+Le répertoire \textit{sprites} est subdivisé en plusieurs sections, chacune contenant les différents sprites nécessaires à l'affichage du jeu. Les \textit{\glspl{sprites}}, qui représentent des images en deux dimensions pouvant être déplacées indépendamment du décor de l'affichage, sont essentiels pour créer une expérience visuelle immersive et attrayante pour les joueurs.
 
 Enfin, le dossier \textit{test} abrite tous les fichiers de test des fonctions, garantissant qu'elles fonctionnent correctement et ne produisent pas d'erreurs inattendues. Ces tests jouent un rôle crucial dans la validation et la vérification de la qualité du code, en s'assurant que toutes les fonctionnalités du jeu répondent aux normes spécifiées.
 
 En complément de cette structure de fichiers, nous avons inclus un fichier \textit{makefile} facilitant la compilation et la création des fichiers objets ainsi que de l'exécutable final. Ce makefile simplifie le processus de développement en automatisant les tâches de compilation, garantissant ainsi une gestion efficace et cohérente du code source.
 
+
    
 \section{Conclusion 1 a 2 pages Clément et maelig}
 
-Le projet LittleRogueNight a atteint ses objectifs fixés en termes de fonctionnalités de base. Le jeu est fluide, ce qui peux être difficile à mettre en place au vu de la gestion de mémoire de la librairie SDL et du nombre de sprites présents sur l'écran. La partie recherche est réussie grâce au principes du labyrinthe parfait. La détection du héros par les ennemis est fonctionnelle: en suivant un système de déplacement simple et de spawn aléatoire, on obtient des monstres sans IA qui ne restent pas immobiles. Les collisions et la gravité ont également étées ajoutées comme prévu et fonctionne parfaitement. Les menus ont été implémentés conformément aux spécifications, offrant une navigation intuitive en dehors du jeu. Cependant, des fonctionnalités supplémentaires, telles que des spécificités pour les ennemis et les niveaux, n'ont pas pu être implémentées en raison de contraintes temporelles.\\
+Le projet LittleRogueNight a atteint ses objectifs fixés en termes de fonctionnalités de base. Le jeu est fluide, ce qui peut être difficile à mettre en place au vu de la gestion de la mémoire de la \gls{sdl} et du nombre de \glspl{sprites} présents sur l'écran. La partie recherche est réussie grâce au principe du labyrinthe parfait. La détection du héros par les ennemis est fonctionnelle : en suivant un système de déplacement simple et de spawn aléatoire, on obtient des monstres sans \gls{ia} qui ne restent pas immobiles. Les collisions et la gravité ont également été ajoutées comme prévu et fonctionnent parfaitement. Les menus ont été implémentés conformément aux spécifications, offrant une navigation intuitive en dehors du jeu. Cependant, des fonctionnalités supplémentaires, telles que des spécificités pour les ennemis et les niveaux, n'ont pas pu être implémentées en raison de contraintes temporelles.
 
-Les éléments prévus mais non réalisés, tels que des passages secrets et des salles spéciales, auraient pu ajouter de la variété et de l'intérêt au jeu. Cependant, ils auraient demandé de trop grosse modification de l'algorithme de génération du labyrinthe et nous avons décidé de nous concentrer sur des fonctionnalités de base pour obtenir un jeu fonctionnel. D'autre part, l'ajout de niveaux supplémentaires aurait renforcé la durée de vie et la richesse du gameplay. Enfin, offrir au joueur des "pouvoirs" spéciaux tels que l'invisibilité ou la téléportation, avec un système de cooldown, aurait permis d'ajouter une dimension stratégique et tactique au jeu.\\
+Les éléments prévus mais non réalisés, tels que des passages secrets et des salles spéciales, auraient pu ajouter de la variété et de l'intérêt au jeu. Cependant, ils auraient demandé de trop grosses modifications de l'algorithme de génération du labyrinthe et nous avons décidé de nous concentrer sur des fonctionnalités de base pour obtenir un jeu fonctionnel. D'autre part, l'ajout de niveaux supplémentaires aurait renforcé la durée de vie et la richesse du \gls{gameplay}. Enfin, offrir au joueur des "pouvoirs" spéciaux tels que l'invisibilité ou la téléportation, avec un système de cooldown, aurait permis d'ajouter une dimension stratégique et tactique au jeu.
 
-Le projet LittleRogueNight, malgré quelques lacunes, se distingue comme une réalisation robuste et fonctionnelle, offrant une expérience de jeu gratifiante. Cette étude permet d'entretenir une évaluation positive de ce projet, qui a représenté l'un des premiers efforts collaboratifs de l'équipe de recherche. Contrairement aux pratiques usuelles observées dans le développement de logiciels individuels, la mise en œuvre de ce projet a exigé l'adoption de nouveaux protocoles de travail et d'outils tels que GitHub et des solutions de gestion de projet. En outre, celui-ci a permis de mettre en œuvre les compétences informatiques acquises au cours des deux premières années d'études universitaires en informatique, favorisant ainsi le développement de compétences en programmation et en conception de jeux vidéo collaboration au sein de l'équipe.\\
+Le projet LittleRogueNight, malgré quelques lacunes, se distingue comme une réalisation robuste et fonctionnelle, offrant une expérience de jeu gratifiante. Cette étude permet d'entretenir une évaluation positive de ce projet, qui a représenté l'un des premiers efforts collaboratifs de l'équipe de recherche. Contrairement aux pratiques usuelles observées dans le développement de logiciels individuels, la mise en œuvre de ce projet a exigé l'adoption de nouveaux protocoles de travail et d'outils tels que GitHub et des solutions de gestion de projet. En outre, celui-ci a permis de mettre en œuvre les compétences informatiques acquises au cours des deux premières années d'études universitaires en informatique, favorisant ainsi le développement de compétences en programmation et en conception de jeux vidéo au sein de l'équipe.
+
 \clearpage
 
-\section{Glossaire ou lexique}
+\section{Glossaire}
+\printglossary
 
 \section{Annexe}
-   \subsection{Bibliographie}
-   \printglossary
+\subsection{Bibliographie}
 
 \end{document}
