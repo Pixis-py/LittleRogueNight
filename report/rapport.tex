@@ -23,7 +23,7 @@ description={Le die and retry est un mécanisme de jeu vidéo, un élément de g
 
 \newglossaryentry{perde}{ 
 name=permadeath, 
-description={De l'anglais permanent death, il signifie que mourrir fait recommencer le joueur depuis le début} 
+description={De l'anglais permanent death, il signifie que mourrir fait recommencer le joueur depuis le début.} 
 }
 
 \newglossaryentry{labpar}{ 
@@ -34,7 +34,7 @@ description={Un labyrinthe parfait est un type de labyrinthe créé de manière 
 \newglossaryentry{lagepr}{ 
 name=labyrinthe généré procéduralement, 
 description={Un labyrinthe parfait généré procéduralement est un type de labyrinthe 
-créé de manière aléatoire qui garantit qu'il n'y a qu'un seul chemin reliant l'entrée à la fin du labyrinthe}
+créé de manière aléatoire qui garantit qu'il n'y a qu'un seul chemin reliant l'entrée à la fin du labyrinthe.}
 }
 
 \newglossaryentry{dash}{ 
@@ -44,12 +44,12 @@ description={Un dash représente dans LittleRogueNight un saut continu.}
 
 \newglossaryentry{drift}{ 
 name=drift, 
-description={Un drift représente dans LittleRogueNight une glissage continue, servant également d'attaque}
+description={Un drift représente dans LittleRogueNight une glissage continue, servant également d'attaque.}
 }
 
 \newglossaryentry{item}{ 
 name=item, 
-description={Un item, dans le domaine du jeu vidéo, est un objet qui peut être collecté par un joueur ou par un \gls{npc}.}
+description={Un item, dans le domaine du jeu vidéo, est un objet qui peut être collecté par un joueur ou par un personnage non-joueur.}
 }
 \newglossaryentry{npc}{ 
 name=personnage non joueur, 
@@ -148,28 +148,52 @@ combinant éléments classiques du genre rogue-like avec des inspirations qui en
    \subsection{Structures et mécanismes 1 pages - maelig}
    \subsection{Structures :}
 
-   En langage C, diverses structures sont utilisées dans les fichiers du jeu, notamment les files et les piles. 
-   Ces structures jouent un rôle important en matière de stockage des données. Les piles et les files, couramment employées en programmation, 
-   présentent des caractéristiques distinctes avec des avantages et des inconvénients spécifiques. Tant les piles que les files possèdent une tête 
-   (représentant le premier élément de la liste) ainsi qu'une queue (le dernier élément de la liste).
+En langage C, diverses structures sont utilisées dans les fichiers du jeu, notamment les files et les piles. Ces structures jouent un rôle important en matière de stockage des données, offrant des solutions efficaces pour gérer la manipulation des informations. Les piles et les files, couramment employées en programmation, présentent des caractéristiques distinctes avec des avantages et des inconvénients spécifiques. Tant les piles que les files possèdent une tête (représentant le premier élément de la liste) ainsi qu'une queue (le dernier élément de la liste).
 
-   Les piles sont des structures dans lesquelles on peut uniquement ajouter des éléments par la tête et retirer des éléments également par la tête 
-   (opérations d'empilement et de dépilement). En revanche, les files permettent l'ajout d'éléments par la tête et leur retrait par la queue 
-   (opérations d'enfilement et de déflement).\\
+Les piles sont des structures dans lesquelles on peut uniquement ajouter des éléments par la tête et retirer des éléments également par la tête (opérations d'empilement et de dépilement). En revanche, les files permettent l'ajout d'éléments par la tête et leur retrait par la queue (opérations d'enfilement et de défilement).
 
-   L'utilisation de piles et de files en langage C facilite la gestion efficace des matrices, simplifiant ainsi la création et la manipulation du 
-   labyrinthe dans le jeu. La structure \textit{entity} prend en charge les différentes entités présentes dans le jeu telles que le personnage contrôlé 
-   par le joueur, les monstres, ainsi que les objets comme le briquet obtenu à la fin du premier niveau.\\
+L'utilisation de piles et de files en langage C facilite la gestion efficace des données, notamment pour la manipulation des matrices. Dans le contexte du jeu, cela simplifie la création et la manipulation du labyrinthe, permettant un fonctionnement fluide et optimisé des mécanismes de jeu.
+
+La structure \textit{entity} prend en charge les différentes entités présentes dans le jeu telles que le personnage contrôlé par le joueur, les monstres, ainsi que les objets comme le briquet obtenu à la fin du premier niveau. Cette structure offre une abstraction pratique pour représenter les éléments interactifs du jeu, facilitant ainsi la gestion des interactions entre eux et avec l'environnement du jeu.
 
 
    \textbf{Mécanismes :}\\
    \subsection{Outils utilisés 2 pages maelig et enzo}
-   \subsection{Fichiers 1 pages enzo}
+   Dans le cadre du développement de notre projet, nous avons utilisé une gamme d'outils spécifiquement sélectionnés pour faciliter le processus de création et garantir la qualité du produit final.
 
-   Les fichiers ont été créés pour gérer chacun une partie du jeu, ils ont ainsi été rangés dans différents dossier selon leur types. On retrouve donc dans le fichier \textit{src} tous les fichiers contenant du code source en langage C. Le fichier \textit{bin} contient lui l'executable du jeu et des fichiers de test. Le fichier \textit{lib} contient quand à lui les fichiers d'en tête contenant les déclarations de fonctions, les définitions des structures et des constantes.
-   Le fichier \textit{obj} contient les fichiers objets créés lors de la compilation et servant à créés l'éxecutables final.
-   Le fichier \textit{sprites} est lui séparée en plusieurs partie contenant chacune les différents \textit{sprites}\footnote{
-   désigne une image en deux dimensions qui peut être déplacée indépendamment du fond (ou décor) de l'affichage} néccésaire à l'affichage du jeu. Et le fichier \textit{test} contient tout les fichiers de test des fonctions permettant d'assurer qu'ils ne produisent pas d'erreurs. Enfin, on retrouve le \textit{makefile} permettant de compilée et de créer tous les fichiers objets et l'éxécutable final.
+\textbf{Gestion de version avec GitHub} :
+Pour assurer une gestion efficace des versions de notre code source, nous avons opté pour l'utilisation de GitHub. Ce système de contrôle de version nous a permis de suivre l'évolution du code tout au long du projet en enregistrant les modifications apportées par le biais de push et de commits réguliers. Cette approche collaborative a favorisé une coordination efficace au sein de l'équipe de développement.
+
+\textbf{Environnement de développement intégré (IDE) : Visual Studio Code} :
+L'environnement de développement intégré (IDE) joue un rôle crucial dans notre processus de développement. Nous avons choisi Visual Studio Code pour sa polyvalence et sa facilité d'utilisation. L'interface intuitive de Visual Studio Code nous a permis d'écrire, de modifier et de déboguer notre code de manière efficace. De plus, l'intégration d'extensions a considérablement amélioré notre flux de travail. Parmi ces extensions, l'outil Doxygen revêt une importance particulière.
+
+\textbf{Extension Doxygen pour la documentation} :
+L'extension Doxygen pour Visual Studio Code a été un atout majeur dans la production de la documentation de notre projet. Cette extension simplifie le processus de documentation en permettant la génération de commentaires Doxygen quasi automatiquement. Grâce à des balises prédéfinies telles que "/// @brief" ou "/// @param", nous avons pu documenter efficacement notre code, facilitant ainsi sa compréhension et sa maintenance ultérieure.
+
+\textbf{Tests unitaires avec CUnit} :
+Pour garantir la fiabilité et la robustesse de notre code, nous avons intégré des tests unitaires à notre processus de développement. Pour cela, nous avons utilisé la bibliothèque CUnit, largement reconnue dans l'écosystème du langage C pour sa capacité à effectuer des tests unitaires efficaces. Ces tests ont été conçus pour évaluer le bon fonctionnement de nos fichiers .c contenant des structures cruciales, assurant ainsi la qualité du code avant son intégration.
+
+\textbf{Production de sprites avec Piskel} :
+Bien que cela ne soit pas directement lié au développement du jeu en lui-même, il est important de mentionner l'outil Piskel que nous avons utilisé pour produire les sprites de LittleRogueNight. Piskel est un outil de pixel art en ligne gratuit qui nous a permis de créer des sprites uniques et personnalisés pour notre jeu, contribuant ainsi à son esthétique et à son identité visuelle.
+
+\subsection{Fichiers 1 pages enzo}
+
+Les fichiers ont été organisés de manière à gérer chaque aspect du jeu de manière efficace, en les rangeant dans différents dossiers en fonction de leur type et de leur fonctionnalité. Cette structuration nous a permis de maintenir un code propre et bien organisé tout au long du développement.
+
+Dans le dossier \textit{src}, nous avons regroupé tous les fichiers contenant du code source écrit en langage C. Cette section constitue le cœur du projet, abritant les implémentations des fonctionnalités principales du jeu, telles que la logique de jeu, la gestion des personnages et des niveaux.
+
+Le dossier \textit{bin} contient l'exécutable du jeu ainsi que les fichiers de test associés. Ces fichiers de test sont essentiels pour vérifier la robustesse et la fiabilité de notre code, en s'assurant que toutes les fonctionnalités répondent aux exigences spécifiées.
+
+Le répertoire \textit{lib} héberge les fichiers d'en-tête contenant les déclarations de fonctions, les définitions de structures et les constantes utilisées dans notre code source. Cette section joue un rôle crucial dans l'organisation et la documentation de notre projet, en fournissant une référence claire pour toutes les fonctions et structures implémentées.
+
+Le dossier \textit{obj} contient les fichiers objets générés lors de la compilation du code source. Ces fichiers objets sont essentiels pour créer l'exécutable final du jeu, en regroupant toutes les parties du code source en un seul programme exécutable.
+
+Le répertoire \textit{sprites} est subdivisé en plusieurs sections, chacune contenant les différents sprites nécessaires à l'affichage du jeu. Les sprites, qui représentent des images en deux dimensions pouvant être déplacées indépendamment du décor de l'affichage, sont essentiels pour créer une expérience visuelle immersive et attrayante pour les joueurs.
+
+Enfin, le dossier \textit{test} abrite tous les fichiers de test des fonctions, garantissant qu'elles fonctionnent correctement et ne produisent pas d'erreurs inattendues. Ces tests jouent un rôle crucial dans la validation et la vérification de la qualité du code, en s'assurant que toutes les fonctionnalités du jeu répondent aux normes spécifiées.
+
+En complément de cette structure de fichiers, nous avons inclus un fichier \textit{makefile} facilitant la compilation et la création des fichiers objets ainsi que de l'exécutable final. Ce makefile simplifie le processus de développement en automatisant les tâches de compilation, garantissant ainsi une gestion efficace et cohérente du code source.
+
    
 \section{Conclusion 1 a 2 pages Clément et maelig}
 
