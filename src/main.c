@@ -21,7 +21,7 @@ int main(){
             if(chercher_chemin(lab, N - 1, M - 1, 0, 0)){ 
                 if(*choix_perso == 0){/*Cas ou l'utilisateur choisi de jouer avec six*/
                     character_t * six; // Déclaration du personnage
-                    create(&six,NB_PV_JOUEUR, 50); // Création du personnage
+                    create(&six,NB_PV_JOUEUR, 25); // Création du personnage
                     choice = anim(0, NULL, lab, 1, &six);
                     if(choice == 1){
                         creer_lab(lab);
