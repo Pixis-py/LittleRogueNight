@@ -35,7 +35,7 @@ void destruct(character_t * c){
 /// @param c 
 /// @param a 
 void pv_loss(character_t ** c, int a){
-   (*c)->pv = -a;
+   (*c)->pv -= a;
    if((*c)->pv < 0){
       (*c)->pv = 0;
    }
@@ -51,9 +51,3 @@ void pv_gain(character_t ** c, int a){
    }
 }
 
-/// @brief Function pv_gain is used to make the character a lose the amount of PV corresponding to e damage
-/// @param c 
-/// @param e 
-void attack(character_t ** c, character_t ** e){
-   pv_loss(c, (*e)->damage);
-}
