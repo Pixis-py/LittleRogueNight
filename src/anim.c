@@ -64,23 +64,68 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
     int lkpdash; // Vaut 1 si la dernière combinaison comprenait espace (donc un dash)
     int lastDirection = 1; // Vaut 1 ou 2 selon la dernière direction
     int retirer_pot = 0;
+    int retirer_pot2 = 0;
+    int retirer_pot3 = 0;
+    int retirer_pot4 = 0;
+    int retirer_pot5 = 0;
+
     struct timespec timestamp, timestampnew;
     clock_gettime(CLOCK_REALTIME, &timestamp);
 
 /* ----------------------------------------------------- Spawn aléatoire des entités ----------------------------------------------------- */
 
     character_t * jani;
-    if(niveau == 1)
+    character_t * jani2;
+    character_t * jani3;
+    character_t * jani4;
+    character_t * jani5;
+    if(niveau == 1){
         create(&jani, 50, 10);
-    else if(niveau == 2)
+        create(&jani2, 50, 10);
+        create(&jani3, 50, 10);
+        create(&jani4, 50, 10);
+        create(&jani5, 50, 10);
+    }
+    else if(niveau == 2){
         create(&jani, 50, 20);
-    else if(niveau == 3)
+        create(&jani2, 50, 20);
+        create(&jani3, 50, 20);
+        create(&jani4, 50, 20);
+        create(&jani5, 50, 20);
+    }
+    else if(niveau == 3){
         create(&jani, 50, 30);
+        create(&jani2, 50, 20);
+        create(&jani3, 50, 20);
+        create(&jani4, 50, 20);
+        create(&jani5, 50, 20);
+    }
     creer_coord(&jani, lab);
+    creer_coord(&jani2, lab);
+    creer_coord(&jani3, lab);
+    creer_coord(&jani4, lab);
+    creer_coord(&jani5, lab);
+
 
     character_t * pot;
+    character_t * pot2;
+    character_t * pot3;
+    character_t * pot4;
+    character_t * pot5;
+
     create(&pot, 50, 0);
+    create(&pot2, 50, 0);
+    create(&pot3, 50, 0);
+    create(&pot4, 50, 0);
+    create(&pot5, 50, 0);
+
     creer_coord(&pot, lab);
+    creer_coord(&pot2, lab);
+    creer_coord(&pot3, lab);
+    creer_coord(&pot4, lab);
+    creer_coord(&pot5, lab);
+
+
     
 /* ----------------------------------------------------- Création et gestion de la fenêtre SDL ----------------------------------------------------- */
 
@@ -140,7 +185,17 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         SDL_Rect position = {FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
 			            SDL_Rect pvpos = {0, 0, 256, 256};
                         SDL_Rect janipos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect janipos2 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect janipos3 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect janipos4 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect janipos5 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+
                         SDL_Rect potpos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect potpos2 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect potpos3 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect potpos4 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect potpos5 = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+
                         SDL_Rect lighterpos = {0, 0, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
                         SDL_Rect run[11] = {0, 0, FORMATPIXEL, FORMATPIXEL};
@@ -246,9 +301,31 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         while (!quit){
                             janipos.x = (((jani->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             janipos.y = (((jani->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            janipos2.x = (((jani2->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            janipos2.y = (((jani2->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            janipos3.x = (((jani3->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            janipos3.y = (((jani3->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            janipos4.x = (((jani4->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            janipos4.y = (((jani4->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            janipos5.x = (((jani5->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            janipos5.y = (((jani5->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+
                             potpos.x = (((pot->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             potpos.y = (((pot->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
-                            printf("POTION %d, %d\n", pot->x,pot->y);
+                            potpos2.x = (((pot2->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            potpos2.y = (((pot2->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            potpos3.x = (((pot3->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            potpos3.y = (((pot3->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            potpos4.x = (((pot4->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            potpos4.y = (((pot4->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            potpos5.x = (((pot5->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                            potpos5.y = (((pot5->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                            printf("POTION 1 %d, %d\n", pot->x,pot->y);
+                            printf("POTION 2 %d, %d\n", pot2->x,pot2->y);
+                            printf("POTION 3 %d, %d\n", pot3->x,pot3->y);
+                            printf("POTION 4 %d, %d\n", pot4->x,pot4->y);
+                            printf("POTION 5 %d, %d\n", pot5->x,pot5->y);
+
                             printf("Six : %d, %d\n", (position.x / FORMATPIXELZOOM / 9) + coefX, (position.y / FORMATPIXELZOOM / 9) + coefY);
                             lighterpos.x = (((M) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             lighterpos.y = (((N-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
@@ -288,9 +365,21 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             if((*player)->pv == 0){
                                 position.x = FORMATPIXELZOOM, position.y = FORMATPIXELZOOM, coefX = 0, coefY = 0;
                                 creer_coord(&pot, lab);
+                                creer_coord(&pot2, lab);
+                                creer_coord(&pot3, lab);
+                                creer_coord(&pot4, lab);
+                                creer_coord(&pot5, lab);
                                 creer_coord(&jani, lab);
+                                creer_coord(&jani2, lab);
+                                creer_coord(&jani3, lab);
+                                creer_coord(&jani4, lab);
+                                creer_coord(&jani5, lab);
                                 niveau = 1;
                                 pv_gain(&jani, 50 - jani->pv);
+                                pv_gain(&jani2, 50 - jani2->pv);
+                                pv_gain(&jani3, 50 - jani3->pv);
+                                pv_gain(&jani4, 50 - jani4->pv);
+                                pv_gain(&jani5, 50 - jani5->pv);
                                 pv_gain(player, 100);
                             }
 
@@ -556,9 +645,14 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                                 SDL_Delay(20);
                             }
 
-                            if(jani->pv > 0)
+                            if(jani->pv > 0){
                                 SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&janipos); // anim janitor
+                                SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&janipos2); // anim janitor
+                                SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&janipos3); // anim janitor
+                                SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&janipos4); // anim janitor
+                                SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&janipos5); // anim janitor
 
+                            }
 
                             printf("PV monstre : %d\tATT MONSTRE : %d\tPV Six : %d\n", jani->pv, jani->damage, (*player)->pv);
                             if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos.x / FORMATPIXELZOOM / 9)) < 2
@@ -580,6 +674,86 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                                     clock_gettime(CLOCK_REALTIME, &timestamp);
                                 }
                             }
+                            printf("PV monstre  2 : %d\tATT MONSTRE : %d\tPV Six : %d\n", jan2->pv, jani2->damage, (*player)->pv);
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos2.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos2.y / FORMATPIXELZOOM / 9)) == 0
+                            && !glissade && jani2->pv > 0){
+                            //on garde vrmt les y ? autant qu'il prenne des degats uniquement s'il est proche en x et non en hauteur ?
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 0.75){
+                                    pv_loss(player, jani2->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+                            else if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos2.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos2.y / FORMATPIXELZOOM / 9)) == 0
+                            && glissade && (droite || gauche)){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 1.75){
+                                    pv_loss(&jani2, (*player)->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+                            printf("PV monstre 3 : %d\tATT MONSTRE : %d\tPV Six : %d\n", jani3->pv, jani3->damage, (*player)->pv);
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos3.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos3.y / FORMATPIXELZOOM / 9)) == 0
+                            && !glissade && jani3->pv > 0){
+                            //on garde vrmt les y ? autant qu'il prenne des degats uniquement s'il est proche en x et non en hauteur ?
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 0.75){
+                                    pv_loss(player, jani3->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+                            else if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos3.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos3.y / FORMATPIXELZOOM / 9)) == 0
+                            && glissade && (droite || gauche)){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 1.75){
+                                    pv_loss(&jani3, (*player)->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+                            printf("PV monstre 4 : %d\tATT MONSTRE : %d\tPV Six : %d\n", jani4->pv, jani4->damage, (*player)->pv);
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos4.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos4.y / FORMATPIXELZOOM / 9)) == 0
+                            && !glissade && jani4->pv > 0){
+                            //on garde vrmt les y ? autant qu'il prenne des degats uniquement s'il est proche en x et non en hauteur ?
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 0.75){
+                                    pv_loss(player, jani4->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+                            else if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos4.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos4.y / FORMATPIXELZOOM / 9)) == 0
+                            && glissade && (droite || gauche)){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 1.75){
+                                    pv_loss(&jani4, (*player)->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+                            printf("PV monstre 5 : %d\tATT MONSTRE : %d\tPV Six : %d\n", jani5->pv, jani5->damage, (*player)->pv);
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos5.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos5.y / FORMATPIXELZOOM / 9)) == 0
+                            && !glissade && jani5->pv > 0){
+                            //on garde vrmt les y ? autant qu'il prenne des degats uniquement s'il est proche en x et non en hauteur ?
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 0.75){
+                                    pv_loss(player, jani5->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
+                            else if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos5.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos5.y / FORMATPIXELZOOM / 9)) == 0
+                            && glissade && (droite || gauche)){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 1.75){
+                                    pv_loss(&jani5, (*player)->damage);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                            }
 
                             if(abs((position.x / FORMATPIXELZOOM / 9) - (potpos.x / FORMATPIXELZOOM / 9)) < 2
                             && abs((position.y / FORMATPIXELZOOM / 9) - (potpos.y / FORMATPIXELZOOM / 9)) == 0
@@ -591,9 +765,60 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                                 }
                                 retirer_pot = 1;
                             }
-
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (potpos2.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (potpos2.y / FORMATPIXELZOOM / 9)) == 0
+                            && !retirer_pot2 && (*player)->pv < 100){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                                    pv_gain(player, 35);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                                retirer_pot2 = 1;
+                            }
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (potpos3.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (potpos3.y / FORMATPIXELZOOM / 9)) == 0
+                            && !retirer_pot3 && (*player)->pv < 100){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                                    pv_gain(player, 35);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                                retirer_pot3 = 1;
+                            }
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (potpos4.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (potpos4.y / FORMATPIXELZOOM / 9)) == 0
+                            && !retirer_pot4 && (*player)->pv < 100){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                                    pv_gain(player, 35);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                                retirer_pot4 = 1;
+                            }
+                            if(abs((position.x / FORMATPIXELZOOM / 9) - (potpos5.x / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (potpos5.y / FORMATPIXELZOOM / 9)) == 0
+                            && !retirer_pot5 && (*player)->pv < 100){
+                                clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                                    pv_gain(player, 35);
+                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                                }
+                                retirer_pot5 = 1;
+                            }
+                            
+                            
+                            
                             if(!retirer_pot)
                                 SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&potpos); // anim potion
+                            if(!retirer_pot2)
+                                SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&potpos2); // anim potion
+                            if(!retirer_pot3)
+                                SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&potpos3); // anim potion
+                            if(!retirer_pot4)
+                                SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&potpos4); // anim potion
+                            if(!retirer_pot5)
+                                SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&potpos5); // anim potion
+                            
                             printf("Coordonées aprè janipos : %d, %d\n\n", jani->x, jani->y);
                             if(niveau == 1){
                                 SDL_RenderCopy(pRenderer,pTextureLighter,lighter+((l1++)%15), &lighterpos); // anim lighter
