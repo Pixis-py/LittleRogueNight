@@ -560,9 +560,9 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                                 SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&janipos); // anim janitor
 
 
-                            printf("PV monstre : %d\tPV Six : %d\n", jani->pv, (*player)->pv);
+                            printf("PV monstre : %d\tATT MONSTRE : %d\tPV Six : %d\n", jani->pv, jani->damage, (*player)->pv);
                             if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos.x / FORMATPIXELZOOM / 9)) < 2
-                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos.y / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos.y / FORMATPIXELZOOM / 9)) == 0
                             && !glissade && jani->pv > 0){
                             //on garde vrmt les y ? autant qu'il prenne des degats uniquement s'il est proche en x et non en hauteur ?
                                 clock_gettime(CLOCK_REALTIME, &timestampnew);
@@ -572,17 +572,17 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                                 }
                             }
                             else if(abs((position.x / FORMATPIXELZOOM / 9) - (janipos.x / FORMATPIXELZOOM / 9)) < 2
-                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos.y / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (janipos.y / FORMATPIXELZOOM / 9)) == 0
                             && glissade && (droite || gauche)){
                                 clock_gettime(CLOCK_REALTIME, &timestampnew);
-                                if(timestampnew.tv_sec- timestamp.tv_sec > 0.5){
+                                if(timestampnew.tv_sec- timestamp.tv_sec > 1.75){
                                     pv_loss(&jani, (*player)->damage);
                                     clock_gettime(CLOCK_REALTIME, &timestamp);
                                 }
                             }
 
                             if(abs((position.x / FORMATPIXELZOOM / 9) - (potpos.x / FORMATPIXELZOOM / 9)) < 2
-                            && abs((position.y / FORMATPIXELZOOM / 9) - (potpos.y / FORMATPIXELZOOM / 9)) < 2
+                            && abs((position.y / FORMATPIXELZOOM / 9) - (potpos.y / FORMATPIXELZOOM / 9)) == 0
                             && !retirer_pot && (*player)->pv < 100){
                                 clock_gettime(CLOCK_REALTIME, &timestampnew);
                                 if(timestampnew.tv_sec - timestamp.tv_sec > 1){
