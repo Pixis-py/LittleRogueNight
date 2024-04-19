@@ -106,32 +106,35 @@ combinant éléments classiques du genre rogue-like avec des inspirations qui en
 \footnote{Le gameplay regroupe les caractéristiques d'un jeu vidéo que sont l'intrigue et la façon dont on y joue, par opposition aux effets visuels et sonores. }.\\
 
 \section{Organisation}   
-   \subsection{Outils utilisés 1 pages - clement}
-   Pour organiser notre travail et pouvoir avancer sur ce que les membres du projet ont réalisé, un Github a été mis en place. Ainsi, dès qu'un fichier est
-   suffisamment avancé et qu'il est fonctionnel, il est alors \textit{push}\footnote{Dépose le répertoire local sur le répertoire distant}.
-   Ce Github reprend la même organisation des répertoires que les notres sur nos sessions de travail : plusieurs dossiers comprenant les différents types 
-   de fichiers comme les librairies, les fichiers sources, les exécutables, ou objets, les \textit{sprites}
-   \footnote{Héros/Personnage du jeu contrôlé par l'utilisateur.}etc. Cela facilite la compréhension.
+\subsection{Outils utilisés 1 pages - clement}
+Pour organiser notre travail et permettre une collaboration efficace entre les membres du projet, nous avons mis en place un système intégré utilisant GitHub, un Trello et un Drive Google. Cette approche nous a permis de suivre l'évolution du projet, de partager les ressources nécessaires et de coordonner nos efforts de manière transparente.
 
-   Un Trello a également été utilisé pour représenter le cahier des charges avec des 
-   fonctionnalités qui nous intéressent comme des checklists pour voir l'avancée de chacun des membres selon les dates.
-   \subsection{Rôles 1 pages - tous}
-   Concernant ces tâches, Maëlig a réalisé les \textit{spritesheets}\footnote{"Feuille de sprites" en français, il s'agit de toutes les images nécessaires
-   à l'animation des entités du jeu.} grâce à un logiciel en ligne, il les a ensuite animé sur le code cette fois. Puis, il s'est occupé de la gestion du 
-   des combats entre le héros Six et les concierges présents dans le labyrinthe.
+Un GitHub a été créé pour héberger notre code source et faciliter la gestion des versions. Dès qu'un fichier atteint un niveau de maturité suffisant et qu'il est fonctionnel, il est alors \textit{push} sur le dépôt distant. Cette pratique de gestion de versions nous a permis de maintenir un historique complet des modifications apportées au code, ainsi qu'une structure de répertoires cohérente. En effet, notre organisation des fichiers sur GitHub reflète celle de nos sessions de travail, avec plusieurs dossiers contenant différents types de fichiers tels que les librairies, les fichiers sources, les exécutables, les objets, les \textit{sprites}, etc. Cette cohérence dans la structure facilite la compréhension et la navigation au sein du projet pour l'ensemble de l'équipe.
 
-   Ensuite, Enzo s'est proposé d'afficher le menu principal avec les boutons et la gestion de la souris. Il a également aidé à l'apparition aléatoire des 
-   concierges dans le labyrinthe. 
-   
-   Enfin, Clément s'est chargé de l'affichage du labyrinthe, des déplacements et collisions des entités, de la partie combat pour aider Maëlig et Enzo
-   et de l'affichage des fenêtres d'explications au début du jeu.
+Parallèlement, un Trello a été utilisé pour représenter le cahier des charges et suivre l'avancement des fonctionnalités. Des checklists ont été créées pour chaque tâche, permettant à chaque membre de l'équipe de suivre sa progression et de s'assurer que les objectifs sont atteints en temps voulu.
+
+En outre, au début du projet, nous avons également utilisé un Drive Google pour partager des documents et des ressources nécessaires à la planification et au démarrage du projet. Ce Drive a notamment été utile pour stocker des documents de référence, des captures d'écran et d'autres fichiers partagés entre les membres de l'équipe, offrant ainsi un espace de stockage centralisé et accessible à tous.
+
+L'utilisation combinée de ces outils a grandement contribué à la gestion efficace du projet, en facilitant la collaboration, le suivi de l'avancement et la gestion des ressources, tout en favorisant une communication transparente et une coordination harmonieuse entre les membres de l'équipe.
+
+\subsection{Rôles 1 pages - tous}
+Concernant ces tâches, Maëlig est en charge de la création des \textit{spritesheets}, qui représentent toutes les images nécessaires à l'animation des entités du jeu. Pour ce faire, il utilise un logiciel en ligne puis intègre ces animations dans le code. Outre cette responsabilité, Maëlig prend en charge la gestion des combats entre le héros Six et les concierges (monstres provenant du jeu originel) présents dans le labyrinthe. Il est également responsable du "spawn" (apparition) des entités au sein du labyrinthe, garantissant ainsi une expérience de jeu fluide et dynamique.
+
+Ensuite, Enzo se concentre sur l'affichage du menu principal ainsi que des menus annexes, en mettant en place les boutons et en assurant la gestion de la souris pour l'interaction utilisateur. Il contribue également à l'apparition aléatoire des entités dans le labyrinthe, ajoutant ainsi une dimension aléatoire au jeu qui enrichit l'expérience du joueur.
+
+Enfin, Clément prend en charge la création et l'affichage du labyrinthe, une tâche cruciale pour l'immersion du joueur dans l'environnement du jeu. Il développe également les mécanismes de déplacement et de collisions des entités, assurant ainsi le réalisme et la cohérence du monde virtuel. Clément apporte également son expertise au codage de la partie combat, collaborant avec Maëlig et Enzo pour garantir son bon fonctionnement. En outre, il est responsable de l'affichage des fenêtres d'explications au début du jeu, fournissant ainsi au joueur les informations nécessaires pour commencer son aventure de manière informée et engagée.
+
    \clearpage
 \section{Conception 1 pages - tous}
-   \subsection{Analyse et cahier des charges}
-   Les règles du jeu sont les suivantes : Six, le joueur incarné, doit chercher la fin du labyrinthe en bas à droite tout en évitant ou combattant les 
-   nombreux ennemis. Pour cela, il peut utiliser les drifts pour le premier niveau mais également le briquet au niveau 2. Il possède plusieurs vies à 
-   utiliser à bon escient qu'il peut régénérer grâce à des morceaux de viande et des potions présentes un peu partout dans le labyrinthe. L'autre
-   différence avec le niveau 2 est le nombre de points de vie des concierges qui augmente légèrement mais également le style du labyrinthe qui sera en bois.
+\subsection{Analyse et cahier des charges}
+Les règles du jeu s'articulent autour du personnage principal, Six, qui doit naviguer à travers un labyrinthe complexe en quête de la sortie, située en bas à droite de la structure. Au cours de cette progression, Six est confronté à une multitude d'ennemis qu'il doit soit éviter soit affronter.
+
+Pour se défendre, Six dispose de diverses armes et mécanismes de défense. Au premier niveau, il a recours aux drifts, des objets disponibles dans le labyrinthe, pour assurer sa sécurité. Aux niveaux 2 et 3, il obtient également un briquet, une arme plus efficace pour dissuader ses adversaires.
+
+La survie de Six dépend de sa capacité à gérer ses ressources, notamment ses vies limitées et sa santé. Il peut régénérer cette dernière en collectant des morceaux de viande et des potions dispersés dans le labyrinthe. Cette gestion prudente des ressources est cruciale pour affronter les dangers croissants qui ponctuent sa progression.
+
+La difficulté s'intensifie au fil des niveaux, notamment avec l'apparition des concierges, les gardiens redoutables des niveaux 2 et 3. Leur résistance et leur puissance augmentent progressivement, accentuant le défi pour Six. Parallèlement, l'architecture du labyrinthe évolue, passant d'une structure en bois à des murs de briques plus robustes aux niveaux supérieurs. Cette transition visuelle reflète la complexité croissante du défi et contribue à l'immersion du joueur dans l'univers du jeu.
+
 
    \subsection{Définition des algorithmes 2 pages - tous}
 
@@ -145,8 +148,7 @@ combinant éléments classiques du genre rogue-like avec des inspirations qui en
    pixels posaient problème concernant les collisions et la gravité, il a alors fallu compenser ce décalage qui est différent selon si Six regarde vers
    la droite ou la gauche. Pour les sauts, il faut juste s'assurer que la case sur laquelle se trouve Six soit de type NUIT : dès qu'il saute, il s'agit
    de la case du dessus.EXPLIQUER AFFICHAGE SPRITES
-   \subsection{Structures et mécanismes 1 pages - maelig}
-   \subsection{Structures :}
+   \subsection{Structures 1 pages - maelig}
 
 En langage C, diverses structures sont utilisées dans les fichiers du jeu, notamment les files et les piles. Ces structures jouent un rôle important en matière de stockage des données, offrant des solutions efficaces pour gérer la manipulation des informations. Les piles et les files, couramment employées en programmation, présentent des caractéristiques distinctes avec des avantages et des inconvénients spécifiques. Tant les piles que les files possèdent une tête (représentant le premier élément de la liste) ainsi qu'une queue (le dernier élément de la liste).
 
@@ -154,15 +156,10 @@ Les piles sont des structures dans lesquelles on peut uniquement ajouter des él
 
 L'utilisation de piles et de files en langage C facilite la gestion efficace des données, notamment pour la manipulation des matrices. Dans le contexte du jeu, cela simplifie la création et la manipulation du labyrinthe, permettant un fonctionnement fluide et optimisé des mécanismes de jeu.
 
-La structure \textit{entity} prend en charge les différentes entités présentes dans le jeu telles que le personnage contrôlé par le joueur, les monstres, ainsi que les objets comme le briquet obtenu à la fin du premier niveau. Cette structure offre une abstraction pratique pour représenter les éléments interactifs du jeu, facilitant ainsi la gestion des interactions entre eux et avec l'environnement du jeu.
+La structure \textit{character} prend en charge les différentes entités présentes dans le jeu telles que le personnage contrôlé par le joueur, les monstres, ainsi que les objets comme le briquet obtenu à la fin du premier niveau. Cette structure offre une abstraction pratique pour représenter les éléments interactifs du jeu, facilitant ainsi la gestion des interactions entre eux et avec l'environnement du jeu.
 
-
-   \textbf{Mécanismes :}\\
-   \subsection{Outils utilisés 2 pages maelig et enzo}
-   Dans le cadre du développement de notre projet, nous avons utilisé une gamme d'outils spécifiquement sélectionnés pour faciliter le processus de création et garantir la qualité du produit final.
-
-\textbf{Gestion de version avec GitHub} :
-Pour assurer une gestion efficace des versions de notre code source, nous avons opté pour l'utilisation de GitHub. Ce système de contrôle de version nous a permis de suivre l'évolution du code tout au long du projet en enregistrant les modifications apportées par le biais de push et de commits réguliers. Cette approche collaborative a favorisé une coordination efficace au sein de l'équipe de développement.
+\subsection{Outils utilisés 2 pages maelig et enzo}
+Dans le cadre du développement de notre projet, nous avons utilisé une gamme d'outils spécifiquement sélectionnés pour faciliter le processus de création et garantir la qualité du produit final.
 
 \textbf{Environnement de développement intégré (IDE) : Visual Studio Code} :
 L'environnement de développement intégré (IDE) joue un rôle crucial dans notre processus de développement. Nous avons choisi Visual Studio Code pour sa polyvalence et sa facilité d'utilisation. L'interface intuitive de Visual Studio Code nous a permis d'écrire, de modifier et de déboguer notre code de manière efficace. De plus, l'intégration d'extensions a considérablement amélioré notre flux de travail. Parmi ces extensions, l'outil Doxygen revêt une importance particulière.
