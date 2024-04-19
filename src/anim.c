@@ -69,12 +69,10 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
 /* ----------------------------------------------------- Spawn aléatoire des entités ----------------------------------------------------- */
 
-    character_t * jani1[NB_MONSTRE];
+    character_t * jani1;
+    create(&jani1, 50, 0.5);
+    creer_coord(&jani1, lab);
 
-    for(i=0;i<NB_MONSTRE;i++){
-        create(&jani1[i], 50, 0.5);
-        creer_coord(&jani1[i], lab);
-    }
 
     character_t * pot1;
     create(&pot1, 5000, 0);
@@ -568,7 +566,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&pot1pos); // anim potion
                             for(t=0;t<NB_MONSTRE;t++){
-                                printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1[t]->x, jani1[t]->y);
+                                printf("Coordonées après jani1pos : %d, %d\n\n", jani1[t]->x, jani1[t]->y);
                             }
                             if(niveau == 1){
                                 SDL_RenderCopy(pRenderer,pTextureLighter,lighter+((l1++)%15), &lighterpos); // anim lighter
