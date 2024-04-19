@@ -57,7 +57,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
 /* ----------------------------------------------------- Initialisations ----------------------------------------------------- */
 
-	int i = 0, j = 0, k = 0, quit = 0, pv1 = 1, pv2 = 4, pv3 = 7, pv4 = 10, j1 = 0, l1 = 0, p1 = 0; // Initialisation des compteurs pour les boucles d'animation
+	int i = 0, j = 0, k = 0, quit = 0, pv1 = 1, pv2 = 4, pv3 = 7, pv4 = 10, j1 = 0, l1 = 0, p1 = 0, t = 0; // Initialisation des compteurs pour les boucles d'animation
     int x = 0, y = 0, w = 0 , h = 0; // Initialisation des coordonnées communes à chaque animation
     int lastKeyPressed = -1; // Variable de la dernière touche préssée
     int saut = 0, gauche = 0, droite = 0, glissade = 0;
@@ -69,9 +69,12 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
 /* ----------------------------------------------------- Spawn aléatoire des entités ----------------------------------------------------- */
 
-    character_t * jani1;
-    create(&jani1, 50, 0.5);
-    creer_coord(&jani1, lab);
+    character_t * jani1[NB_MONSTRE];
+
+    for(i=0;i<NB_MONSTRE;i++){
+        create(&jani1[i], 50, 0.5);
+        creer_coord(&jani1[i], lab);
+    }
 
     character_t * pot1;
     create(&pot1, 5000, 0);
@@ -134,7 +137,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                 if ( pTextureRun != NULL && pTextureDrift != NULL && pTextureDash != NULL && pTexturePv != NULL){
                         SDL_Rect position = {FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
 			            SDL_Rect pvpos = {0, 0, 256, 256};
-                        SDL_Rect jani1pos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
+                        SDL_Rect jani1pos[NB_MONSTRE] = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         SDL_Rect pot1pos = {FORMATPIXELZOOM, FORMATPIXELZOOM, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         SDL_Rect lighterpos = {0, 0, FORMATPIXEL * ZOOM, FORMATPIXEL * ZOOM};
                         /*création et initialisation d'un tableau selectionnant tout les sprites de l'animation de marche*/
@@ -239,16 +242,18 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                         int coefX = 0, coefY = 0;
 
                         while (!quit){
-                            jani1pos.x = (((jani1->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
-                            jani1pos.y = (((jani1->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
-                            printf("%d, %d", jani1->x,jani1->y);
+                            for(t=0;t<NB_MONSTRE;t++){
+                                jani1pos[t].x = (((jani1[t]->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
+                                jani1pos[t].y = (((jani1[t]->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
+                                printf("%d, %d", jani1[t]->x,jani1[t]->y);
+                            }
                             pot1pos.x = (((pot1->x) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             pot1pos.y = (((pot1->y) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
-                            printf("%d, %d", pot1->x,pot1->y);
+                            printf(" \nCoordonées potions  : %d, %d \n", pot1->x,pot1->y);
                             lighterpos.x = (((M) * FORMATPIXELZOOM) - coefX * FORMATPIXELZOOM);
                             lighterpos.y = (((N-1) * FORMATPIXELZOOM) - coefY * FORMATPIXELZOOM);
                             printf("Coordonées briquet : %d %d\n", lighterpos.x, lighterpos.y);
-                            printf("Coordonées janitor : %d %d\n", jani1pos.x, jani1pos.y);
+
                             /*printf("Total :\nx = %d\t\ty = %d\nPrécis droit :\nx = %d y = %d\nPrécis gauche :\nx = %d y = %d\ncollisions :\nx = %d y = %d\n", 
                             position.x, position.y,
                             position.x % FORMATPIXELZOOM, position.y % FORMATPIXELZOOM);   //gauche*/
@@ -540,14 +545,16 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             else{
                                 SDL_RenderCopy(pRenderer,pTexturePv,hpbar+12,&pvpos); // anima stop coeur 0
                             }
+                            for(t=0;t<NB_MONSTRE;t++)
+                                SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&jani1pos[t]); // anim janitor
 
-                            SDL_RenderCopy(pRenderer,pTextureJanitor,janitor+((j1++)%10),&jani1pos); // anim janitor
-
-                            if(abs((position.x / FORMATPIXELZOOM / 9) - (jani1pos.x / FORMATPIXELZOOM / 9)) < 2 && abs((position.y / FORMATPIXELZOOM / 9) - (jani1pos.y / FORMATPIXELZOOM / 9)) < 2){
-                                clock_gettime(CLOCK_REALTIME, &timestampnew);
-                                if(timestampnew.tv_sec- timestamp.tv_sec > 10){
-                                    attack(player, &jani1);
-                                    clock_gettime(CLOCK_REALTIME, &timestamp);
+                            for(t=0;t<NB_MONSTRE;t++){
+                                if(abs((position.x / FORMATPIXELZOOM / 9) - (jani1pos[t].x / FORMATPIXELZOOM / 9)) < 2 && abs((position.y / FORMATPIXELZOOM / 9) - (jani1pos[t].y / FORMATPIXELZOOM / 9)) < 2){
+                                    clock_gettime(CLOCK_REALTIME, &timestampnew);
+                                    if(timestampnew.tv_sec- timestamp.tv_sec > 1){
+                                        attack(player, &jani1[t]);
+                                        clock_gettime(CLOCK_REALTIME, &timestamp);
+                                    }
                                 }
                             }
 
@@ -560,9 +567,10 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                             }
 
                             SDL_RenderCopy(pRenderer,pTexturePotion,potion+((p1++)%16),&pot1pos); // anim potion
-                            printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1->x, jani1->y);
+                            for(t=0;t<NB_MONSTRE;t++){
+                                printf("Coordonées aprè jani1pos : %d, %d\n\n", jani1[t]->x, jani1[t]->y);
+                            }
                             if(niveau == 1){
-                                printf("je suis la");
                                 SDL_RenderCopy(pRenderer,pTextureLighter,lighter+((l1++)%15), &lighterpos); // anim lighter
                             }
                             // Délai générique à toutes les animations
