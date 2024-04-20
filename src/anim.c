@@ -517,8 +517,11 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             // Affichage drift gauche
                             else if(glissade && gauche && !droite && !saut){
-                                position.x -= 6 * ZOOM;
-                                SDL_Delay(8);
+				if(lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][(position.x / FORMATPIXELZOOM / 9) + coefX] != DUR
+                                && (position.x + 8) % FORMATPIXELZOOM <= 72){
+	                                position.x -= 6 * ZOOM;
+	                                SDL_Delay(8);
+				}
                                 if(j == 23){
                                     SDL_RenderCopyEx(pRenderer,pTextureDrift,drift+((23)),&position, 0, NULL, SDL_FLIP_HORIZONTAL);
                                 }else{
@@ -528,8 +531,11 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
 
                             // Affichage drift droite
                             else if(glissade && !gauche && droite && !saut){
-                                position.x += 6 * ZOOM;
-                                SDL_Delay(8);
+				if(lab[((position.y) / FORMATPIXELZOOM / 9) + coefY][((position.x) / FORMATPIXELZOOM / 9) - 1 + coefX] != DUR
+                                && position.x % FORMATPIXELZOOM >= 24){
+	                                position.x += 6 * ZOOM;
+	                                SDL_Delay(8);
+				}
                                 if(j == 23){
                                     SDL_RenderCopy(pRenderer,pTextureDrift,drift+((23)),&position);
                                 }else{
