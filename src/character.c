@@ -51,3 +51,10 @@ void pv_gain(character_t ** c, int a){
    }
 }
 
+/// @brief Function pv_gain is used to make the character gain a certain amount of PV given by int a
+/// @param c 
+/// @param e
+void attack(character_t ** c, character_t ** e){
+   pv_loss(&c, (*e)->damage);
+}
+
