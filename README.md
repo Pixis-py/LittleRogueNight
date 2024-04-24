@@ -48,13 +48,13 @@ chmod 777 compiler_executer.sh
 ./compiler_executer.sh
 ```
 ## Documentation
-* HTML and LaTeX documentation can be found at [/doc/documentation/html]{https://github.com/Pixis-py/LittleRogueNight/tree/main/doc/documentation/html} and [/doc/documentation/latex]{https://github.com/Pixis-py/LittleRogueNight/tree/main/doc/documentation/latex}.
+* HTML and LaTeX documentation can be found at [/doc/documentation/html](https://github.com/Pixis-py/LittleRogueNight/tree/main/doc/documentation/html) and [/doc/documentation/latex](https://github.com/Pixis-py/LittleRogueNight/tree/main/doc/documentation/latex).
 * However, if you want to generate it yourself, place yourself in the main folder and execute:
 ```
 doxygen Doxyfile
 ```
 ## Report (Rapport)
-* Report can be found as a pdf and LaTeX with all sources at [/doc/rapport]{https://github.com/Pixis-py/LittleRogueNight/tree/main/doc/rapport}.
+* Report can be found as a pdf and LaTeX with all sources at [/doc/rapport](https://github.com/Pixis-py/LittleRogueNight/tree/main/doc/rapport).
 * However, if you want to generate it yourself, place yourself in /doc/rapport and execute:
 ```
 pdflatex main.tex
