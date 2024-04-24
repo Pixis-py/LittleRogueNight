@@ -642,8 +642,8 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (janipos.y / FORMATPIXELZOOM / 9)) == 0
                     && glissade && (droite || gauche)){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        //Pour l'attque de Six, il fait subir des dégâts toutes les 0.75 secondes
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.75){
+                        //Pour l'attque de Six, il fait subir des dégâts toutes les 0.25 secondes
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.25){
                             pv_loss(&jani, (*player)->damage);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                         }
@@ -663,7 +663,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (janipos2.y / FORMATPIXELZOOM / 9)) == 0
                     && glissade && (droite || gauche)){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.75){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.25){
                             pv_loss(&jani2, (*player)->damage);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                         }
@@ -683,7 +683,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (janipos3.y / FORMATPIXELZOOM / 9)) == 0
                     && glissade && (droite || gauche)){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.75){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.25){
                             pv_loss(&jani3, (*player)->damage);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                         }
@@ -703,7 +703,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (janipos4.y / FORMATPIXELZOOM / 9)) == 0
                     && glissade && (droite || gauche)){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.75){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.25){
                             pv_loss(&jani4, (*player)->damage);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                         }
@@ -723,7 +723,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (janipos5.y / FORMATPIXELZOOM / 9)) == 0
                     && glissade && (droite || gauche)){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.75){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.25){
                             pv_loss(&jani5, (*player)->damage);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                         }
@@ -747,7 +747,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (potpos2.y / FORMATPIXELZOOM / 9)) == 0
                     && !retirer_pot2 && (*player)->pv < 100){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.5){
                             pv_gain(player, pot2->pv);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                             retirer_pot2 = 1;
@@ -758,7 +758,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (potpos3.y / FORMATPIXELZOOM / 9)) == 0
                     && !retirer_pot3 && (*player)->pv < 100){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.5){
                             pv_gain(player, pot3->pv);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                             retirer_pot3 = 1;
@@ -769,7 +769,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (potpos4.y / FORMATPIXELZOOM / 9)) == 0
                     && !retirer_pot4 && (*player)->pv < 100){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.5){
                             pv_gain(player, pot4->pv);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                             retirer_pot4 = 1;
@@ -782,7 +782,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (meatpos.y / FORMATPIXELZOOM / 9)) == 0
                     && !retirer_meat && (*player)->pv < 100){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.5){
                             pv_gain(player, meat->pv);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                             retirer_meat = 1;
@@ -793,7 +793,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (meatpos2.y / FORMATPIXELZOOM / 9)) == 0
                     && !retirer_meat2 && (*player)->pv < 100){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.5){
                             pv_gain(player, meat2->pv);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                             retirer_meat2 = 1;
@@ -804,7 +804,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (meatpos3.y / FORMATPIXELZOOM / 9)) == 0
                     && !retirer_meat3 && (*player)->pv < 100){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.5){
                             pv_gain(player, meat3->pv);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                             retirer_meat3 = 1;
@@ -815,7 +815,7 @@ int anim(int argc, char** argv, int lab[N][M], int niveau, character_t ** player
                     && abs((position.y / FORMATPIXELZOOM / 9) - (meatpos4.y / FORMATPIXELZOOM / 9)) == 0
                     && !retirer_meat4 && (*player)->pv < 100){
                         clock_gettime(CLOCK_REALTIME, &timestampnew);
-                        if(timestampnew.tv_sec - timestamp.tv_sec > 1){
+                        if(timestampnew.tv_sec - timestamp.tv_sec > 0.5){
                             pv_gain(player, meat4->pv);
                             clock_gettime(CLOCK_REALTIME, &timestamp);
                             retirer_meat4 = 1;
