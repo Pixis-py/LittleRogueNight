@@ -55,6 +55,6 @@ void pv_gain(character_t ** c, int a){
 /// @param c 
 /// @param e
 void attack(character_t ** c, character_t ** e){
-   pv_loss(&c, (*e)->damage);
+   pv_loss(c, (*e)->damage);
 }
 
