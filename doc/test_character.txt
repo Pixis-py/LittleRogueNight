@@ -1,0 +1,59 @@
+Ce fichier de test, test_character.c, est conçu pour tester le fichier character.c et ses fonctions associées.
+
+test_create():
+Description : Cette fonction teste la création d'une structure character_t.
+Cas de test :
+- Vérifie si la structure character_t est correctement créée.
+- Vérifie si les points de vie (pv), les dégâts (damage), x et y (coordonnées) sont correctement initialisés.
+Commentaire : destruct(character) est appelée pour libérer la mémoire allouée.
+Résultats valides :
+   La structure character_t est correctement créée.
+   Les points de vie (pv) sont correctement initialisés.
+   Les dégâts (damage) sont correctement initialisés.
+   La position x est correctement initialisée.
+   La position y est correctement initialisée.
+Résultats invalides :
+   La structure character_t n'est pas créée.
+   Les points de vie (pv) ne sont pas initialisés correctement.
+   Les dégâts (damage) ne sont pas initialisés correctement.
+   La position x n'est pas initialisée correctement.
+   La position y n'est pas initialisée correctement.
+Résultat attendu : Les assertions vérifient que tous les champs de la structure character_t sont correctement initialisés après l'appel à la fonction create.
+
+test_pv_loss():
+Description : Cette fonction teste la perte de points de vie (pv) d'une structure character_t.
+Cas de test :
+- Vérifie si la fonction pv_loss réduit correctement les points de vie.
+Commentaire : destruct(character) est appelée pour libérer la mémoire allouée.
+Résultats valides :
+   Les points de vie (pv) sont correctement réduits.
+Résultats invalides :
+   Les points de vie (pv) ne sont pas réduits correctement.
+Résultat attendu : Les assertions vérifient que les points de vie (pv) sont correctement réduits après l'appel à la fonction pv_loss.
+
+test_pv_gain():
+Description : Cette fonction teste le gain de points de vie (pv) d'une structure character_t.
+Cas de test :
+- Vérifie si la fonction pv_gain augmente correctement les points de vie.
+Commentaire : destruct(character) est appelée pour libérer la mémoire allouée.
+Résultats valides :
+   Les points de vie (pv) sont correctement augmentés.
+Résultats invalides :
+   Les points de vie (pv) ne sont pas augmentés correctement.
+Résultat attendu : Les assertions vérifient que les points de vie (pv) sont correctement augmentés après l'appel à la fonction pv_gain.
+
+test_attack():
+Description : Cette fonction teste l'attaque entre deux structures character_t.
+Cas de test :
+- Vérifie si la fonction attack réduit correctement les points de vie du personnage attaqué.
+Commentaire : destruct(c) et destruct(e) sont appelées pour libérer la mémoire allouée.
+Résultats valides :
+   Les points de vie (pv) du personnage attaqué sont correctement réduits après une attaque.
+Résultats invalides :
+   Les points de vie (pv) du personnage attaqué ne sont pas réduits correctement après une attaque.
+Résultat attendu : Les assertions vérifient que les points de vie (pv) du personnage attaqué sont correctement réduits après l'appel à la fonction attack.
+
+main():
+Description : La fonction main initialise le registre des tests, ajoute les fonctions de test à une suite de tests, exécute les tests, nettoie le registre des tests et renvoie 0.
+Cas de test : Appelle toutes les fonctions de test définies précédemment.
+Commentaire : Utilise la bibliothèque CUnit pour effectuer les tests unitaires.

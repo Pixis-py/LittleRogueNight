@@ -1,0 +1,34 @@
+test_filevide():
+Description : Cette fonction teste la fonction filevide, qui est utilisée pour vérifier si une file est vide.
+Cas de test :
+- Vérifie si la file est vide initialement.
+- Vérifie si la file n'est plus vide après l'ajout d'un élément.
+- Vérifie si la file est vide à nouveau après avoir défilé l'élément ajouté.
+Résultats valides :
+   La file est vide initialement.
+   La file n'est plus vide après l'ajout d'un élément.
+   La file est vide à nouveau après avoir défilé l'élément ajouté.
+Résultats invalides :
+   La file n'est pas vide initialement.
+   La file est toujours vide après l'ajout d'un élément.
+   La file n'est pas vide après avoir défilé l'élément ajouté.
+Résultat attendu : Les assertions vérifient si la fonction filevide() retourne le résultat attendu après les opérations d'ajout et de suppression dans la file.
+
+test_enfiler_defiler():
+Description : Cette fonction teste les fonctions enfiler et defiler, utilisées pour ajouter et supprimer un élément dans une file.
+Cas de test :
+- Teste si le premier élément ajouté est correctement défilé.
+- Teste si le deuxième élément ajouté est correctement défilé.
+- Teste si un élément est correctement défilé après avoir ajouté un autre élément.
+- Teste si le dernier élément ajouté est correctement défilé.
+Résultats valides :
+   Le premier élément ajouté est correctement défilé.
+   Le deuxième élément ajouté est correctement défilé.
+   Un élément est correctement défilé après avoir ajouté un autre élément.
+   Le dernier élément ajouté est correctement défilé.
+Résultats invalides :
+   Le premier élément ajouté n'est pas correctement défilé.
+   Le deuxième élément ajouté n'est pas correctement défilé.
+   Aucun élément n'est défilé après avoir ajouté un autre élément.
+   Le dernier élément ajouté n'est pas correctement défilé.
+Résultat attendu : Les assertions vérifient si les éléments sont correctement ajoutés et défilés dans la file, dans l'ordre attendu.

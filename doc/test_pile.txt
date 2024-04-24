@@ -1,0 +1,31 @@
+test_pilevide():
+Description : Cette fonction teste la fonction pilevide, qui est utilisée pour vérifier si une pile est vide.
+Cas de test :
+- Vérifie si la pile est vide initialement.
+- Vérifie si la pile n'est plus vide après l'ajout d'un élément.
+- Vérifie si la pile est vide à nouveau après avoir dépilé l'élément ajouté.
+Résultats valides :
+   La pile est vide initialement.
+   La pile n'est plus vide après l'ajout d'un élément.
+   La pile est vide à nouveau après avoir dépilé l'élément ajouté.
+Résultats invalides :
+   La pile n'est pas vide initialement.
+   La pile est toujours vide après l'ajout d'un élément.
+   La pile n'est pas vide après avoir dépilé l'élément ajouté.
+Résultat attendu : Les assertions vérifient si la fonction pilevide() retourne le résultat attendu après les opérations d'ajout et de suppression dans la pile.
+
+test_empiler_depiler_sommetpile():
+Description : Cette fonction teste les fonctions empiler, depiler et sommetpile, utilisées pour ajouter et supprimer un élément dans une pile, ainsi que pour connaître le sommet de la pile.
+Cas de test :
+- Teste si le sommet de la pile est correct après ajout de plusieurs éléments.
+- Teste si le dernier élément ajouté est correctement dépilé.
+- Teste si le sommet de la pile est correct après un dépilement.
+Résultats valides :
+   Le sommet de pile est correct après ajout de plusieurs éléments.
+   Le dernier élément ajouté est correctement dépilé.
+   Le sommet de pile est correct après un dépilement.
+Résultats invalides :
+   Le sommet de pile n'est pas correct après ajout de plusieurs éléments.
+   Le dernier élément ajouté n'est pas correctement dépilé.
+   Le sommet de pile n'est pas correct après un dépilement.
+Résultat attendu : Les assertions vérifient si les éléments sont correctement ajoutés et dépilés dans la pile, et si le sommet de la pile est correct après chaque opération.
