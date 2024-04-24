@@ -61,10 +61,10 @@ pdflatex main.tex
 ```
 ## How to play 
 * Controls:
-** To go left, press q.
-** To go right, press d.
-** To go up, press spacebar. Note that you can also go up left and up right pressing spacebar + q and spacebar + d.
-** To go drift, press shift. Note that you can drift left and drift right pressing shift + q and shift + d. Drifting is your main attack against monsters. 
+** To go left, press #q#.**
+** To go right, press #d#.**
+** To go up, press #spacebar#. Note that you can also go up left and up right pressing spacebar + q and spacebar + d.**
+** To go drift, press #shift#. Note that you can drift left and drift right pressing shift + q and shift + d. Drifting is your main attack against monsters.**
 
 ## License
 
