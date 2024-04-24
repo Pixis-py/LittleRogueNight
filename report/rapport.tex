@@ -56,7 +56,7 @@
 
 \newglossaryentry{boss}{
     name=boss,
-    description={Ennemi plus puissant et complexe que les autres, souvent rencontré à la fin d'un niveau ou d'une étape importante du jeu.}
+    description=Dans le domaine du jeu vidéo,un ennemi plus puissant et complexe que les autres, souvent rencontré à la fin d'un niveau ou d'une étape importante du jeu.}
 }
 
 \newglossaryentry{spritesheets}{
@@ -79,10 +79,6 @@
     description={Outil de gestion de projet en ligne basé sur le concept de tableaux Kanban, permettant aux équipes de collaborer et d'organiser leurs tâches en listes et en cartes.}
 }
 
-\newglossaryentry{boss}{
-    name=boss,
-    description={Dans le domaine du jeu vidéo, un monstre plus compliqué à battre, souvent situé à la fin d'un niveau.}
-}
 
 \newglossaryentry{ennemis}{
     name=ennemis,
@@ -100,12 +96,12 @@
 }
 
 \newglossaryentry{pile}{
-    name=pile,
+    name=piles,
     description={Structure de données dans laquelle les éléments sont ajoutés et retirés selon le principe du dernier entré, premier sorti (LIFO).}
 }
 
 \newglossaryentry{file}{
-    name=file,
+    name=files,
     description={Structure de données dans laquelle les éléments sont ajoutés à l'arrière et retirés à l'avant, suivant le principe du premier entré, premier sorti (FIFO).}
 }
 
@@ -138,8 +134,22 @@
     name=gameplay,
     description={Ensemble des caractéristiques et des mécanismes d'un jeu vidéo, notamment l'intrigue, les interactions et les mécaniques de jeu, qui définissent l'expérience globale du joueur.}
 }
-
-
+\newglossaryentry{doxygen}{
+    name=doxygen,
+    description={Outils permettant de créer de la documention à partir des commentaires présent dans le code sources.}
+}
+\newglossaryentry{motgraph}{
+    name= moteur-graphique,
+    description={Logiciel qui regroupe et gère en temps réel les fonctionnalités principales d'un jeu vidéo liées au graphisme .}
+}
+\newglossaryentry{ia}{
+    name= IA,
+    description={Algorithme dont le but est de permettre à des ordinateurs de penser et d'agir comme des êtres humains..}
+}
+\newglossaryentry{cooldown}{
+    name= cooldown,
+    description={Temps que doit patienter un joueur avant de pouvoir être capable de refaire une certaine opération.}
+}
 \begin{document}
 
 \begin{figure}
@@ -172,13 +182,13 @@ LittleRogueNight s'inspire des rogue-like traditionnels, il est donc basé sur l
 \gls{lagepr}, ainsi que les concepts de \textit{\gls{dianre}} et de \textit{\gls{perde}}. 
 Ainsi, le jeu se compose des 3 niveaux où chaque labyrinthe est différent à chaque nouvelle partie, et où la difficulté augmente au fur et à mesure, et si le personnage meurt à n'importe quel niveau, il recommence au niveau 1.\\
 
-Les mécanismes de déplacement offrent une variété d'actions essentielles telles que: les \textit{\gls{dash}}(sauts continus) et les \textit{\gls{drift}}(glissades continues) qui ajoutent une dimension tactique aux affrontements. Les graphismes, réalisés en pixel art, apportent une touche rétro à l'esthétique du jeu, et renforçent son ambiance immersive.\\
+Les mécanismes de déplacement offrent une variété d'actions essentielles telles que: les \textit{\gls{dash}}(sauts continus) et les \textit{\gls{drifts}}(glissades continues) qui ajoutent une dimension tactique aux affrontements. Les graphismes, réalisés en pixel art, apportent une touche rétro à l'esthétique du jeu, et renforçent son ambiance immersive.\\
 
 Les combats sont au cœur de l'expérience de jeu, avec un système de barre de vie symbolisée par quatre cœurs qui représentent chacun vingt-cinq pourcents
 de la vie du joueur. Les attaques, qu'elles soient directes ou facilitées par des \textit{\gls{items}} spéciaux, proposent des confrontations. Chaque \textit{\gls{boss}} et chaque monstre possèdent leur propre barre de vie distincte.\\
 
 Enfin, les graphismes et mécanismes de jeu s'harmonisent pour créer une expérience fluide, faisant de LittleRogueNight un projet 
-combinant éléments classiques du genre rogue-like avec des inspirations qui enrichissent l'expérience de chaque \textit{gameplay}.
+combinant éléments classiques du genre rogue-like avec des inspirations qui enrichissent l'expérience de chaque \textit{\gls{gameplay}}.
 
 \clearpage
 \section{Organisation}   
@@ -204,7 +214,7 @@ En outre, au début du projet, nous avons également utilisé un Drive Google po
 
 L'utilisation combinée de ces outils a grandement contribué à la gestion efficace du projet, en facilitant la collaboration, le suivi de l'avancement et la gestion des ressources, tout en favorisant une communication transparente et une coordination harmonieuse entre les membres de l'équipe.
 
-Nous avons également utilisé une gamme d'outils spécifiquement sélectionnés pour faciliter le processus de création et garantir la qualité du produit final.
+Nous avons également utilisé une gamme d'outils spécifiquement sélectionnés pour faciliter le processus de création et garantir la qualité du produit final. \\
 \textbf{Environnement de développement intégré (IDE) : Visual Studio Code} :
 L'IDE joue un rôle crucial dans notre processus de développement. Nous avons choisi Visual Studio Code pour sa polyvalence et sa facilité d'utilisation. L'interface intuitive de Visual Studio Code nous a permis d'écrire, de modifier et de déboguer notre code de manière efficace. De plus, l'intégration d'extensions a considérablement amélioré notre flux de travail. Parmi ces extensions, l'outil \textit{\gls{doxygen}} revêt une importance particulière.
 
@@ -271,7 +281,28 @@ La difficulté s'intensifie au fil des niveaux, notamment avec les \gls{concierg
 \clearpage
 \section{Développement}
    \subsection{Fonctionnemeent des algorithmes}
-   Pour la création du \gls{labyrinthe} parfait, Clément utilise la génération aléatoire, avec des \gls{piles} et des \gls{files}, rencontrée au semestre 3 en Algorithmique et Programmation 2.
+       Pour la création du menu, Enzo utilise des boutons pour faciliter le choix a l'utilisateur, pour créer ces boutons il a défini des structures boutons\_s contenant leur positions à travers des rectangles (SDl\_Rect), leur texture classique et une texture grisée permettant de le différencier quand le curseur du joueur passe sur la position du bouton, et un entier ETAT se modiffiant valant 0 quand le bouton est relaché et 1 quand le bouton est enfoncée.
+\\
+    \begin{center}
+        \centering
+        \includegraphics[width=12cm]{struct_bout.png}
+        \caption{Structure du bouton}
+        \label{fig4}\\
+    \end{center}   
+    Le menu permet donc au joueur de choisir entre le bouton "play", "options", et "quit". Quand le joueur appuie sur le bouton "play", la fonction menu.c retourne 1 ce qui permet de lancer la creation du personnage(six de base) et le lancement du jeu. Quand le joueur appuie sur le bouton "options" cela lui ouvre le menu du choix des personnages et en fonctions de son choix cela modifie un pointeur dans la fonction main. Enfin le joueur a aussi la possibilité de quitter le jeu via un bouton "quit" qui retourne 2 dans le main ce qui enclenche la fermeture de l'instance SDL et la libération de la mémoire. 
+\\
+    \begin{center}
+        \centering
+        \includegraphics[width=12cm]{menu.png}
+        \caption{Affichage du menu au lancement du jeu}
+        \label{fig4}\\
+    \end{center}      
+
+
+
+    \\
+
+   Pour la création du \gls{labpar} parfait, Clément utilise la génération aléatoire, avec des \gls{pile} et des \gls{file}, rencontrée au semestre 3 en Algorithmique et Programmation 2.
    Bien sûr, les fonctions ont été légèrement modifiées pour s'adapter à nos fins : la gestion des différentes tuiles grâce à des \gls{constantes} comme NUIT, TERRE, TERREVERTE etc, les paramètres de la fonction d'affichage changent pour permettre d'afficher le labyrinthe directement sur le \gls{rendu}  grâce à des rectangles (SDL\_Rect) qui se "posent" sur le rendu. 
    \\
     \begin{center}
@@ -347,8 +378,8 @@ Enfin, le dossier \textit{test} abrite tous les fichiers de test des fonctions, 
 \clearpage
 \section{Conclusion}
 
-Le projet LittleRogueNight a atteint ses objectifs fixés en termes de fonctionnalités de base. Le jeu est fluide, ce qui peut être difficile à mettre en place au vu de la gestion de la mémoire de la \gls{sdl} et du nombre de \gls{sprites} présents sur l'écran. La partie recherche du chemin vers la fin du labyrinthe fait son effet grâce au principe du labyrinthe parfait. La détection du héros par les ennemis est fonctionnelle : en suivant un système de déplacement simple et de spawn aléatoire, on obtient des monstres sans \gls{ia} qui ne restent pas immobiles. Les collisions et la gravité ont également été ajoutées comme prévu et fonctionnent bien. Les menus ont été implémentés conformément aux spécifications, offrant une navigation intuitive en dehors du jeu. Cependant, des fonctionnalités supplémentaires, telles que des spécificités pour les ennemis et les niveaux comme des pièges, le fait de détruire certains blocs, d'autres ennemis ayant des attaques différentes, n'ont pas pu être implémentées en raison de contraintes temporelles et par l'abandon d'un des membres de l'équipe. \\
-Les éléments prévus mais non réalisés, tels que des passages secrets, des salles spéciales et un magasin et donc un système d'argent, auraient pu ajouter de la variété et de l'intérêt au jeu. Cependant, ils auraient demandé de trop grosses modifications de l'algorithme de génération du labyrinthe et nous avons décidé de nous concentrer sur des fonctionnalités de base pour obtenir un jeu fonctionnel. D'autre part, l'ajout de niveaux supplémentaires aurait renforcé la durée de vie et la richesse du \gls{gameplay}. Enfin, offrir au joueur des "pouvoirs" spéciaux tels que l'invisibilité ou la téléportation, avec un système de \gls{cooldown}, aurait permis d'ajouter une dimension stratégique et tactique au jeu. L'idée de système de récompenses à la fin de chaque niveau aurait pu apporter un côté intéressant au jeu et le joueur serait plus enjoué à vouloir continuer à progresser. 
+Le projet LittleRogueNight a atteint ses objectifs fixés en termes de fonctionnalités de base. Le jeu est fluide, ce qui peut être difficile à mettre en place au vu de la gestion de la mémoire de notre \gls{motgraph} SDL et du nombre de \gls{sprites} présents sur l'écran. La partie recherche du chemin vers la fin du labyrinthe fait son effet grâce au principe du labyrinthe parfait. La détection du héros par les ennemis est fonctionnelle : en suivant un système de déplacement simple et de spawn aléatoire, on obtient des monstres sans \gls{ia} qui ne restent pas immobiles. Les collisions et la gravité ont également été ajoutées comme prévu et fonctionnent bien. Les menus ont été implémentés conformément aux spécifications, offrant une navigation intuitive en dehors du jeu. Cependant, des fonctionnalités supplémentaires, telles que des spécificités pour les ennemis et les niveaux comme des pièges, le fait de détruire certains blocs, d'autres ennemis ayant des attaques différentes, n'ont pas pu être implémentées en raison de contraintes temporelles et par l'abandon d'un des membres de l'équipe. \\
+Les éléments prévus mais non réalisés, tels que des passages secrets, des salles spéciales et un magasin et donc un système d'argent, auraient pu ajouter de la variété et de l'intérêt au jeu. Cependant, ils auraient demandé de trop grosses modifications de l'algorithme de génération du labyrinthe et nous avons décidé de nous concentrer sur des fonctionnalités de base pour obtenir un jeu fonctionnel. D'autre part, l'ajout de niveaux supplémentaires aurait renforcé la durée de vie et la richesse du \gls{gameplay}. Enfin, offrir au joueur des "pouvoirs" spéciaux tels que l'invisibilité ou la téléportation, avec un système de \gls{cooldown}, aurait permis d'ajouter une dimension stratégique et tactique au jeu. L'idée d'un système de récompenses à la fin de chaque niveau aurait pu apporter un côté intéressant au jeu et le joueur serait plus enjoué à vouloir continuer à progresser. 
 
 Le projet LittleRogueNight, malgré quelques lacunes, se distingue comme une réalisation robuste et fonctionnelle, offrant une expérience de jeu gratifiante. Cette étude permet d'entretenir une évaluation positive de ce projet, qui a représenté l'un des premiers efforts collaboratifs de l'équipe de recherche. Contrairement aux pratiques usuelles observées dans le développement de logiciels individuels, la mise en place de ce projet a exigé l'adoption de nouveaux protocoles de travail et d'outils tels que GitHub et des solutions de gestion de projet. En outre, celui-ci a permis de mettre en œuvre les compétences informatiques acquises au cours des 2 premières années d'études universitaires en informatique, favorisant ainsi le développement de compétences en programmation et en conception de jeux vidéos au sein de l'équipe.
 
