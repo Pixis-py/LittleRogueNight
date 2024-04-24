@@ -60,7 +60,7 @@ doxygen Doxyfile
 pdflatex main.tex
 ```
 ## How to play 
-# Controls:
+### Controls:
 * To go left, press **q**.
 * To go right, press **d**.
 * To go up, press **spacebar**. Note that you can also go up left and up right pressing spacebar + q and spacebar + d.
