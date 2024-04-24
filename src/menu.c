@@ -165,13 +165,12 @@ int menu(int argc, char** argv,int *choix_perso){
             fprintf(stderr,"Erreur de création de la fenêtre: %s\n",SDL_GetError());
         }
     }
-
     SDL_Quit();
     IMG_Quit();
 
     if(play_result==1)
         return 1;
     else if (quit_result == 1)
-        return 0;
+        return 2;
     
 }
