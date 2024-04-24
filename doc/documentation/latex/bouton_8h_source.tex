@@ -1,0 +1,23 @@
+\doxysection{bouton.\+h}
+\hypertarget{bouton_8h_source}{}\label{bouton_8h_source}\index{lib/bouton.h@{lib/bouton.h}}
+\mbox{\hyperlink{bouton_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ BOUTON\_RELACHE\ 0}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ BOUTON\_APPUYE\ 1}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ BOUTON\_DESSUS\ 2}}
+\DoxyCodeLine{00017\ \ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Structure\ contenant\ les\ informations\ sur\ le\ bouton}}
+\DoxyCodeLine{00020\ \textcolor{comment}{}\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbouton__s}{bouton\_s}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ SDL\_Rect\ *position;\ \textcolor{comment}{//\ contient\ la\ position\ (.x\ et\ .y)\ et\ les\ dimensions\ (.w\ et\ .h)\ du\ bouton}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ etat;\ \textcolor{comment}{//\ contient\ l'état\ du\ bouton\ (BOUTON\_RELACHE\ /\ BOUTON\_APPUYE\ //\ BOUTON\_DESSUS\ )}}
+\DoxyCodeLine{00024\ \ \ \ \ SDL\_Texture\ *dessus;\ \textcolor{comment}{//\ image\ du\ bouton\ lorsqu'il\ est\ relaché}}
+\DoxyCodeLine{00025\ \ \ \ \ SDL\_Texture\ *classique;\ \textcolor{comment}{//\ image\ du\ bouton\ lorsqu'il\ est\ appuyé}}
+\DoxyCodeLine{00026\ \}\mbox{\hyperlink{bouton_8h_ad5e0e8259816cebea4cfe931765f707d}{bouton}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bouton_8h_ab55bf96164333f9ea81096ee32b1172c}{aff\_bout}}(SDL\_Renderer\ *renderer,SDL\_Rect\ *bout,\ SDL\_Event\ e,SDL\_Texture\ *\ img,SDL\_Texture\ *\ img2);}
+
+\end{DoxyCode}

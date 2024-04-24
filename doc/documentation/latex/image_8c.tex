@@ -1,0 +1,53 @@
+\doxysection{src/image.c File Reference}
+\hypertarget{image_8c}{}\label{image_8c}\index{src/image.c@{src/image.c}}
+
+
+\doxylink{image_8c}{image.\+c} is used to simplify the creation of an SDL texture so it\textquotesingle{}s not obligated to rewrite 15+lines to create one  
+
+
+{\ttfamily \#include \"{}../lib/image.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{image_8c_ab1b4ed2baa8a79991f04f5839292a6c0}{load\+Texture}} (const char \texorpdfstring{$\ast$}{*}image\+Path, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\begin{DoxyCompactList}\small\item\em Function load\+Texture is used to create a texture and load it so we don\textquotesingle{}t have to rewrite 15+ lines of code when we have to create one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{image_8c}{image.\+c} is used to simplify the creation of an SDL texture so it\textquotesingle{}s not obligated to rewrite 15+lines to create one 
+
+\begin{DoxyAuthor}{Author}
+Maelig Pesantez 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/03-\/29
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{image_8c_ab1b4ed2baa8a79991f04f5839292a6c0}\label{image_8c_ab1b4ed2baa8a79991f04f5839292a6c0} 
+\index{image.c@{image.c}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} load\+Texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{image\+Path,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Function load\+Texture is used to create a texture and load it so we don\textquotesingle{}t have to rewrite 15+ lines of code when we have to create one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image\+Path} & \\
+\hline
+{\em renderer} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+texture 
+\end{DoxyReturn}

@@ -1,0 +1,56 @@
+\doxysection{lib/image.h File Reference}
+\hypertarget{image_8h}{}\label{image_8h}\index{lib/image.h@{lib/image.h}}
+
+
+\doxylink{image_8h}{image.\+h} is used to simplify the creation of an SDL texture so it\textquotesingle{}s not obligated to rewrite 15+lines to create one  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+mixer.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{image_8h_ae55f863c7a82c8ce773a638a561e3dd0}{load\+Texture}} (const char \texorpdfstring{$\ast$}{*}, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Function load\+Texture is used to create a texture and load it so we don\textquotesingle{}t have to rewrite 15+ lines of code when we have to create one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{image_8h}{image.\+h} is used to simplify the creation of an SDL texture so it\textquotesingle{}s not obligated to rewrite 15+lines to create one 
+
+\begin{DoxyAuthor}{Author}
+Maelig Pesantez 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/03-\/29
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{image_8h_ae55f863c7a82c8ce773a638a561e3dd0}\label{image_8h_ae55f863c7a82c8ce773a638a561e3dd0} 
+\index{image.h@{image.h}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!image.h@{image.h}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} load\+Texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{image\+Path,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Function load\+Texture is used to create a texture and load it so we don\textquotesingle{}t have to rewrite 15+ lines of code when we have to create one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image\+Path} & \\
+\hline
+{\em renderer} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+texture 
+\end{DoxyReturn}

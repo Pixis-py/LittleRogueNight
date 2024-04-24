@@ -1,0 +1,58 @@
+\doxysection{labyrinthe.\+h}
+\hypertarget{labyrinthe_8h_source}{}\label{labyrinthe_8h_source}\index{lib/labyrinthe.h@{lib/labyrinthe.h}}
+\mbox{\hyperlink{labyrinthe_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ VRAI\ 1}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ FAUX\ 0}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Constantes\ representant\ le\ contenu\ des\ cases}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ NUIT\ 0}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ MUR\ 1}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ TERRE\ 2}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ TERREVERTE\ 3}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ DUR\ TERRE\ ||\ TERREVERTE}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//labyrinthe}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ FORMATPIXEL\ 32}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ ZOOM\ 3}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ FORMATPIXELZOOM\ FORMATPIXEL\ *\ ZOOM}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ LARGEUR\ 7}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ LONGUEUR\ 10}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ N\ LARGEUR\ *\ 5\ +\ 7}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ M\ LONGUEUR\ *\ 5\ +\ 9}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ SDL\_Renderer\ *\ afficher\_lab(\textcolor{keywordtype}{int}\ lab[N][M],\ SDL\_Window\ *\ pWindow);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{labyrinthe_8h_a908c9d0dfb4409aa581180e44d7577bc}{affichage\_laby\_niveau\_un}}(\textcolor{keywordtype}{int}\ lab[N][M],\ SDL\_Renderer\ *\ pRenderer,\ \textcolor{keywordtype}{int}\ coefX,\ \textcolor{keywordtype}{int}\ coefY);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{labyrinthe_8h_a46ee5fd5301f29dc2bd2744c4cb8bdf1}{affichage\_laby\_niveau\_deux}}(\textcolor{keywordtype}{int}\ lab[N][M],\ SDL\_Renderer\ *\ pRenderer,\ \textcolor{keywordtype}{int}\ coefX,\ \textcolor{keywordtype}{int}\ coefY);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{labyrinthe_8h_aed2255a8f535f00ed2863bb2824dd524}{affichage\_laby\_niveau\_trois}}(\textcolor{keywordtype}{int}\ lab[N][M],\ SDL\_Renderer\ *\ pRenderer,\ \textcolor{keywordtype}{int}\ coefX,\ \textcolor{keywordtype}{int}\ coefY);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{labyrinthe_8h_a0a05cc3a3df78017d494547fb56843fa}{init\_lab}}(\textcolor{keywordtype}{int}\ lab[N][M]);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ Partie\ creation\ du\ labyrinthe}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{labyrinthe_8h_a730ee142f3d2e67bc393e6ca7ba88fc7}{valides}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{labyrinthe_8h_ab70c30209406d10ed91cf38e42e20f0c}{est\_NUIT}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ lab[N][M]);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{labyrinthe_8h_a54e6cf70db228c6ddb5a74492cae2ee3}{est\_TERRE}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ lab[N][M]);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{labyrinthe_8h_a0dc29ebbe99ec1135d2c57e30ae598f9}{vide}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ lab[N][M]);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{labyrinthe_8h_a09f3867062d5c26791ae779485786945}{creer\_lab}}(\textcolor{keywordtype}{int}\ lab[N][M]);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{labyrinthe_8h_a53f903834017e12044ffeef76056afd5}{chercher\_chemin}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ lab[N][M],\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ jd,\ \textcolor{keywordtype}{int}\ ia,\ \textcolor{keywordtype}{int}\ ja);}
+
+\end{DoxyCode}

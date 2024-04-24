@@ -1,0 +1,184 @@
+\doxysection{lib/character.h File Reference}
+\hypertarget{character_8h}{}\label{character_8h}\index{lib/character.h@{lib/character.h}}
+
+
+\doxylink{character_8h}{character.\+h} contains the functions\textquotesingle{}s prototypes used in \doxylink{character_8c}{character.\+c} and the structure character\+\_\+t  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \"{}labyrinthe.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcharacter__s}{character\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Structure charcter\+\_\+t is used to stock the character\textquotesingle{}s infomrations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{character_8h_ab24f44887164d006cb3be7f21e4f4d76}\label{character_8h_ab24f44887164d006cb3be7f21e4f4d76} 
+typedef struct \mbox{\hyperlink{structcharacter__s}{character\+\_\+s}} {\bfseries character\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure charcter\+\_\+t is used to stock the character\textquotesingle{}s infomrations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{character_8h_a2a6cffe40149a7908a85fd9b89a14863}{create}} (\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, int pv, int damage)
+\begin{DoxyCompactList}\small\item\em Prototype of function create which is used to create a character by giving a pointer enough memory to point a structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{character_8h_a2de2a619b4df098abab12d6eccc0630d}{destruct}} (\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Prototype of function destruct which is used to destruct a character by freeing it\textquotesingle{}s pointer and make it point on NULL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{character_8h_a7b0665b119ba197a5e4d9524344baf28}{pv\+\_\+loss}} (\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, int a)
+\begin{DoxyCompactList}\small\item\em Prototype of function pv\+\_\+loss which is used to make the character lose a certain amount of PV given by int a. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{character_8h_a3d8a2dd652b1c47f42573856aa3203ac}{pv\+\_\+gain}} (\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, int a)
+\begin{DoxyCompactList}\small\item\em Prototype of function pv\+\_\+gain which is used to make the character gain a certain amount of PV given by int a. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{character_8h_a2f2b9606d9d17aae622c6a84c685f2dc}{attack}} (\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Prototype of function attack which is used to make the character c lose the amount of PV corresponding to e damage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{character_8h}{character.\+h} contains the functions\textquotesingle{}s prototypes used in \doxylink{character_8c}{character.\+c} and the structure character\+\_\+t 
+
+\begin{DoxyAuthor}{Author}
+Maelig Pesantez 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/03-\/12
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{character_8h_a2f2b9606d9d17aae622c6a84c685f2dc}\label{character_8h_a2f2b9606d9d17aae622c6a84c685f2dc} 
+\index{character.h@{character.h}!attack@{attack}}
+\index{attack@{attack}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily void attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})}
+
+
+
+Prototype of function attack which is used to make the character c lose the amount of PV corresponding to e damage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em e} & \\
+\hline
+\end{DoxyParams}
+Prototype of function attack which is used to make the character c lose the amount of PV corresponding to e damage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em e} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{character_8h_a2a6cffe40149a7908a85fd9b89a14863}\label{character_8h_a2a6cffe40149a7908a85fd9b89a14863} 
+\index{character.h@{character.h}!create@{create}}
+\index{create@{create}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily void create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{int}]{pv,  }\item[{int}]{damage }\end{DoxyParamCaption})}
+
+
+
+Prototype of function create which is used to create a character by giving a pointer enough memory to point a structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & ~\newline
+\\
+\hline
+\end{DoxyParams}
+Prototype of function create which is used to create a character by giving a pointer enough memory to point a structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{character_8h_a2de2a619b4df098abab12d6eccc0630d}\label{character_8h_a2de2a619b4df098abab12d6eccc0630d} 
+\index{character.h@{character.h}!destruct@{destruct}}
+\index{destruct@{destruct}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{destruct()}{destruct()}}
+{\footnotesize\ttfamily void destruct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Prototype of function destruct which is used to destruct a character by freeing it\textquotesingle{}s pointer and make it point on NULL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & ~\newline
+\\
+\hline
+\end{DoxyParams}
+Prototype of function destruct which is used to destruct a character by freeing it\textquotesingle{}s pointer and make it point on NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{character_8h_a3d8a2dd652b1c47f42573856aa3203ac}\label{character_8h_a3d8a2dd652b1c47f42573856aa3203ac} 
+\index{character.h@{character.h}!pv\_gain@{pv\_gain}}
+\index{pv\_gain@{pv\_gain}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{pv\_gain()}{pv\_gain()}}
+{\footnotesize\ttfamily void pv\+\_\+gain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Prototype of function pv\+\_\+gain which is used to make the character gain a certain amount of PV given by int a. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em a} & ~\newline
+\\
+\hline
+\end{DoxyParams}
+Prototype of function pv\+\_\+gain which is used to make the character gain a certain amount of PV given by int a.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em a} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{character_8h_a7b0665b119ba197a5e4d9524344baf28}\label{character_8h_a7b0665b119ba197a5e4d9524344baf28} 
+\index{character.h@{character.h}!pv\_loss@{pv\_loss}}
+\index{pv\_loss@{pv\_loss}!character.h@{character.h}}
+\doxysubsubsection{\texorpdfstring{pv\_loss()}{pv\_loss()}}
+{\footnotesize\ttfamily void pv\+\_\+loss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{int}]{a }\end{DoxyParamCaption})}
+
+
+
+Prototype of function pv\+\_\+loss which is used to make the character lose a certain amount of PV given by int a. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em a} & ~\newline
+\\
+\hline
+\end{DoxyParams}
+Prototype of function pv\+\_\+loss which is used to make the character lose a certain amount of PV given by int a.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em a} & ~\newline
+ \\
+\hline
+\end{DoxyParams}

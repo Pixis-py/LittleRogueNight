@@ -1,0 +1,127 @@
+\doxysection{src/file.c File Reference}
+\hypertarget{file_8c}{}\label{file_8c}\index{src/file.c@{src/file.c}}
+
+
+\doxylink{file_8c}{file.\+c} (in french, file=queue) includes every function needed to use queue in an other program  
+
+
+{\ttfamily \#include \"{}../lib/file.\+h\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structelement}{element}}
+\begin{DoxyCompactList}\small\item\em element structure, used in queues \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{file_8c_aaa9f09bf55fb32a9090e2dc051b75a6a}\label{file_8c_aaa9f09bf55fb32a9090e2dc051b75a6a} 
+typedef struct \mbox{\hyperlink{structelement}{element}} {\bfseries t\+\_\+element}
+\begin{DoxyCompactList}\small\item\em element structure, used in queues \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{file_8c_a273907fa64f10a578e107dde70a12876}{initfile}} (void)
+\begin{DoxyCompactList}\small\item\em Function initfile initialize a queue. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{file_8c_a4b48b65698f5783adf206700444ea9bd}{filevide}} (void)
+\begin{DoxyCompactList}\small\item\em Function filevide is used to verify if a queue is empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{file_8c_af211770328a7fd081a5338fdcd007b02}{enfiler}} (int v)
+\begin{DoxyCompactList}\small\item\em Function enfiler is used to add an element to the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{file_8c_a2910bf58dd892f2c0ce9047d4eeb9211}{defiler}} (int \texorpdfstring{$\ast$}{*}v)
+\begin{DoxyCompactList}\small\item\em Function defiler is used to un-\/queue an element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{file_8c_ac64a6a741ed90e894c695c6f92ad31b8}\label{file_8c_ac64a6a741ed90e894c695c6f92ad31b8} 
+\mbox{\hyperlink{file_8c_aaa9f09bf55fb32a9090e2dc051b75a6a}{t\+\_\+element}} \texorpdfstring{$\ast$}{*} {\bfseries tete}
+\item 
+\Hypertarget{file_8c_ae8f83cc1f73001fbaedaa4ee4e4312ae}\label{file_8c_ae8f83cc1f73001fbaedaa4ee4e4312ae} 
+\mbox{\hyperlink{file_8c_aaa9f09bf55fb32a9090e2dc051b75a6a}{t\+\_\+element}} \texorpdfstring{$\ast$}{*} {\bfseries queue}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{file_8c}{file.\+c} (in french, file=queue) includes every function needed to use queue in an other program 
+
+\begin{DoxyAuthor}{Author}
+Clément Lelandais 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/03-\/29
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{file_8c_a2910bf58dd892f2c0ce9047d4eeb9211}\label{file_8c_a2910bf58dd892f2c0ce9047d4eeb9211} 
+\index{file.c@{file.c}!defiler@{defiler}}
+\index{defiler@{defiler}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{defiler()}{defiler()}}
+{\footnotesize\ttfamily void defiler (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{v }\end{DoxyParamCaption})}
+
+
+
+Function defiler is used to un-\/queue an element. 
+
+Function enfiler is used to add an element to the queue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{file_8c_af211770328a7fd081a5338fdcd007b02}\label{file_8c_af211770328a7fd081a5338fdcd007b02} 
+\index{file.c@{file.c}!enfiler@{enfiler}}
+\index{enfiler@{enfiler}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{enfiler()}{enfiler()}}
+{\footnotesize\ttfamily void enfiler (\begin{DoxyParamCaption}\item[{int}]{v }\end{DoxyParamCaption})}
+
+
+
+Function enfiler is used to add an element to the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{file_8c_a4b48b65698f5783adf206700444ea9bd}\label{file_8c_a4b48b65698f5783adf206700444ea9bd} 
+\index{file.c@{file.c}!filevide@{filevide}}
+\index{filevide@{filevide}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{filevide()}{filevide()}}
+{\footnotesize\ttfamily int filevide (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Function filevide is used to verify if a queue is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false, wether the queue is empty or not 
+\end{DoxyReturn}
+\Hypertarget{file_8c_a273907fa64f10a578e107dde70a12876}\label{file_8c_a273907fa64f10a578e107dde70a12876} 
+\index{file.c@{file.c}!initfile@{initfile}}
+\index{initfile@{initfile}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{initfile()}{initfile()}}
+{\footnotesize\ttfamily void initfile (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Function initfile initialize a queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}

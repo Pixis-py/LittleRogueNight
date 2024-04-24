@@ -1,0 +1,100 @@
+\doxysection{lib/bouton.h File Reference}
+\hypertarget{bouton_8h}{}\label{bouton_8h}\index{lib/bouton.h@{lib/bouton.h}}
+
+
+\doxylink{bouton_8h}{bouton.\+h} contains prototypes of functions in \doxylink{bouton_8c}{bouton.\+c} made to create buttons more easily  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbouton__s}{bouton\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Structure \doxylink{structbouton__s}{bouton\+\_\+s} is used to stock the button renderer informations as classic and hoover vue, state, and position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bouton_8h_a8c61030747316861464badac8e6a5748}\label{bouton_8h_a8c61030747316861464badac8e6a5748} 
+\#define {\bfseries BOUTON\+\_\+\+RELACHE}~0
+\item 
+\Hypertarget{bouton_8h_a4b85c197cf44b984105a214d0adbc66b}\label{bouton_8h_a4b85c197cf44b984105a214d0adbc66b} 
+\#define {\bfseries BOUTON\+\_\+\+APPUYE}~1
+\item 
+\Hypertarget{bouton_8h_a021448a7c60dfffc1d03a08794c23333}\label{bouton_8h_a021448a7c60dfffc1d03a08794c23333} 
+\#define {\bfseries BOUTON\+\_\+\+DESSUS}~2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bouton_8h_ad5e0e8259816cebea4cfe931765f707d}\label{bouton_8h_ad5e0e8259816cebea4cfe931765f707d} 
+typedef struct \mbox{\hyperlink{structbouton__s}{bouton\+\_\+s}} {\bfseries bouton}
+\begin{DoxyCompactList}\small\item\em Structure \doxylink{structbouton__s}{bouton\+\_\+s} is used to stock the button renderer informations as classic and hoover vue, state, and position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{bouton_8h_ab55bf96164333f9ea81096ee32b1172c}{aff\+\_\+bout}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}bout, SDL\+\_\+\+Event e, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}img, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}img2)
+\begin{DoxyCompactList}\small\item\em aff\+\_\+bout prototype, real function creates an SDL\+\_\+\+Render\+Copy of a button with a normal vue and a hoover vue \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{bouton_8h}{bouton.\+h} contains prototypes of functions in \doxylink{bouton_8c}{bouton.\+c} made to create buttons more easily 
+
+\begin{DoxyAuthor}{Author}
+Enzo Desfaudais 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/04-\/08
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bouton_8h_ab55bf96164333f9ea81096ee32b1172c}\label{bouton_8h_ab55bf96164333f9ea81096ee32b1172c} 
+\index{bouton.h@{bouton.h}!aff\_bout@{aff\_bout}}
+\index{aff\_bout@{aff\_bout}!bouton.h@{bouton.h}}
+\doxysubsubsection{\texorpdfstring{aff\_bout()}{aff\_bout()}}
+{\footnotesize\ttfamily int aff\+\_\+bout (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{bout,  }\item[{SDL\+\_\+\+Event}]{e,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{img,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{img2 }\end{DoxyParamCaption})}
+
+
+
+aff\+\_\+bout prototype, real function creates an SDL\+\_\+\+Render\+Copy of a button with a normal vue and a hoover vue 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & \\
+\hline
+{\em bout} & \\
+\hline
+{\em e} & \\
+\hline
+{\em img} & \\
+\hline
+{\em img2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 or 0
+\end{DoxyReturn}
+aff\+\_\+bout prototype, real function creates an SDL\+\_\+\+Render\+Copy of a button with a normal vue and a hoover vue
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & \\
+\hline
+{\em bout} & \\
+\hline
+{\em e} & \\
+\hline
+{\em img} & \\
+\hline
+{\em img2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 or 0 
+\end{DoxyReturn}

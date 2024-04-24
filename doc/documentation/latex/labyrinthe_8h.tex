@@ -1,0 +1,295 @@
+\doxysection{lib/labyrinthe.h File Reference}
+\hypertarget{labyrinthe_8h}{}\label{labyrinthe_8h}\index{lib/labyrinthe.h@{lib/labyrinthe.h}}
+
+
+This files contains every function prototype and consts used in \doxylink{labyrinthe_8c}{labyrinthe.\+c}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{labyrinthe_8h_ad27cf51e3cb443ff12b1385821051877}\label{labyrinthe_8h_ad27cf51e3cb443ff12b1385821051877} 
+\#define {\bfseries VRAI}~1
+\item 
+\Hypertarget{labyrinthe_8h_ad87b2ac6b56be83aba5eddf673df04c1}\label{labyrinthe_8h_ad87b2ac6b56be83aba5eddf673df04c1} 
+\#define {\bfseries FAUX}~0
+\item 
+\Hypertarget{labyrinthe_8h_aac451152d79fa4596ce155c701dec527}\label{labyrinthe_8h_aac451152d79fa4596ce155c701dec527} 
+\#define {\bfseries NUIT}~0
+\item 
+\Hypertarget{labyrinthe_8h_a528503a3fc17d7c9f3ddfb07899db5c2}\label{labyrinthe_8h_a528503a3fc17d7c9f3ddfb07899db5c2} 
+\#define {\bfseries MUR}~1
+\item 
+\Hypertarget{labyrinthe_8h_a6dd3ae725409f00403678251b042f1f2}\label{labyrinthe_8h_a6dd3ae725409f00403678251b042f1f2} 
+\#define {\bfseries TERRE}~2
+\item 
+\Hypertarget{labyrinthe_8h_aa7a0983db8c605d68ef7d5ffb9be8b98}\label{labyrinthe_8h_aa7a0983db8c605d68ef7d5ffb9be8b98} 
+\#define {\bfseries TERREVERTE}~3
+\item 
+\Hypertarget{labyrinthe_8h_af8ac375e38f541d5731744e12fec07ca}\label{labyrinthe_8h_af8ac375e38f541d5731744e12fec07ca} 
+\#define {\bfseries DUR}~TERRE \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} TERREVERTE
+\item 
+\Hypertarget{labyrinthe_8h_ae678f463d2e631663f484a9219af24e2}\label{labyrinthe_8h_ae678f463d2e631663f484a9219af24e2} 
+\#define {\bfseries FORMATPIXEL}~32
+\item 
+\Hypertarget{labyrinthe_8h_abeecfb58b7689ac52248465a6502c106}\label{labyrinthe_8h_abeecfb58b7689ac52248465a6502c106} 
+\#define {\bfseries ZOOM}~3
+\item 
+\Hypertarget{labyrinthe_8h_a10c6815ac2a561eda6dca0993bb72fd7}\label{labyrinthe_8h_a10c6815ac2a561eda6dca0993bb72fd7} 
+\#define {\bfseries FORMATPIXELZOOM}~FORMATPIXEL \texorpdfstring{$\ast$}{*} ZOOM
+\item 
+\Hypertarget{labyrinthe_8h_a3d3bf5a2f88b1dba6c6bc13bf889c3cc}\label{labyrinthe_8h_a3d3bf5a2f88b1dba6c6bc13bf889c3cc} 
+\#define {\bfseries LARGEUR}~7
+\item 
+\Hypertarget{labyrinthe_8h_aa1d59e1f29f3ef8e058867d3e5c0b694}\label{labyrinthe_8h_aa1d59e1f29f3ef8e058867d3e5c0b694} 
+\#define {\bfseries LONGUEUR}~10
+\item 
+\Hypertarget{labyrinthe_8h_a0240ac851181b84ac374872dc5434ee4}\label{labyrinthe_8h_a0240ac851181b84ac374872dc5434ee4} 
+\#define {\bfseries N}~LARGEUR \texorpdfstring{$\ast$}{*} 5 + 7
+\item 
+\Hypertarget{labyrinthe_8h_a52037c938e3c1b126c6277da5ca689d0}\label{labyrinthe_8h_a52037c938e3c1b126c6277da5ca689d0} 
+\#define {\bfseries M}~LONGUEUR \texorpdfstring{$\ast$}{*} 5 + 9
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{labyrinthe_8h_a3ca002299306acfff794b1d39d4c4e3d}\label{labyrinthe_8h_a3ca002299306acfff794b1d39d4c4e3d} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries afficher\+\_\+lab} (int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]}, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}p\+Window)
+\item 
+void \mbox{\hyperlink{labyrinthe_8h_a908c9d0dfb4409aa581180e44d7577bc}{affichage\+\_\+laby\+\_\+niveau\+\_\+un}} (int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]}, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}p\+Renderer, int coefX, int coefY)
+\begin{DoxyCompactList}\small\item\em Function affichage\+\_\+laby\+\_\+niveau\+\_\+un purpose is to render the lab with the correct tiles (grass and dirt here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{labyrinthe_8h_a46ee5fd5301f29dc2bd2744c4cb8bdf1}{affichage\+\_\+laby\+\_\+niveau\+\_\+deux}} (int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]}, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}p\+Renderer, int coefX, int coefY)
+\begin{DoxyCompactList}\small\item\em Function affichage\+\_\+laby\+\_\+niveau\+\_\+deux purpose is to render the lab with the correct tiles (wood here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{labyrinthe_8h_aed2255a8f535f00ed2863bb2824dd524}{affichage\+\_\+laby\+\_\+niveau\+\_\+trois}} (int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]}, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}p\+Renderer, int coefX, int coefY)
+\begin{DoxyCompactList}\small\item\em Function affichage\+\_\+laby\+\_\+niveau\+\_\+trois purpose is to render the lab with the correct tiles (brics here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{labyrinthe_8h_a0a05cc3a3df78017d494547fb56843fa}{init\+\_\+lab}} (int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function init\+\_\+lab purpose is to init the matrix used to create the labyrinth. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{labyrinthe_8h_a730ee142f3d2e67bc393e6ca7ba88fc7}{valides}} (int i, int j)
+\begin{DoxyCompactList}\small\item\em Function valides purpose is to return true or false if coordonates are correct (in the matrix) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{labyrinthe_8h_ab70c30209406d10ed91cf38e42e20f0c}{est\+\_\+\+NUIT}} (int i, int j, int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function est\+\_\+\+NUIT purpose is to return true if coordonates in the matrix are empty (night = NUIT) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{labyrinthe_8h_a54e6cf70db228c6ddb5a74492cae2ee3}{est\+\_\+\+TERRE}} (int i, int j, int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function est\+\_\+\+TERRE purpose is to return true if coordonates in the matrix are full (dirt = TERRE) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{labyrinthe_8h_a0dc29ebbe99ec1135d2c57e30ae598f9}{vide}} (int i, int j, int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function est\+\_\+\+NUIT purpose is to return true if coordonates in the matrix are empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{labyrinthe_8h_a09f3867062d5c26791ae779485786945}{creer\+\_\+lab}} (int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function creer\+\_\+lab purpose is to create the perfect labyrinth randomly using an initialized matrix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{labyrinthe_8h_a53f903834017e12044ffeef76056afd5}{chercher\+\_\+chemin}} (const int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]}, int id, int jd, int ia, int ja)
+\begin{DoxyCompactList}\small\item\em Function chercher\+\_\+chemin purpose is to true if the labyrinth is perfect and has a correct path from start to end. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files contains every function prototype and consts used in \doxylink{labyrinthe_8c}{labyrinthe.\+c}. 
+
+\begin{DoxyAuthor}{Author}
+Clement Lelandais (\href{mailto:you@domain.com}{\texttt{ you@domain.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/04-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{labyrinthe_8h_a46ee5fd5301f29dc2bd2744c4cb8bdf1}\label{labyrinthe_8h_a46ee5fd5301f29dc2bd2744c4cb8bdf1} 
+\index{labyrinthe.h@{labyrinthe.h}!affichage\_laby\_niveau\_deux@{affichage\_laby\_niveau\_deux}}
+\index{affichage\_laby\_niveau\_deux@{affichage\_laby\_niveau\_deux}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{affichage\_laby\_niveau\_deux()}{affichage\_laby\_niveau\_deux()}}
+{\footnotesize\ttfamily void affichage\+\_\+laby\+\_\+niveau\+\_\+deux (\begin{DoxyParamCaption}\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]},  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{p\+Renderer,  }\item[{int}]{coefX,  }\item[{int}]{coefY }\end{DoxyParamCaption})}
+
+
+
+Function affichage\+\_\+laby\+\_\+niveau\+\_\+deux purpose is to render the lab with the correct tiles (wood here) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lab} & \\
+\hline
+{\em p\+Renderer} & \\
+\hline
+{\em coefX} & \\
+\hline
+{\em coefY} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_aed2255a8f535f00ed2863bb2824dd524}\label{labyrinthe_8h_aed2255a8f535f00ed2863bb2824dd524} 
+\index{labyrinthe.h@{labyrinthe.h}!affichage\_laby\_niveau\_trois@{affichage\_laby\_niveau\_trois}}
+\index{affichage\_laby\_niveau\_trois@{affichage\_laby\_niveau\_trois}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{affichage\_laby\_niveau\_trois()}{affichage\_laby\_niveau\_trois()}}
+{\footnotesize\ttfamily void affichage\+\_\+laby\+\_\+niveau\+\_\+trois (\begin{DoxyParamCaption}\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]},  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{p\+Renderer,  }\item[{int}]{coefX,  }\item[{int}]{coefY }\end{DoxyParamCaption})}
+
+
+
+Function affichage\+\_\+laby\+\_\+niveau\+\_\+trois purpose is to render the lab with the correct tiles (brics here) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lab} & \\
+\hline
+{\em p\+Renderer} & \\
+\hline
+{\em coefX} & \\
+\hline
+{\em coefY} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_a908c9d0dfb4409aa581180e44d7577bc}\label{labyrinthe_8h_a908c9d0dfb4409aa581180e44d7577bc} 
+\index{labyrinthe.h@{labyrinthe.h}!affichage\_laby\_niveau\_un@{affichage\_laby\_niveau\_un}}
+\index{affichage\_laby\_niveau\_un@{affichage\_laby\_niveau\_un}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{affichage\_laby\_niveau\_un()}{affichage\_laby\_niveau\_un()}}
+{\footnotesize\ttfamily void affichage\+\_\+laby\+\_\+niveau\+\_\+un (\begin{DoxyParamCaption}\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]},  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{p\+Renderer,  }\item[{int}]{coefX,  }\item[{int}]{coefY }\end{DoxyParamCaption})}
+
+
+
+Function affichage\+\_\+laby\+\_\+niveau\+\_\+un purpose is to render the lab with the correct tiles (grass and dirt here) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lab} & \\
+\hline
+{\em p\+Renderer} & \\
+\hline
+{\em coefX} & \\
+\hline
+{\em coefY} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_a53f903834017e12044ffeef76056afd5}\label{labyrinthe_8h_a53f903834017e12044ffeef76056afd5} 
+\index{labyrinthe.h@{labyrinthe.h}!chercher\_chemin@{chercher\_chemin}}
+\index{chercher\_chemin@{chercher\_chemin}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{chercher\_chemin()}{chercher\_chemin()}}
+{\footnotesize\ttfamily int chercher\+\_\+chemin (\begin{DoxyParamCaption}\item[{const int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]},  }\item[{int}]{id,  }\item[{int}]{jd,  }\item[{int}]{ia,  }\item[{int}]{ja }\end{DoxyParamCaption})}
+
+
+
+Function chercher\+\_\+chemin purpose is to true if the labyrinth is perfect and has a correct path from start to end. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lab} & \\
+\hline
+{\em id} & \\
+\hline
+{\em jd} & \\
+\hline
+{\em ia} & \\
+\hline
+{\em ja} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_a09f3867062d5c26791ae779485786945}\label{labyrinthe_8h_a09f3867062d5c26791ae779485786945} 
+\index{labyrinthe.h@{labyrinthe.h}!creer\_lab@{creer\_lab}}
+\index{creer\_lab@{creer\_lab}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{creer\_lab()}{creer\_lab()}}
+{\footnotesize\ttfamily void creer\+\_\+lab (\begin{DoxyParamCaption}\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function creer\+\_\+lab purpose is to create the perfect labyrinth randomly using an initialized matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lab} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_ab70c30209406d10ed91cf38e42e20f0c}\label{labyrinthe_8h_ab70c30209406d10ed91cf38e42e20f0c} 
+\index{labyrinthe.h@{labyrinthe.h}!est\_NUIT@{est\_NUIT}}
+\index{est\_NUIT@{est\_NUIT}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{est\_NUIT()}{est\_NUIT()}}
+{\footnotesize\ttfamily int est\+\_\+\+NUIT (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function est\+\_\+\+NUIT purpose is to return true if coordonates in the matrix are empty (night = NUIT) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em j} & \\
+\hline
+{\em lab} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_a54e6cf70db228c6ddb5a74492cae2ee3}\label{labyrinthe_8h_a54e6cf70db228c6ddb5a74492cae2ee3} 
+\index{labyrinthe.h@{labyrinthe.h}!est\_TERRE@{est\_TERRE}}
+\index{est\_TERRE@{est\_TERRE}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{est\_TERRE()}{est\_TERRE()}}
+{\footnotesize\ttfamily int est\+\_\+\+TERRE (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function est\+\_\+\+TERRE purpose is to return true if coordonates in the matrix are full (dirt = TERRE) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em j} & \\
+\hline
+{\em lab} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_a0a05cc3a3df78017d494547fb56843fa}\label{labyrinthe_8h_a0a05cc3a3df78017d494547fb56843fa} 
+\index{labyrinthe.h@{labyrinthe.h}!init\_lab@{init\_lab}}
+\index{init\_lab@{init\_lab}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{init\_lab()}{init\_lab()}}
+{\footnotesize\ttfamily void init\+\_\+lab (\begin{DoxyParamCaption}\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function init\+\_\+lab purpose is to init the matrix used to create the labyrinth. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lab} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_a730ee142f3d2e67bc393e6ca7ba88fc7}\label{labyrinthe_8h_a730ee142f3d2e67bc393e6ca7ba88fc7} 
+\index{labyrinthe.h@{labyrinthe.h}!valides@{valides}}
+\index{valides@{valides}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{valides()}{valides()}}
+{\footnotesize\ttfamily int valides (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Function valides purpose is to return true or false if coordonates are correct (in the matrix) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em j} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{labyrinthe_8h_a0dc29ebbe99ec1135d2c57e30ae598f9}\label{labyrinthe_8h_a0dc29ebbe99ec1135d2c57e30ae598f9} 
+\index{labyrinthe.h@{labyrinthe.h}!vide@{vide}}
+\index{vide@{vide}!labyrinthe.h@{labyrinthe.h}}
+\doxysubsubsection{\texorpdfstring{vide()}{vide()}}
+{\footnotesize\ttfamily int vide (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function est\+\_\+\+NUIT purpose is to return true if coordonates in the matrix are empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em j} & \\
+\hline
+{\em lab} & \\
+\hline
+\end{DoxyParams}

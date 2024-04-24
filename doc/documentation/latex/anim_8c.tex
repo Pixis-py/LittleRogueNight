@@ -1,0 +1,82 @@
+\doxysection{src/anim.c File Reference}
+\hypertarget{anim_8c}{}\label{anim_8c}\index{src/anim.c@{src/anim.c}}
+
+
+Main game file used to manage Six\textquotesingle{}s animations, therefore movements, collisions and also entity management.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \"{}../lib/anim.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{anim_8c_ad9fab7e8d176a4588fef84fe669ddb9b}{creer\+\_\+coord}} (\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ent, int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]})
+\begin{DoxyCompactList}\small\item\em Generate valid coordonates randomly and assign them to the entity. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{anim_8c_ac04bb0a55e476d090f7488632b5fc10c}{anim}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, int lab\mbox{[}N\mbox{]}\mbox{[}M\mbox{]}, int niveau, \mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Main function which uses to manage Six\textquotesingle{}s animations, therefore movements, collisions and also entity management from coordonates given by the creer\+\_\+coord function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main game file used to manage Six\textquotesingle{}s animations, therefore movements, collisions and also entity management. 
+
+\begin{DoxyAuthor}{Author}
+Clément Lelandais, Maelig Pesantez, Enzo Desfaudais 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/04-\/24 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{anim_8c_ac04bb0a55e476d090f7488632b5fc10c}\label{anim_8c_ac04bb0a55e476d090f7488632b5fc10c} 
+\index{anim.c@{anim.c}!anim@{anim}}
+\index{anim@{anim}!anim.c@{anim.c}}
+\doxysubsubsection{\texorpdfstring{anim()}{anim()}}
+{\footnotesize\ttfamily int anim (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]},  }\item[{int}]{niveau,  }\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{player }\end{DoxyParamCaption})}
+
+
+
+Main function which uses to manage Six\textquotesingle{}s animations, therefore movements, collisions and also entity management from coordonates given by the creer\+\_\+coord function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & \\
+\hline
+{\em argv} & \\
+\hline
+{\em lab} & \\
+\hline
+{\em niveau} & \\
+\hline
+{\em player} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{anim_8c_ad9fab7e8d176a4588fef84fe669ddb9b}\label{anim_8c_ad9fab7e8d176a4588fef84fe669ddb9b} 
+\index{anim.c@{anim.c}!creer\_coord@{creer\_coord}}
+\index{creer\_coord@{creer\_coord}!anim.c@{anim.c}}
+\doxysubsubsection{\texorpdfstring{creer\_coord()}{creer\_coord()}}
+{\footnotesize\ttfamily void creer\+\_\+coord (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{character_8h_ab24f44887164d006cb3be7f21e4f4d76}{character\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ent,  }\item[{int}]{lab\mbox{[}\+N\mbox{]}\mbox{[}\+M\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Generate valid coordonates randomly and assign them to the entity. 
+
+Prototype of function creer\+\_\+coord which generate valid coordonates randomly and assign them to the entity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ent} & \\
+\hline
+{\em lab} & \\
+\hline
+\end{DoxyParams}

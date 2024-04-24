@@ -1,0 +1,140 @@
+\doxysection{src/pile.c File Reference}
+\hypertarget{pile_8c}{}\label{pile_8c}\index{src/pile.c@{src/pile.c}}
+
+
+Pile.\+c (in french, pile=stack) includes every function needed to use stacks in an other program.  
+
+
+{\ttfamily \#include \"{}../lib/pile.\+h\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structelement}{element}}
+\begin{DoxyCompactList}\small\item\em element structure, used in queues \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{pile_8c_aaa9f09bf55fb32a9090e2dc051b75a6a}\label{pile_8c_aaa9f09bf55fb32a9090e2dc051b75a6a} 
+typedef struct \mbox{\hyperlink{structelement}{element}} {\bfseries t\+\_\+element}
+\begin{DoxyCompactList}\small\item\em element structs are used in stacks \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pile_8c_ac4e8451a9141ddd60fd45e98cf741aad}{initpile}} (void)
+\begin{DoxyCompactList}\small\item\em Function initpile is used to initialize a stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pile_8c_a8b4ae78d5704c6758221132991d6b1bc}{empiler}} (int c)
+\begin{DoxyCompactList}\small\item\em Function epmiler is used to add an element to the stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pile_8c_a5d44d272590d85476d0c6584ab6d48f0}{depiler}} (int \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Function depiler is used to unstack an element from a stack. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pile_8c_aa276f59158a41b8926fbc42e0f15d8f0}{pilevide}} (void)
+\begin{DoxyCompactList}\small\item\em Function pilevide is used to know if a stack is empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pile_8c_adc1dae0e7669227318c5be8e23587e2d}{sommetpile}} (int \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Function sommetpile is used to know stack\textquotesingle{}s top. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{pile_8c_ae36f32fca1dd25d65ba228c41d26b40f}\label{pile_8c_ae36f32fca1dd25d65ba228c41d26b40f} 
+\mbox{\hyperlink{file_8c_aaa9f09bf55fb32a9090e2dc051b75a6a}{t\+\_\+element}} \texorpdfstring{$\ast$}{*} {\bfseries pile}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pile.\+c (in french, pile=stack) includes every function needed to use stacks in an other program. 
+
+\begin{DoxyAuthor}{Author}
+Clément Lelandais 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/03-\/29
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{pile_8c_a5d44d272590d85476d0c6584ab6d48f0}\label{pile_8c_a5d44d272590d85476d0c6584ab6d48f0} 
+\index{pile.c@{pile.c}!depiler@{depiler}}
+\index{depiler@{depiler}!pile.c@{pile.c}}
+\doxysubsubsection{\texorpdfstring{depiler()}{depiler()}}
+{\footnotesize\ttfamily void depiler (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Function depiler is used to unstack an element from a stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{pile_8c_a8b4ae78d5704c6758221132991d6b1bc}\label{pile_8c_a8b4ae78d5704c6758221132991d6b1bc} 
+\index{pile.c@{pile.c}!empiler@{empiler}}
+\index{empiler@{empiler}!pile.c@{pile.c}}
+\doxysubsubsection{\texorpdfstring{empiler()}{empiler()}}
+{\footnotesize\ttfamily void empiler (\begin{DoxyParamCaption}\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Function epmiler is used to add an element to the stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{pile_8c_ac4e8451a9141ddd60fd45e98cf741aad}\label{pile_8c_ac4e8451a9141ddd60fd45e98cf741aad} 
+\index{pile.c@{pile.c}!initpile@{initpile}}
+\index{initpile@{initpile}!pile.c@{pile.c}}
+\doxysubsubsection{\texorpdfstring{initpile()}{initpile()}}
+{\footnotesize\ttfamily void initpile (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Function initpile is used to initialize a stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{pile_8c_aa276f59158a41b8926fbc42e0f15d8f0}\label{pile_8c_aa276f59158a41b8926fbc42e0f15d8f0} 
+\index{pile.c@{pile.c}!pilevide@{pilevide}}
+\index{pilevide@{pilevide}!pile.c@{pile.c}}
+\doxysubsubsection{\texorpdfstring{pilevide()}{pilevide()}}
+{\footnotesize\ttfamily int pilevide (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Function pilevide is used to know if a stack is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true or false wether the satck is empty or not 
+\end{DoxyReturn}
+\Hypertarget{pile_8c_adc1dae0e7669227318c5be8e23587e2d}\label{pile_8c_adc1dae0e7669227318c5be8e23587e2d} 
+\index{pile.c@{pile.c}!sommetpile@{sommetpile}}
+\index{sommetpile@{sommetpile}!pile.c@{pile.c}}
+\doxysubsubsection{\texorpdfstring{sommetpile()}{sommetpile()}}
+{\footnotesize\ttfamily void sommetpile (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Function sommetpile is used to know stack\textquotesingle{}s top. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
