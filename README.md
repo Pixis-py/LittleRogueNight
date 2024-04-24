@@ -47,8 +47,18 @@ make all
 chmod 777 compiler_executer.sh
 ./compiler_executer.sh
 ```
-
-
+## Documentation
+* HTML and LaTeX documentation can be found at /doc/documentation/hmtl and /doc/documentation/latex.
+* However, if you want to generate it yourself, place yourself in the main folder and execute:
+```
+doxygen Doxyfile
+```
+## Report (Rapport)
+* Report can be found as a pdf and LaTeX with all sources at /doc/rapport
+* However, if you want to generate it yourself, place yourself in /doc/rapport and execute:
+```
+pdflatex main.tex
+```
 ## How to play 
 //Add instructions to start and play the game (maybe a picture) 
 
