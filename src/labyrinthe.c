@@ -1,9 +1,25 @@
+/**
+ * @file labyrinthe.c
+ * @author Clément Lelandais (you@domain.com)
+ * @brief File made to manage labyrinth
+ * @version 0.1
+ * @date 2024-04-24
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 // TP4 - Recherche du chemin le plus court avec une file
 #include "../lib/labyrinthe.h"
 #include "../lib/image.h"
 #include "../lib/file.h"
 #include "../lib/pile.h"
 
+/// @brief Function affichage_laby_niveau_un purpose is to render the lab with the correct tiles (grass and dirt here)
+/// @param lab
+/// @param pRenderer
+/// @param coefX
+/// @param coefY
 void affichage_laby_niveau_un(int lab[N][M], SDL_Renderer * pRenderer, int coefX, int coefY){
 	SDL_Texture* pSkyTexture = loadTexture("../sprites/tiles/night_sky.png", pRenderer);
     SDL_Texture* pGrassTexture = loadTexture("../sprites/tiles/grass.png", pRenderer);	
@@ -47,6 +63,11 @@ void affichage_laby_niveau_un(int lab[N][M], SDL_Renderer * pRenderer, int coefX
     SDL_DestroyTexture(pGrassTexture);
 }
 
+/// @brief Function affichage_laby_niveau_deux purpose is to render the lab with the correct tiles (wood here)
+/// @param lab
+/// @param pRenderer
+/// @param coefX
+/// @param coefY
 void affichage_laby_niveau_deux(int lab[N][M], SDL_Renderer * pRenderer, int coefX, int coefY){
 	SDL_Texture* pSkyTexture = loadTexture("../sprites/tiles/night_sky.png", pRenderer);
     SDL_Texture* pWoodTexture = loadTexture("../sprites/tiles/wood_planks.png", pRenderer);	
@@ -88,6 +109,11 @@ void affichage_laby_niveau_deux(int lab[N][M], SDL_Renderer * pRenderer, int coe
     }
 }
 
+/// @brief Function affichage_laby_niveau_trois purpose is to render the lab with the correct tiles (brics here)
+/// @param lab
+/// @param pRenderer
+/// @param coefX
+/// @param coefY
 void affichage_laby_niveau_trois(int lab[N][M], SDL_Renderer * pRenderer, int coefX, int coefY){
 	SDL_Texture* pSkyTexture = loadTexture("../sprites/tiles/night_sky.png", pRenderer);
     SDL_Texture* pBrickTexture = loadTexture("../sprites/tiles/brick.png", pRenderer);	
@@ -129,6 +155,8 @@ void affichage_laby_niveau_trois(int lab[N][M], SDL_Renderer * pRenderer, int co
     }
 }
 
+/// @brief Function init_lab purpose is to init the matrix used to create the labyrinth
+/// @param lab
 void init_lab(int lab[N][M]){
 	//1ère étape pour la création du labyrinthe parfat : tout initialiser en bloc de terre (avec du vert au dessus)
 	int i, j;
@@ -138,24 +166,41 @@ void init_lab(int lab[N][M]){
 	}
 }
 
+/// @brief Function valides purpose is to return true or false if coordonates are correct (in the matrix)
+/// @param i
+/// @param j
 int valides(int i, int j){
 // renvoie 1 si i et j se trouve sur une case du labyrinthe
 	return(i >= 0 && i < N && j >= 0 && j < M);
 }
 
+/// @brief Function est_NUIT purpose is to return true if coordonates in the matrix are empty (night = NUIT)
+/// @param i
+/// @param j
+/// @param lab
 int est_NUIT(int i, int j, int lab[N][M]){
 	return(valides(i, j) && lab[i][j] == NUIT);
 }
 
+/// @brief Function est_TERRE purpose is to return true if coordonates in the matrix are full (dirt = TERRE)
+/// @param i
+/// @param j
+/// @param lab
 int est_TERRE(int i, int j, int lab[N][M]){
 	return(valides(i, j) && (lab[i][j] == TERREVERTE || lab[i][j] == TERRE));
 }
 
+/// @brief Function est_NUIT purpose is to return true if coordonates in the matrix are empty
+/// @param i
+/// @param j
+/// @param lab
 int vide(int i, int j, int lab[N][M]){
 //Aucune case voisine n'est une terre
 	return (!est_TERRE(i + 2, j, lab) && !est_TERRE(i - 2, j, lab) && !est_TERRE(i, j + 2, lab) && !est_TERRE(i, j - 2, lab));
 }
 
+/// @brief Function creer_lab purpose is to create the perfect labyrinth randomly using an initialized matrix
+/// @param lab
 void creer_lab(int lab[N][M]){
 //2ème étape : création du labyrinthe selon un algorithme utilisant une pile
 
@@ -234,6 +279,12 @@ void creer_lab(int lab[N][M]){
 // Partie recherche de chemin
 //***************************
 
+/// @brief Function chercher_chemin purpose is to true if the labyrinth is perfect and has a correct path from start to end
+/// @param lab
+/// @param id
+/// @param jd
+/// @param ia
+/// @param ja
 int chercher_chemin(const int lab[N][M], int id, int jd, int ia, int ja){
     //3ème étape : Vérification du labyrinthe (si un chemin existe alors il est parfait)
     //Cherche le chemin D -> A le plus court avec une file en prenant un autre labyrinthe en copie pour pas modifier le labyrinthe actuel
