@@ -66,8 +66,6 @@ pdflatex main.tex
 * To go up, press **spacebar**. Note that you can also go up left and up right pressing spacebar + q and spacebar + d.
 * To go drift, press **shift**. Note that you can drift left and drift right pressing shift + q and shift + d. Drifting is your main attack against monsters.
 
-## License
-
 ## Steps of the projects 
 * we have 14 weeks to do this project
 * This is our Gantt : https://docs.google.com/spreadsheets/d/1N0l1cyXdz2jDQ7uw1sJApE_-XL1_57rDjFjR6rCOs2c/edit#gid=1115838130
