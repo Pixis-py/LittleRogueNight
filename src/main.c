@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @author Maelig Pesantez (you@domain.com)
- * @brief main.c purpose is to call each other file used to play the game
+ * @brief main.c purpose is to call each other file used to play the gam
  * @version 0.1
  * @date 2024-04-24
  * 
@@ -33,7 +33,7 @@ int main(){
             int lab[N][M];
             creer_lab(lab);
             if(chercher_chemin(lab, N - 1, M - 1, 0, 0)){ 
-                if(*choix_perso == 1){/*Cas ou l'utilisateur choisi de jouer avec six*/
+                if(*choix_perso == 0){/*Cas ou l'utilisateur choisi de jouer avec six*/
                     character_t * six; // Déclaration du personnage
                     create(&six,NB_PV_JOUEUR, 25); // Création du personnage
                     choice = anim(0, NULL, lab, 1, &six);
@@ -54,7 +54,7 @@ int main(){
                     choice = menu(0, NULL,choix_perso);
                 }
             }
-            if(*choix_perso == 2){ /*Cas ou l'utilisateur choisi de jouer avec mono*/
+            if(*choix_perso == 1){ /*Cas ou l'utilisateur choisi de jouer avec mono*/
                 character_t * mono; // Déclaration du personnage
                 create(&mono,NB_PV_JOUEUR, 50); // Création du personnage
                 choice = anim(0, NULL, lab, 1, &mono);
