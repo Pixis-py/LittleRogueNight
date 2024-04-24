@@ -1,3 +1,14 @@
+/**
+ * @file main.c
+ * @author Maelig Pesantez (you@domain.com)
+ * @brief main.c purpose is to call each other file used to play the game
+ * @version 0.1
+ * @date 2024-04-24
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL2/SDL.h>
@@ -7,6 +18,9 @@
 
 #define NB_PV_JOUEUR 100
 
+
+/// @brief main is used to call every file used to play the game, from menus to each level
+/// @return function exit's
 int main(){
     int choice = 0;
     srand(time(NULL));
@@ -61,5 +75,3 @@ int main(){
     printf("Program exit...\n");
     return 0; // Retourne 0 pour indiquer que le programme s'est terminé normalement
 }
-
-
