@@ -1,7 +1,7 @@
 /**
  * @file anim.h
  * @author Clément Lelandais Maelig Pesantez Enzo Desfaudais
- * @brief 
+ * @brief Main game file prototype which is used to manage Six's animations, therefore movements, collisions and also entity management
  * @version 0.1
  * @date 2024-04-24
  * 
