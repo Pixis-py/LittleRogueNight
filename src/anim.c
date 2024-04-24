@@ -1,7 +1,7 @@
 /**
  * @file anim.c
  * @author Clément Lelandais, Maelig Pesantez, Enzo Desfaudais
- * @brief Main game file used to manage Six's animations, therefore movements, collisions and also entity management.
+ * @brief Main game file used to manage Six's animations, therefore movements, collisions and also entity management
  * @version 0.1
  * @date 2024-04-24
  * @copyright Copyright (c) 2024
@@ -31,7 +31,7 @@ void creer_coord(character_t ** ent, int lab[N][M]){
 }
 
 /**
- * @brief 
+ * @brief Main function which uses to manage Six's animations, therefore movements, collisions and also entity management from coordonates given by the creer_coord function
  * 
  * @param argc 
  * @param argv 
