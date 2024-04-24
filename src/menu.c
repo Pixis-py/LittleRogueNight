@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include  <unistd.h>
-#include <SDL2/SDL.h>
-#include "../lib/bouton.h"
-#include "../lib/image.h"
-
 /**
  * @file menu.c
  * @author Enzo Desfaudais
@@ -14,6 +8,12 @@
  * @copyright Copyright (c) 2024
  * 
  */
+
+#include <stdio.h>
+#include  <unistd.h>
+#include <SDL2/SDL.h>
+#include "../lib/bouton.h"
+#include "../lib/image.h"
 
 /// @brief menu is used to show the first menu and choose the character for the game
 /// @param argc 
